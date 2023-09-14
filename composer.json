@@ -1,5 +1,5 @@
 {
-    "name": "andach-limited/laravel-view-components",
+    "name": "andach/laravel-view-components",
     "description": "This is my package laravel-view-components",
     "keywords": [
         "andach-limited",
@@ -54,8 +54,8 @@
             "@php vendor/bin/testbench serve"
         ],
         "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html ./phpunit_reports",
         "format": "vendor/bin/pint"
     },
     "config": {
