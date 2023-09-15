@@ -21,6 +21,6 @@ class OauthButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.oauth-button');
+        return view(config('view-components.views.oauth-button'));
     }
 }

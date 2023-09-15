@@ -36,6 +36,6 @@ class ChatAttachment extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.chat-attachment');
+        return view(config('view-components.views.chat-attachment'));
     }
 }

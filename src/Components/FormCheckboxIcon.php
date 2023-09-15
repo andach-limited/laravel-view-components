@@ -33,6 +33,6 @@ class FormCheckboxIcon extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form-checkbox-icon');
+        return view(config('view-components.views.form-checkbox-icon'));
     }
 }

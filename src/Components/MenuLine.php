@@ -24,6 +24,6 @@ class MenuLine extends Component
      */
     public function render()
     {
-        return view('components.menu-line');
+        return view(config('view-components.views.menu-line'));
     }
 }

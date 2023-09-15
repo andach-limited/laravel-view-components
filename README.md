@@ -1,83 +1,39 @@
-# This is my package laravel-view-components
+# Laravel View Components by Andach
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/andach-limited/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/andach-limited/laravel-view-components)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/andach-limited/laravel-view-components/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/andach-limited/laravel-view-components/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/andach-limited/laravel-view-components/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/andach-limited/laravel-view-components/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/andach-limited/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/andach-limited/laravel-view-components)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/andach/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/andach/laravel-view-components)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/andach/laravel-view-components/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/andach/laravel-view-components/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/andach/laravel-view-components/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/andach/laravel-view-components/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/andach/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/andach/laravel-view-components)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-view-components.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-view-components)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This is the standard Laravel form components package for Andach Limited. It helps us keep our apps all consistently formatted and branded. It is not likely to be of use to most people in its current state, but has been released open source in the hope that it will help some people learn and understand how to make their own similar packages. 
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require andach-limited/laravel-view-components
+composer require andach/laravel-view-components
 ```
 
-You can publish and run the migrations with:
+You can publish the config with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-view-components-migrations"
-php artisan migrate
+php artisan view-components:install
 ```
 
-You can publish the config file with:
+And if desired, can publish the views with:
 
-```bash
-php artisan vendor:publish --tag="laravel-view-components-config"
+```
+php artisan vendor:publish --tag=signoff-views
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-view-components-views"
-```
-
-## Usage
-
-```php
-$laravelViewComponents = new Andach\LaravelViewComponents();
-echo $laravelViewComponents->echoPhrase('Hello, Andach!');
-```
+The config file can then be edited to point the views towards your local copy to modify them if needed.
 
 ## Testing
 
 ```bash
 composer test
 ```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [Andreas Christodolou](https://github.com/andach-limited)
-- [All Contributors](../../contributors)
 
 ## License
 

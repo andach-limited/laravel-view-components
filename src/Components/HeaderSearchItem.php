@@ -25,6 +25,6 @@ class HeaderSearchItem extends Component
      */
     public function render()
     {
-        return view('components.header-search-item');
+        return view(config('view-components.views.header-search-item'));
     }
 }

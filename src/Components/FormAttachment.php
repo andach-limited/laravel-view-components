@@ -23,6 +23,6 @@ class FormAttachment extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form-attachment');
+        return view(config('view-components.views.form-attachment'));
     }
 }

@@ -24,6 +24,6 @@ class Alert extends Component
      */
     public function render()
     {
-        return view('components.alert');
+        return view(config('view-components.views.alert'));
     }
 }

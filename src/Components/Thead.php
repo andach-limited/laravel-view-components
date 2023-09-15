@@ -24,6 +24,6 @@ class Thead extends Component
      */
     public function render()
     {
-        return view('components.t-head');
+        return view(config('view-components.views.t-head'));
     }
 }

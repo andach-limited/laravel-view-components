@@ -24,6 +24,6 @@ class MenuGroup extends Component
      */
     public function render()
     {
-        return view('components.menu-group');
+        return view(config('view-components.views.menu-group'));
     }
 }

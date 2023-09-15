@@ -21,6 +21,6 @@ class NoResults extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.no-results');
+        return view(config('view-components.views.no-results'));
     }
 }

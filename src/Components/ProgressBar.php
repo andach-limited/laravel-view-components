@@ -21,6 +21,6 @@ class ProgressBar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.progress-bar');
+        return view(config('view-components.views.progress-bar'));
     }
 }

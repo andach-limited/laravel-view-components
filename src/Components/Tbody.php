@@ -24,6 +24,6 @@ class Tbody extends Component
      */
     public function render()
     {
-        return view('components.t-body');
+        return view(config('view-components.views.t-body'));
     }
 }

@@ -31,6 +31,6 @@ class ProgressBarItem extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.progress-bar-item');
+        return view(config('view-components.views.progress-bar-item'));
     }
 }

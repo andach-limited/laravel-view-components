@@ -25,6 +25,6 @@ class HeaderHistoryItem extends Component
      */
     public function render()
     {
-        return view('components.header-history-item');
+        return view(config('view-components.views.header-history-item'));
     }
 }

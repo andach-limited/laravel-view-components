@@ -24,6 +24,6 @@ class FormSection extends Component
      */
     public function render()
     {
-        return view('components.form-section');
+        return view(config('view-components.views.form-section'));
     }
 }

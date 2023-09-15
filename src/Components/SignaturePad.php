@@ -18,6 +18,6 @@ class SignaturePad extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.signature-pad');
+        return view(config('view-components.views.signature-pad'));
     }
 }

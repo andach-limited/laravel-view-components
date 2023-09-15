@@ -24,6 +24,6 @@ class HeaderNotifications extends Component
      */
     public function render()
     {
-        return view('components.header-notifications');
+        return view(config('view-components.views.header-notifications'));
     }
 }

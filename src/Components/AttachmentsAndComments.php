@@ -21,6 +21,6 @@ class AttachmentsAndComments extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.attachments-and-comments');
+        return view(config('view-components.views.attachments-and-comments'));
     }
 }

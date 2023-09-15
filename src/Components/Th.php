@@ -30,6 +30,6 @@ class Th extends Component
      */
     public function render()
     {
-        return view('components.th');
+        return view(config('view-components.views.th'));
     }
 }

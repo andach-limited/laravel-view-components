@@ -29,6 +29,7 @@ use Andach\LaravelViewComponents\Components\Tbody;
 use Andach\LaravelViewComponents\Components\Td;
 use Andach\LaravelViewComponents\Components\Th;
 use Andach\LaravelViewComponents\Components\Thead;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -43,6 +44,8 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-view-components')
+            ->hasConfigFile()
+            ->hasViews()
             ->hasViewComponent('andach', Alert::class)
             ->hasViewComponent('andach', AttachmentsAndComments::class)
             ->hasViewComponent('andach', Button::class)
@@ -69,6 +72,17 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Tbody::class)
             ->hasViewComponent('andach', Td::class)
             ->hasViewComponent('andach', Th::class)
-            ->hasViewComponent('andach', Thead::class);
+            ->hasViewComponent('andach', Thead::class)
+            ->hasInstallCommand(function(InstallCommand $command) {
+                $command
+                    ->startWith(function (InstallCommand $command) {
+                        $command->info('Hello, and welcome to my great new package!');
+                    })
+                    ->publishConfigFile()
+                    ->askToStarRepoOnGitHub('andach-limited/laravel-view-components')
+                    ->endWith(function (InstallCommand $command) {
+                        $command->info('Have a great day!');
+                    });
+            });
     }
 }

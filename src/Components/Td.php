@@ -27,6 +27,6 @@ class Td extends Component
      */
     public function render()
     {
-        return view('components.td');
+        return view(config('view-components.views.td'));
     }
 }
