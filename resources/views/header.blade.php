@@ -24,9 +24,9 @@
 
             <!-- Header: Right side -->
             <div class="flex items-center space-x-3">
-                <x-header-search/>
+                <x-andach-header-search/>
 
-                <x-header-notifications/>
+                <x-andach-header-notifications/>
 
                 <!-- Info button -->
                 <div class="relative inline-flex" x-data="{ open: false }">

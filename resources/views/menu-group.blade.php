@@ -23,7 +23,7 @@
         <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
             <ul class="pl-9 mt-1 hidden" :class="open ? '!block' : 'hidden'">
                 @foreach ($menuArray as $minorLineRoute => $minorLineName)
-                    <x-menu-line :menu-line-route="$minorLineRoute" :menu-line-name="$minorLineName"/>
+                    <x-andach-menu-line :menu-line-route="$minorLineRoute" :menu-line-name="$minorLineName"/>
                 @endforeach
             </ul>
         </div>
