@@ -29,6 +29,7 @@ use Andach\LaravelViewComponents\Components\Tbody;
 use Andach\LaravelViewComponents\Components\Td;
 use Andach\LaravelViewComponents\Components\Th;
 use Andach\LaravelViewComponents\Components\Thead;
+use Illuminate\Pagination\Paginator;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -37,6 +38,9 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
+        Paginator::defaultView(config('view-components.pagination.standard'));
+        Paginator::defaultSimpleView(config('view-components.pagination.simple'));
+
         /*
          * This class is a Package Service Provider
          *
