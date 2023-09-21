@@ -18,7 +18,7 @@ class ProgressBarItem extends Component
         $class  = 'flex items-center justify-center p-2 rounded-full text-xs font-semibold ';
 
         if ($selected) {
-            $append = 'bg-blue-600 text-white';
+            $append = 'bg-blue-600 text-gray-100';
         } else {
             $append = 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400';
         }

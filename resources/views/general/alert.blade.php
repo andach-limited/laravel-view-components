@@ -1,8 +1,8 @@
 <div role="alert" class="mb-4">
     @if ('red' === $color)
-        <div class="px-4 py-2 rounded-sm text-sm border bg-rose-100 dark:bg-rose-400/30 border-rose-200 dark:border-transparent text-rose-600 dark:text-rose-400">
+        <div class="px-4 py-2 rounded-sm text-sm border bg-red-100 dark:bg-red-400/30 border-red-200 dark:border-transparent text-red-600 dark:text-red-400">
     @elseif ('green' === $color)
-        <div class="px-4 py-2 rounded-sm text-sm border bg-emerald-100 dark:bg-emerald-400/30 border-emerald-200 dark:border-transparent text-emerald-600 dark:text-emerald-500">
+        <div class="px-4 py-2 rounded-sm text-sm border bg-green-100 dark:bg-green-400/30 border-green-200 dark:border-transparent text-green-600 dark:text-green-500">
     @elseif ('yellow' === $color)
         <div class="px-4 py-2 rounded-sm text-sm border bg-yellow-100 dark:bg-yellow-400/30 border-yellow-200 dark:border-transparent text-yellow-600 dark:text-yellow-500">
     @endif

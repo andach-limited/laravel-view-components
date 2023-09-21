@@ -15,7 +15,7 @@
 
     </button>
     <div
-        class="origin-top-right z-10 absolute top-full right-0 -mr-48 sm:mr-0 min-w-80 w-96 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+        class="origin-top-right z-10 absolute top-full right-0 -mr-48 sm:mr-0 min-w-80 w-96 bg-gray-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
         @click.outside="open = false"
         @keydown.escape.window="open = false"
         x-show="open"

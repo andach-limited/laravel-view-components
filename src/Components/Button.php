@@ -22,8 +22,8 @@ class Button extends Component
         $this->svg   = '';
 
         $this->class .= match ($color) {
-            'blue'  => 'bg-blue-500 hover:bg-blue-600 text-white',
-            default => 'bg-emerald-500 hover:bg-emerald-700 text-white',
+            'blue'  => 'bg-blue-500 hover:bg-blue-600 text-gray-100',
+            default => 'bg-green-500 hover:bg-green-700 text-gray-100',
         };
 
         $this->svg = '<i class="fa-solid fa-' . $icon . '"></i>';

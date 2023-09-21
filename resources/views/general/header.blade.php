@@ -1,5 +1,5 @@
 <!-- Site header -->
-<header class="sticky top-0 bg-white dark:bg-[#182235] border-b border-slate-200 dark:border-slate-700 z-30">
+<header class="sticky top-0 bg-gray-100 dark:bg-[#182235] border-b border-slate-200 dark:border-slate-700 z-30">
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 -mb-px">
 
@@ -43,7 +43,7 @@
                         </svg>
                     </button>
                     <div
-                        class="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+                        class="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-gray-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
                         @click.outside="open = false"
                         @keydown.escape.window="open = false"
                         x-show="open"
@@ -122,7 +122,7 @@
                         </div>
                     </button>
                     <div
-                        class="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+                        class="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-gray-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
                         @click.outside="open = false"
                         @keydown.escape.window="open = false"
                         x-show="open"
