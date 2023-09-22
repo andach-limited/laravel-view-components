@@ -29,6 +29,7 @@ php artisan vendor:publish --tag=view-components-views
 
 The config file can then be edited to point the views towards your local copy to modify them if needed.
 
+
 ### Editing Tailwind Config
 
 To use vite, edit your `tailwind.config.js` file to include the following:
@@ -37,7 +38,8 @@ To use vite, edit your `tailwind.config.js` file to include the following:
 module.exports = {
   content: [
     // ..
-    './vendor/your-package-name/resources/views/**/*.blade.php',
+    "./vendor/andach/laravel-view-components/src/Components/*.php",
+    "./vendor/andach/laravel-view-components/resources/views/**/*.blade.php"
   ],
   // ...
 }
