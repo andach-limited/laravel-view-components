@@ -12,7 +12,7 @@ class Alert extends Component
      *
      * @return void
      */
-    public function __construct(public string $color)
+    public function __construct(public string $color, public string $fontAwesomeIcon = '')
     {
 
     }
