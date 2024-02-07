@@ -1,6 +1,8 @@
 <a href="{{ $link }}">
     <button class="{{ $class }}">
-        {!! Blade::render($svg) !!}
+        @if ($icon)
+            <i class="{{ $icon }}"></i>
+        @endif
         {{ $slot }}
     </button>
 </a>
