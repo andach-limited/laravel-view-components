@@ -12,8 +12,7 @@ use Andach\LaravelViewComponents\Components\Alert;
 
 class AlertTest extends AndachTestCase
 {
-    /** @test */
-    public function renderWithIcon()
+    public function testRenderWithIcon()
     {
         $view = $this->blade('<x-andach-alert color="red" icon="fa fa-warning">Test message</x-alert>');
 
@@ -24,8 +23,7 @@ class AlertTest extends AndachTestCase
         $view->assertSee('Test message', false);
     }
 
-    /** @test */
-    public function renderWithoutIcon()
+    public function testRenderWithoutIcon()
     {
         $view = $this->blade('<x-andach-alert color="green">No icon message</x-andach-alert>');
 

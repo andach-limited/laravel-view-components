@@ -15,7 +15,7 @@ You can install the package via composer:
 composer require andach/laravel-view-components
 ```
 
-You can publish the config with:
+Then publish the config with:
 
 ```bash
 php artisan view-components:install
@@ -23,7 +23,7 @@ php artisan view-components:install
 
 And if desired, can publish the views with:
 
-```
+```bash
 php artisan vendor:publish --tag=view-components-views
 ```
 
@@ -32,9 +32,9 @@ The config file can then be edited to point the views towards your local copy to
 
 ### Editing Tailwind Config
 
-To use vite, edit your `tailwind.config.js` file to include the following:
+To use vite, edit your `./tailwind.config.js` file to include the following:
 
-```
+```js
 module.exports = {
   content: [
     // ..
@@ -43,6 +43,13 @@ module.exports = {
   ],
   // ...
 }
+```
+
+Or in v4, update ```/resources/css/app.css```:
+
+```css
+@source "./vendor/andach/laravel-view-components/src/Components/*.php";
+@source "./vendor/andach/laravel-view-components/resources/views/**/*.blade.php";
 ```
 
 ## Testing

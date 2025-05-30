@@ -2,6 +2,8 @@
 
 // config for Andach/LaravelViewComponents
 return [
+    'enable_component_test' => false,
+
     'pagination' => [
         'simple' => 'view-components::pagination.simple',
         'standard' => 'view-components::pagination.standard',
@@ -29,7 +31,7 @@ return [
         'oauth-button' => 'view-components::general.oauth-button',
         'progress-bar' => 'view-components::general.progress-bar',
         'progress-bar-item' => 'view-components::general.progress-bar-item',
-        'signature_pad' => 'view-components::general.signature_pad',
+        'signature-pad' => 'view-components::general.signature-pad',
         't-body' => 'view-components::general.t-body',
         't-head' => 'view-components::general.t-head',
         'table' => 'view-components::general.table',
