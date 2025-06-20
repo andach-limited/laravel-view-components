@@ -1,8 +1,8 @@
-<div class="col-span-full xl:col-span-6 bg-gray-100 dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 {{ $class }}">
-    <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">{{ $title }}</h2>
+<div class="col-span-full xl:col-span-6 bg-{{ $color }}-100 dark:bg-{{ $color }}-800 shadow-lg rounded-sm border border-{{ $color }}-200 dark:border-{{ $color }}-700 {{ $class }}">
+    <header class="px-5 py-4 border-b border-{{ $color }}-100 dark:border-{{ $color }}-700">
+        <h2 class="font-semibold text-{{ $color }}-800 dark:text-{{ $color }}-100">{{ $title }}</h2>
     </header>
-    <div class="p-3">
+    <div class="p-3 text-{{ $color }}-800 dark:text-{{ $color }}-100"">
         {{ $slot }}
     </div>
 </div>

@@ -29,8 +29,21 @@ php artisan vendor:publish --tag=view-components-views
 
 The config file can then be edited to point the views towards your local copy to modify them if needed.
 
+### Tailwind
 
-### Editing Tailwind Config
+You will need Tailwind and FontAwesome installed in your laravel project:
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+npm install @fortawesome/fontawesome-free
+```
+
+Also update your ```resources/css/app.css to include:```
+
+```css
+@import "@fortawesome/fontawesome-free/css/all.css";
+@source inline('{dark:,}{bg,text,border}-{slate,gray,zinc,neutral,stone,red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose}-{50,{100..900..100},950}');
+```
 
 To use vite, edit your `./tailwind.config.js` file to include the following:
 
