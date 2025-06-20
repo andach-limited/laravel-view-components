@@ -9,15 +9,17 @@ use Illuminate\View\Component;
 
 class Chat extends Component
 {
-    public string $class = 'text-sm bg-gray-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 p-3 rounded-lg rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-md mb-1';
+    public string $classInner = 'text-sm bg-gray-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 p-3 rounded-lg rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-md mb-1';
+    public string $classOuter = 'flex items-start mb-4 last:mb-0';
 
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $name, public string $time, public string $picture, public string $userID = '')
+    public function __construct(public string $name, public string $time, public string $picture, public bool $me = false)
     {
-        if ($userID === Auth::id()) {
-            $this->class = 'text-sm bg-indigo-500 text-gray-100 p-3 rounded-lg rounded-tl-none border border-transparent shadow-md mb-1';
+        if ($me) {
+            $this->classInner = 'text-sm bg-indigo-500 text-gray-100 p-3 rounded-lg rounded-tl-none border border-transparent shadow-md mb-1';
+            $this->classOuter = 'flex items-start justify-end text-right mb-4 last:mb-0"';
         }
     }
 

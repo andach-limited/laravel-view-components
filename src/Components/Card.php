@@ -12,7 +12,7 @@ class Card extends Component
      *
      * @return void
      */
-    public function __construct(public string $title, public string $color = 'blue', public string $class = '')
+    public function __construct(public string $title, public string $color = 'slate', public string $class = '')
     {
 
     }
