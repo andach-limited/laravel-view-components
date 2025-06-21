@@ -4,16 +4,25 @@ namespace Andach\LaravelViewComponents\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Routing\Route;
 use Illuminate\View\Component;
 
-class OauthButton extends Component
+class OauthButton extends BaseComponent
 {
+    public string $iconHtml = '';
+
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $route, public string $fontAwesome)
+    public function __construct(
+        public string $url,
+        string $color = 'blue',
+        public string $variant = 'solid',
+        public array|string|null $icon = null)
     {
+        parent::__construct($color);
 
+        $this->iconHtml = $this->generateIconHtml($icon);
     }
 
     /**

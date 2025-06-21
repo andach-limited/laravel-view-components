@@ -13,6 +13,7 @@ abstract class BaseComponent extends Component
         return "{$context}-{$this->color}-{$shade} dark:{$context}-{$this->color}-{$darkShade}";
     }
 
+    // Produces background, text and border tailwind classes.
     public function variantClasses(string $variant): string
     {
         return match ($variant) {
