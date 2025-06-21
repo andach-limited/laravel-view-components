@@ -15,6 +15,7 @@ class Alert extends BaseComponent
         public array|string|null $icon = null
     ) {
         parent::__construct($color);
+
         $this->iconHtml = $this->generateIconHtml($icon);
     }
 

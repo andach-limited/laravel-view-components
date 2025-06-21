@@ -30,10 +30,10 @@ abstract class BaseComponent extends Component
         };
     }
 
-    public function generateIconHtml(array|string|null $icon): string
+    public function generateIconHtml(array|string|null $icon, string $default = ''): string
     {
         if (!$icon) {
-            return '';
+            return $default;
         }
 
         // Defaults
