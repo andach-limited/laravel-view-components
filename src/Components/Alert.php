@@ -2,21 +2,60 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
+use Andach\LaravelViewComponents\LaravelViewComponents;
 use Closure;
 use Illuminate\View\Component;
 
-class Alert extends BaseComponent
+class Alert extends Component
 {
-    public string $iconHtml = '';
-
     public function __construct(
-        string $color = 'blue',
-        public string $variant = 'solid',
-        public array|string|null $icon = null
+        public ?bool $accent = null,
+        public ?bool $border = null,
+        public ?string $classes = null,
+        public ?bool $dismissible = null,
+        public ?bool $hollow = null,
+        public ?string $icon = null,
+        public ?bool $ring = null,
+        public ?bool $rounded = null,
+        public ?bool $shadow = null,
+        public ?string $size = null,
+        public ?string $theme = null,
+        public ?string $title = null,
+        public ?string $variant = null,
+        public ?string $contentClasses = null,
+        public ?string $dismissButtonClasses = null,
+        public ?string $dismissIconClasses = null,
+        public ?string $titleClasses = null,
     ) {
-        parent::__construct($color);
+        $lvc = new LaravelViewComponents($variant);
 
-        $this->iconHtml = $this->generateIconHtml($icon);
+        $this->classes = $lvc->buildClasses(
+            'alert',
+            [
+                'accent' => $accent,
+                'border' => $border,
+                'hollow' => $hollow,
+                'ring' => $ring,
+                'rounded' => $rounded,
+                'shadow' => $shadow,
+                'size' => $size,
+            ]
+        );
+
+        $elementClasses = $lvc->buildElementClasses(
+            'alert',
+            [
+                'content',
+                'dismissButton',
+                'dismissIcon',
+                'title',
+            ],
+            $size,
+        );
+
+        foreach ($elementClasses as $key => $value) {
+            $this->$key = $value;
+        }
     }
 
     public function render()

@@ -31,9 +31,11 @@ use Andach\LaravelViewComponents\Components\Td;
 use Andach\LaravelViewComponents\Components\Th;
 use Andach\LaravelViewComponents\Components\Thead;
 use Illuminate\Pagination\Paginator;
+use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use TailwindMerge\Laravel\Facades\TailwindMerge;
 
 class LaravelViewComponentsServiceProvider extends PackageServiceProvider
 {
@@ -49,6 +51,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-view-components')
+            ->hasAssets()
             ->hasConfigFile()
             ->hasViews()
             ->hasViewComponent('andach', Alert::class)
@@ -56,7 +59,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Button::class)
             ->hasViewComponent('andach', Card::class)
             ->hasViewComponent('andach', Chat::class)
-            ->hasViewComponent('andach', ChatAttachment::class)
             ->hasViewComponent('andach', Code::class)
             ->hasViewComponent('andach', FormAttachment::class)
             ->hasViewComponent('andach', FormCheckboxIcon::class)
@@ -67,7 +69,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', OauthButton::class)
             ->hasViewComponent('andach', ProgressBar::class)
             ->hasViewComponent('andach', ProgressBarItem::class)
-            ->hasViewComponent('andach', SignaturePad::class)
             ->hasViewComponent('andach', Table::class)
             ->hasViewComponent('andach', Tbody::class)
             ->hasViewComponent('andach', Td::class)
@@ -78,7 +79,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
                     ->startWith(function (InstallCommand $command) {
                         $command->info('Hello, and welcome to my great new package!');
                     })
-                    ->publishConfigFile()
                     ->askToStarRepoOnGitHub('andach-limited/laravel-view-components')
                     ->endWith(function (InstallCommand $command) {
                         $command->info('Have a great day!');

@@ -13,17 +13,19 @@ You can install the package via composer:
 
 ```bash
 composer require andach/laravel-view-components
-```
-
-Then publish the config with:
-
-```bash
 php artisan view-components:install
 ```
 
-And if desired, can publish the views with:
+Then publish the js with:
 
 ```bash
+php artisan vendor:publish --tag=laravel-view-components-assets
+```
+
+And if desired, can publish the config and views with:
+
+```bash
+php artisan vendor:publish --tag=laravel-view-components-config
 php artisan vendor:publish --tag=view-components-views
 ```
 
@@ -52,7 +54,9 @@ module.exports = {
   content: [
     // ..
     "./vendor/andach/laravel-view-components/src/Components/*.php",
-    "./vendor/andach/laravel-view-components/resources/views/**/*.blade.php"
+    "./vendor/andach/laravel-view-components/resources/views/**/*.blade.php",
+    "./vendor/andach/laravel-view-components/config/view-components.php",
+    "./config/view-components.php",
   ],
   // ...
 }
@@ -63,6 +67,8 @@ Or in v4, update ```/resources/css/app.css```:
 ```css
 @source "./vendor/andach/laravel-view-components/src/Components/*.php";
 @source "./vendor/andach/laravel-view-components/resources/views/**/*.blade.php";
+@source "./vendor/andach/laravel-view-components/config/view-components.php";
+@source "./config/view-components.php";
 ```
 
 ## Testing
