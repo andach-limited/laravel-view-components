@@ -12,7 +12,7 @@
             @if (count($menuArray) ?? 0)
                 <!-- Chevron -->
                 <div class="flex shrink-0 ml-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                    <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" :class="open ? 'rotate-180' : 'rotate-0'" viewBox="0 0 12 12">
+                    <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" :class="{ 'rotate-180': open, 'rotate-0': !open }" viewBox="0 0 12 12">
                         <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
                     </svg>
                 </div>
@@ -20,8 +20,8 @@
         </div>
     </a>
     @if (count($menuArray) ?? 0)
-        <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
-            <ul class="pl-9 mt-1 hidden" :class="open ? '!block' : 'hidden'">
+        <div class="lg:hidden lg:sidebar-expanded:block 2xl:block" x-show="open" x-transition>
+            <ul class="pl-9 mt-1">
                 @foreach ($menuArray as $minorLineRoute => $minorLineName)
                     <x-andach-menu-line :menu-line-route="$minorLineRoute" :menu-line-name="$minorLineName"/>
                 @endforeach

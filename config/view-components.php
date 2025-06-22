@@ -183,7 +183,7 @@ return [
                     ],
                 ],
                 'dismiss-icon' => [
-                    'base' => 'fill-current text-inherit hover:opacity-75 ease-in-out duration-300',
+                    'base' => 'fill-current text-inherit over:opacity-75 ease-in-out duration-300',
                     'sizes' => [
                         'xs' => 'w-2',
                         'sm' => 'w-3',
@@ -201,7 +201,6 @@ return [
                 'xl' => 'text-xl px-6 py-5 gap-7',
             ],
             'attributes' => [
-                'accent' => [false, 'border-l-8'],
                 'border' => [true, 'border-2'],
                 'ring' => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],

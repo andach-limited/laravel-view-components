@@ -9,17 +9,14 @@ use Illuminate\View\Component;
 class Alert extends Component
 {
     public function __construct(
-        public ?bool $accent = null,
         public ?bool $border = null,
         public ?string $classes = null,
         public ?bool $dismissible = null,
-        public ?bool $hollow = null,
         public ?string $icon = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
         public ?string $size = null,
-        public ?string $theme = null,
         public ?string $title = null,
         public ?string $variant = null,
         public ?string $contentClasses = null,
@@ -32,9 +29,7 @@ class Alert extends Component
         $this->classes = $lvc->buildClasses(
             'alert',
             [
-                'accent' => $accent,
                 'border' => $border,
-                'hollow' => $hollow,
                 'ring' => $ring,
                 'rounded' => $rounded,
                 'shadow' => $shadow,

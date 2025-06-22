@@ -19,13 +19,13 @@ php artisan view-components:install
 Then publish the js with:
 
 ```bash
-php artisan vendor:publish --tag=laravel-view-components-assets
+php artisan vendor:publish --tag=view-components-assets
 ```
 
 And if desired, can publish the config and views with:
 
 ```bash
-php artisan vendor:publish --tag=laravel-view-components-config
+php artisan vendor:publish --tag=view-components-config
 php artisan vendor:publish --tag=view-components-views
 ```
 
