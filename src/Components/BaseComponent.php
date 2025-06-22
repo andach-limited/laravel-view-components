@@ -2,62 +2,36 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
+use Andach\LaravelViewComponents\LaravelViewComponents;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 abstract class BaseComponent extends Component
 {
-    public function __construct(public string $color = 'gray') {}
+    protected array $arrayBuildClasses;
+    protected array $arrayElementClasses;
 
-    public function colorClass(string $context, string $shade = '500', string $darkShade = '400'): string
+    public function __construct(public ?string $size = null, public ?string $variant = null)
     {
-        return "{$context}-{$this->color}-{$shade} dark:{$context}-{$this->color}-{$darkShade}";
+        $lvc = new LaravelViewComponents($variant);
+
+        $this->classes = $lvc->buildClasses($this->getClassName(), $this->getArrayBuildClasses());
+
+        $elementClasses = $lvc->buildElementClasses($this->getClassName(), $this->arrayElementClasses, $size);
+
+        foreach ($elementClasses as $key => $value) {
+            $this->$key = $value;
+        }
     }
 
-    // Produces background, text and border tailwind classes.
-    public function variantClasses(string $variant): string
+    private function getArrayBuildClasses(): array
     {
-        return match ($variant) {
-            'solid' => implode(' ', [
-                $this->colorClass('bg'),
-                'text-white',
-                $this->colorClass('border', '600', '500'),
-            ]),
-            'outline' => implode(' ', [
-                'bg-white dark:bg-gray-900',
-                $this->colorClass('text', '700', '300'),
-                $this->colorClass('border', '300', '600'),
-            ]),
-            default => '',
-        };
+        $allProps = get_object_vars($this);
+        return array_intersect_key($allProps, array_flip($this->arrayBuildClasses));
     }
 
-    public function generateIconHtml(array|string|null $icon, string $default = ''): string
+    private function getClassName(): string
     {
-        if (!$icon) {
-            return $default;
-        }
-
-        // Defaults
-        $style = 'fa-solid';  // solid by default
-        $name = '';
-        $size = 'fa-sm';     // default size
-        $extraClasses = '';
-
-        if (is_string($icon)) {
-            $name = $icon;
-        } elseif (is_array($icon)) {
-            $name = $icon['name'] ?? '';
-            $style = $icon['style'] ?? $style;
-            $size = $icon['size'] ?? $size;
-            $extraClasses = $icon['class'] ?? '';
-        }
-
-        if (!$name) {
-            return '';
-        }
-
-        $classes = trim("fa {$style} fa-{$name} {$size} {$extraClasses}");
-
-        return "<i class=\"{$classes}\"></i>";
+        return Str::of(class_basename(static::class))->snake('-');
     }
 }

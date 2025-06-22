@@ -7,13 +7,23 @@ use Illuminate\View\Component;
 
 class Code extends BaseComponent
 {
-    public string $iconHtml = '';
+    protected array $arrayBuildClasses = ['border', 'hollow', 'ring', 'rounded', 'shadow', 'size'];
+    protected array $arrayElementClasses = [];
 
     public function __construct(
-        string $color = 'blue',
-        public string $variant = 'solid'
+        public ?string $blade = null,
+        public ?string $border = null,
+        public ?string $classes = null,
+        public ?string $hollow = null,
+        public ?string $language = null,
+        public ?string $ring = null,
+        public ?string $rounded = null,
+        public ?string $shadow = null,
+        public ?string $size = null,
+        public ?string $theme = null,
+        public ?string $variant = null,
     ) {
-        parent::__construct($color);
+        parent::__construct();
     }
 
     public function render()

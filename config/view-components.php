@@ -207,5 +207,48 @@ return [
                 'shadow' => [false, 'shadow-md'],
             ],
         ],
+
+        'card' => [
+            'base' => 'flex flex-col overflow-hidden',
+            'elements' => [
+                'header' => [
+                    'base' => '',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+                'body' => [
+                    'base' => 'bg-white/80 dark:bg-slate-800',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+                'footer' => [
+                    'base' => 'text-sm',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'border' => [true, 'border-2'],
+                'ring' => [false, 'ring-2 ring-offset-2'],
+                'rounded' => [true, 'rounded'],
+                'shadow' => [false, 'shadow-md'],
+                'divide' => [false, 'divide-y'],
+            ],
+        ],
     ],
 ];

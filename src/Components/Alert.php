@@ -4,14 +4,19 @@ namespace Andach\LaravelViewComponents\Components;
 
 use Andach\LaravelViewComponents\LaravelViewComponents;
 use Closure;
+use Faker\Provider\Base;
 use Illuminate\View\Component;
 
-class Alert extends Component
+class Alert extends BaseComponent
 {
+    protected array $arrayBuildClasses = ['border', 'ring', 'rounded', 'shadow', 'size'];
+    protected array $arrayElementClasses = ['content', 'dismissButton', 'dismissIcon', 'title'];
+
     public function __construct(
         public ?bool $border = null,
         public ?string $classes = null,
         public ?bool $dismissible = null,
+        public ?bool $divide = null,
         public ?string $icon = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
@@ -24,33 +29,7 @@ class Alert extends Component
         public ?string $dismissIconClasses = null,
         public ?string $titleClasses = null,
     ) {
-        $lvc = new LaravelViewComponents($variant);
-
-        $this->classes = $lvc->buildClasses(
-            'alert',
-            [
-                'border' => $border,
-                'ring' => $ring,
-                'rounded' => $rounded,
-                'shadow' => $shadow,
-                'size' => $size,
-            ]
-        );
-
-        $elementClasses = $lvc->buildElementClasses(
-            'alert',
-            [
-                'content',
-                'dismissButton',
-                'dismissIcon',
-                'title',
-            ],
-            $size,
-        );
-
-        foreach ($elementClasses as $key => $value) {
-            $this->$key = $value;
-        }
+        parent::__construct();
     }
 
     public function render()
