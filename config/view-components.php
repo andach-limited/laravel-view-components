@@ -250,5 +250,46 @@ return [
                 'divide' => [false, 'divide-y'],
             ],
         ],
+
+
+
+        'code' => [
+            'base' => 'w-full bg-gray-800 shadow-2xl rounded-lg overflow-hidden mb-4 px-4',
+            'elements' => [
+                'header' => [
+                    'base' => 'pt-3 px-4 flex',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+                'content' => [
+                    'base' => 'text-sm overflow-x-auto',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => '',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+            ],
+            'sizes' => [
+                'xs' => 'text-xs px-2 py-1',
+                'sm' => 'text-sm px-3 py-2',
+                'base' => 'text-base px-4 py-3',
+                'lg' => 'text-lg px-5 py-4',
+                'xl' => 'text-xl px-6 py-5',
+            ],
+            'attributes' => [
+                'border' => [true, 'border-2'],
+                'ring' => [false, 'ring-2 ring-offset-2'],
+                'rounded' => [true, 'rounded'],
+                'shadow' => [false, 'shadow-md'],
+            ],
+        ],
     ],
 ];
