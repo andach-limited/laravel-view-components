@@ -11,8 +11,12 @@ abstract class BaseComponent extends Component
     protected array $arrayBuildClasses;
     protected array $arrayElementClasses;
 
-    public function __construct(public ?string $size = null, public ?string $variant = null)
+    public function __construct()
     {
+        $vars = get_object_vars($this);
+        $size = $vars['size'] ?? null;
+        $variant = $vars['variant'] ?? null;
+
         $lvc = new LaravelViewComponents($variant);
 
         $this->classes = $lvc->buildClasses($this->getClassName(), $this->getArrayBuildClasses());

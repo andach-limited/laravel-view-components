@@ -1,7 +1,7 @@
-<div class="container flex flex-wrap justify-between items-center mx-auto rounded-md mb-4">
-    <div class="text-center border-dashed border-2 {{ $variantClasses($variant) }} rounded-md w-full p-10">
-        {!! $iconHtml !!}
-        <p class="text-xl mb-2 font-bold">{{ $title }}</p>
+<div {{ $attributes->twMerge(['class' => $classes]) }}>
+    <div {{ $attributes->twMergeFor('internal-div', $internalDivClasses) }}>
+        <p {{ $attributes->twMergeFor('icon', $iconClasses) }}>{!! $icon !!}</p>
+        <p {{ $attributes->twMergeFor('title', $titleClasses) }}>{{ $title }}</p>
         {{ $slot }}
     </div>
 </div>

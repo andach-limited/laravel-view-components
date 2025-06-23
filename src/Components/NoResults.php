@@ -8,17 +8,31 @@ use Illuminate\View\Component;
 
 class NoResults extends BaseComponent
 {
-    public string $iconHtml = '';
+    protected array $arrayBuildClasses = ['border', 'ring', 'rounded', 'shadow'];
+    protected array $arrayElementClasses = ['internalDiv', 'title', 'icon'];
 
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $title,
-                                public string $variant = 'solid', public array|string|null $icon = null, string $color = 'slate')
-    {
-        parent::__construct($color);
+    public function __construct(
+        public ?string $icon = null,
+        public ?string $title = null,
 
-        $this->iconHtml = $this->generateIconHtml($icon, '<i class="fa-regular fa-circle-xmark fa-4x bx-lg mb-5"></i>');
+        public ?bool $border = null,
+        public ?bool $ring = null,
+        public ?bool $rounded = null,
+        public ?bool $shadow = null,
+
+        public ?string $size = null,
+        public ?string $variant = null,
+
+        public ?string $classes = null,
+        public ?string $internalDivClasses = null,
+        public ?string $titleClasses = null,
+        public ?string $iconClasses = null,
+    )
+    {
+        parent::__construct();
     }
 
     /**
