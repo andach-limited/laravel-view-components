@@ -20,6 +20,7 @@ return [
         'form-attachment' => 'view-components::general.form-attachment',
         'form-checkbox-icon' => 'view-components::general.form-checkbox-icon',
         'form-section' => 'view-components::general.form-section',
+        'h' => 'view-components::general.h',
         'icon' => 'view-components::icon',
         'menu-group' => 'view-components::general.menu-group',
         'menu-line' => 'view-components::general.menu-line',
@@ -287,6 +288,19 @@ return [
                 'ring' => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
                 'shadow' => [false, 'shadow-md'],
+            ],
+        ],
+
+        'h' => [
+            'base' => 'text-6xl font-bold pb-4',
+            'attributes' => [
+                'border' => [false, 'border-2'],
+                'ring' => [false, 'ring-2 ring-offset-2'],
+                'rounded' => [false, 'rounded'],
+                'shadow' => [false, 'shadow-md'],
+            ],
+            'options' => [
+                'background' => false,
             ],
         ],
 

@@ -10,6 +10,7 @@ abstract class BaseComponent extends Component
 {
     protected array $arrayBuildClasses;
     protected array $arrayElementClasses;
+    protected array $sizes = ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
 
     public function __construct()
     {
@@ -28,6 +29,15 @@ abstract class BaseComponent extends Component
         }
     }
 
+    protected function extractTextSize(string $classString): ?string
+    {
+        if (preg_match('/\btext-([a-z0-9]+)\b/', $classString, $matches)) {
+            return $matches[1];
+        }
+
+        return null;
+    }
+
     private function getArrayBuildClasses(): array
     {
         $allProps = get_object_vars($this);
@@ -37,5 +47,10 @@ abstract class BaseComponent extends Component
     private function getClassName(): string
     {
         return Str::of(class_basename(static::class))->snake('-');
+    }
+
+    protected function getSizeIndex(string $size): ?int
+    {
+        return array_search($size, $this->sizes, true);
     }
 }

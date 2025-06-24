@@ -12,6 +12,7 @@ use Andach\LaravelViewComponents\Components\Code;
 use Andach\LaravelViewComponents\Components\FormAttachment;
 use Andach\LaravelViewComponents\Components\FormCheckboxIcon;
 use Andach\LaravelViewComponents\Components\FormSection;
+use Andach\LaravelViewComponents\Components\H;
 use Andach\LaravelViewComponents\Components\Header;
 use Andach\LaravelViewComponents\Components\HeaderHistoryItem;
 use Andach\LaravelViewComponents\Components\HeaderNotificationItem;
@@ -63,8 +64,8 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', FormAttachment::class)
             ->hasViewComponent('andach', FormCheckboxIcon::class)
             ->hasViewComponent('andach', FormSection::class)
+            ->hasViewComponent('andach', H::class)
             ->hasViewComponent('andach', MenuGroup::class)
-            ->hasViewComponent('andach', MenuLine::class)
             ->hasViewComponent('andach', NoResults::class)
             ->hasViewComponent('andach', OauthButton::class)
             ->hasViewComponent('andach', ProgressBar::class)

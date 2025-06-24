@@ -47,6 +47,8 @@ class LaravelViewComponents
 //            $classes = $this->$methodName($component, $attributes, $classes);
 //        }
 
+//        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+
         return $classes->flatten()->implode(' ');
     }
 
