@@ -108,7 +108,11 @@ class LaravelViewComponents
         return $sizeClasses ?? null;
     }
 
-    private function classesVariant($component, $variant, $attributes)
+    /*
+     * Pulls a selection of vlasses from the appropriate $variant section of the config file, using logic derived from
+     * the provided $attributes from the Component itself ($this->arrayBuildClasses), and
+     */
+    private function classesVariant($component, $variant, $attributes): Collection
     {
         $hasHollow = $attributes['hollow'] ?? null;
         $hasHover = $this->components[$component]['options']['hover'] ?? null;
@@ -130,69 +134,27 @@ class LaravelViewComponents
             $textEnabled = false;
         }
 
-        $enabledAttributes = $this->enabledAttributes($component, $attributes);
+        $keysNames = [
+            'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
+            'text' => true,
+            'border' => $hasAccent,
+            'shadow' => false,
+            'ring' => false,
+            'hover' => $hasHover,
+            'focus' => $hasFocus,
+            'active' => false,
+            'gradient' => $hasGradient && !$hasHollow, // Also forget text?
+            'divide' => false,
+            'accent' => true,
+        ];
+
+//        $enabledAttributes = $this->enabledAttributes($component, $attributes);
         $variantClasses = collect();
 
-        if (isset($localVariant['border']) && $hasAccent) {
-            $variantClasses->put('border', $localVariant['border']);
-        } else {
-            if (isset($this->variant['border']) && $hasAccent) {
-                $variantClasses->put('border', $this->variant['border']);
-            }
-        }
-
-        if (isset($localVariant['background']) && !$hasHollow && !$hasGradient && $backgroundEnabled) {
-            $variantClasses->put('background', $localVariant['background']);
-        } else {
-            if (isset($this->variant['background']) && !$hasHollow && !$hasGradient && $backgroundEnabled) {
-                $variantClasses->put('background', $this->variant['background']);
-            }
-        }
-
-        if (isset($localVariant['text'])) {
-            $variantClasses->put('text', $localVariant['text']);
-        } else {
-            if (isset($this->variant['text'])) {
-                $variantClasses->put('text', $this->variant['text']);
-            }
-        }
-
-        if ($hasHover) {
-            if (isset($localVariant['hover'])) {
-                $variantClasses->put('hover', $localVariant['hover']);
-            } else {
-                if (isset($this->variant['hover'])) {
-                    $variantClasses->put('hover', $this->variant['hover']);
-                }
-            }
-        }
-
-        if ($hasFocus) {
-            if (isset($localVariant['focus'])) {
-                $variantClasses->put('focus', $localVariant['focus']);
-            } else {
-                if (isset($this->variant['focus'])) {
-                    $variantClasses->put('focus', $this->variant['focus']);
-                }
-            }
-        }
-
-        if ($hasGradient && !$hasHollow) {
-            if (isset($localVariant['gradient'])) {
-                $variantClasses->put('gradient', $localVariant['gradient']);
-            } else {
-                if (isset($this->variant['gradient'])) {
-                    $variantClasses->put('gradient', $this->variant['gradient']);
-                    $variantClasses->forget('text');
-                }
-            }
-        }
-
-        if (isset($localVariant['accent'])) {
-            $variantClasses->put('accent', $localVariant['accent']);
-        } else {
-            if (isset($this->variant['accent'])) {
-                $variantClasses->put('accent', $this->variant['accent']);
+        foreach ($keysNames as $keyName => $evaluation)
+        {
+            if (isset($this->variant[$keyName]) && $evaluation) {
+                $variantClasses->put($keyName, $this->variant[$keyName]);
             }
         }
 
@@ -200,21 +162,7 @@ class LaravelViewComponents
             $variantClasses->forget('text');
         }
 
-        if ($enabledAttributes) {
-            foreach ($enabledAttributes as $enabledAttribute) {
-                if (isset($localVariant[$enabledAttribute])) {
-                    $variantAttribute = $localVariant[$enabledAttribute] ?? null;
-                } else {
-                    $variantAttribute = $this->variant[$enabledAttribute] ?? null;
-                }
-
-                if ($variantAttribute) {
-                    $variantClasses->put($enabledAttribute, $variantAttribute);
-                }
-            }
-        }
-
-        return $variantClasses ?? null;
+        return $variantClasses;
     }
 
     /*

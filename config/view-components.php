@@ -370,10 +370,10 @@ return [
         ],
 
         'no-results' => [
-            'base' => 'container flex flex-wrap justify-between items-center mx-auto rounded-md mb-4',
+            'base' => 'container flex flex-wrap justify-between items-center mx-auto mb-4',
             'elements' => [
                 'internal-div' => [
-                    'base' => 'text-center border-dashed border-2 rounded-md w-full p-10',
+                    'base' => 'text-center w-full p-10',
                     'sizes' => [
                         'xs' => 'px-2 py-1',
                         'sm' => 'px-3 py-2',
@@ -411,10 +411,48 @@ return [
                 'xl' => 'text-xl px-6 py-5',
             ],
             'attributes' => [
+                'border' => [false, 'border-2'],
+                'ring' => [true, 'ring-2 ring-offset-2'],
+                'rounded' => [false, 'rounded'],
+                'shadow' => [false, 'shadow-md'],
+            ],
+        ],
+
+        'oauth-button' => [
+            'base' => 'flex items-center justify-start w-64 px-6 py-2 mb-2 hover:brightness-90 hover:font-bold filter hover:filter transition-all duration-200',
+            'elements' => [
+                'icon' => [
+                    'base' => 'text-base font-bold pr-3',
+                    'sizes' => [
+                        'xs' => 'text-xs',
+                        'sm' => 'text-sm',
+                        'base' => '',
+                        'lg' => 'text-lg',
+                        'xl' => 'text-xl',
+                    ],
+                ],
+                'separator' => [
+                    'base' => 'border-l h-6 w-1 block',
+                ],
+                'text' => [
+                    'base' => 'pl-3',
+                ],
+            ],
+            'sizes' => [
+                'xs' => 'text-xs px-2 py-1',
+                'sm' => 'text-sm px-3 py-2',
+                'base' => 'text-base px-4 py-3',
+                'lg' => 'text-lg px-5 py-4',
+                'xl' => 'text-xl px-6 py-5',
+            ],
+            'attributes' => [
                 'border' => [true, 'border-2'],
                 'ring' => [false, 'ring-2 ring-offset-2'],
-                'rounded' => [true, 'rounded'],
+                'rounded' => [false, 'rounded'],
                 'shadow' => [false, 'shadow-md'],
+            ],
+            'options' => [
+                'background' => false,
             ],
         ],
     ],

@@ -2,33 +2,38 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
+use Andach\LaravelViewComponents\LaravelViewComponents;
 use Closure;
-use Illuminate\Contracts\View\View;
-use Illuminate\Routing\Route;
+use Faker\Provider\Base;
 use Illuminate\View\Component;
 
 class OauthButton extends BaseComponent
 {
-    public string $iconHtml = '';
+    protected array $arrayBuildClasses = ['background', 'border', 'ring', 'rounded', 'shadow'];
+    protected array $arrayElementClasses = ['icon', 'separator', 'text'];
 
-    /**
-     * Create a new component instance.
-     */
     public function __construct(
-        public string $url,
-        string $color = 'blue',
-        public string $variant = 'solid',
-        public array|string|null $icon = null)
-    {
-        parent::__construct($color);
+        public ?string $icon = null,
+        public ?string $url = null,
 
-        $this->iconHtml = $this->generateIconHtml($icon);
+        public ?bool $background = null,
+        public ?bool $border = null,
+        public ?bool $ring = null,
+        public ?bool $rounded = null,
+        public ?bool $shadow = null,
+
+        public ?string $size = null,
+        public ?string $variant = null,
+
+        public ?string $classes = null,
+        public ?string $iconClasses = null,
+        public ?string $separatorClasses = null,
+        public ?string $textClasses = null,
+    ) {
+        parent::__construct();
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view(config('view-components.views.oauth-button'));
     }
