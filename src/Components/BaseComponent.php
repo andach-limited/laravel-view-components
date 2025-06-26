@@ -11,6 +11,7 @@ abstract class BaseComponent extends Component
     protected array $arrayBuildClasses;
     protected array $arrayElementClasses;
     protected array $sizes = ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
+    protected array $variantArray;
 
     public function __construct()
     {
@@ -27,6 +28,8 @@ abstract class BaseComponent extends Component
         foreach ($elementClasses as $key => $value) {
             $this->$key = $value;
         }
+
+        $this->variantArray = $lvc->getVariant();
     }
 
     protected function extractTextSize(string $classString): ?string

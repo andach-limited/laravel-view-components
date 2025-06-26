@@ -216,6 +216,11 @@ class LaravelViewComponents
             ->values();
     }
 
+    public function getVariant(): array
+    {
+        return $this->variant;
+    }
+
     public function setVariant(?string $variant): void
     {
         $this->variant = $this->variants[$variant] ?? $this->variants['default'];

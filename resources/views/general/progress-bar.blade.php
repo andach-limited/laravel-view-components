@@ -1,10 +1,34 @@
-<div class="px-4 pt-4 pb-4">
-    <div class="mx-auto w-full">
-        <div class="relative">
-            <div class="absolute left-0 top-1/2 -mt-px w-full h-0.5 bg-slate-200 dark:bg-slate-700" aria-hidden="true"></div>
-            <ul class="relative flex justify-between w-full">
-                {{ $slot }}
-            </ul>
-        </div>
-    </div>
-</div>
+<ol {{ $attributes->twMerge(['class' => $classes]) }}>
+    @foreach ($items as $item)
+        @php
+            $merge = [$liClasses];
+
+            if ($count <= count($items))
+            {
+                $merge[] = $liNotLastClasses;
+            }
+
+            if ($item['complete'] ?? false)
+            {
+                $merge[] = $liCompleteClasses;
+            } else {
+                $merge[] = $liIncompleteClasses;
+            }
+        @endphp
+        <li {{ $attributes->twMergeFor('li', $merge) }}>
+                @if ($item['icon'] ?? false)
+                    <span {{ $attributes->twMergeFor('iconSpan', $iconSpanClasses) }}>
+                        {!! $item['icon'] !!}
+                    </span>
+                @endif
+
+            @if ($item['text'] ?? false)
+                {{ $item['text'] }}
+            @endif
+
+            @php
+                $count++;
+            @endphp
+        </li>
+    @endforeach
+</ol>

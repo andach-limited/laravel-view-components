@@ -50,6 +50,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-slate-200 to-slate-100 text-slate-800',
             'divide' => 'divide-slate-300 dark:divide-slate-700',
             'accent' => 'accent-slate-600 hover:accent-slate-700',
+            'highlight' => 'slate-600',
+            'highlightDark' => 'slate-400',
+            'inactive' => 'slate-400',
+            'inactiveDark' => 'slate-600',
         ],
 
         'dark' => [
@@ -64,6 +68,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-slate-700 to-slate-400 text-slate-100',
             'divide' => 'divide-slate-800',
             'accent' => 'accent-slate-600 hover:accent-slate-700',
+            'highlight' => 'slate-600',
+            'highlightDark' => 'slate-300',
+            'inactive' => 'slate-500',
+            'inactiveDark' => 'slate-700',
         ],
 
         'light' => [
@@ -78,6 +86,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-slate-700 to-slate-400 text-slate-100',
             'divide' => 'divide-slate-200 dark:divide-slate-700',
             'accent' => 'accent-slate-600 hover:accent-slate-700',
+            'highlight' => 'slate-700',
+            'highlightDark' => 'slate-400',
+            'inactive' => 'slate-300',
+            'inactiveDark' => 'slate-600',
         ],
 
         'brand' => [
@@ -92,6 +104,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-brand-700 to-brand-400 text-brand-100',
             'divide' => 'divide-brand-300 dark:divide-brand-900',
             'accent' => 'accent-brand-600 hover:accent-brand-700',
+            'highlight' => 'brand-700',
+            'highlightDark' => 'brand-400',
+            'inactive' => 'brand-400',
+            'inactiveDark' => 'brand-600',
         ],
 
         'primary' => [
@@ -106,6 +122,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-cyan-700 to-cyan-400 text-cyan-100',
             'divide' => 'divide-cyan-300 dark:divide-cyan-900',
             'accent' => 'accent-cyan-600 hover:accent-cyan-700',
+            'highlight' => 'cyan-600',
+            'highlightDark' => 'cyan-400',
+            'inactive' => 'cyan-300',
+            'inactiveDark' => 'cyan-600',
         ],
 
         'secondary' => [
@@ -120,6 +140,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-slate-700 to-slate-400 text-slate-100',
             'divide' => 'divide-slate-300 dark:divide-slate-900',
             'accent' => 'accent-slate-600 hover:accent-slate-700',
+            'highlight' => 'slate-600',
+            'highlightDark' => 'slate-400',
+            'inactive' => 'slate-400',
+            'inactiveDark' => 'slate-600',
         ],
 
         'success' => [
@@ -134,6 +158,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-emerald-700 to-emerald-400 text-emerald-100',
             'divide' => 'divide-emerald-300 dark:divide-emerald-900',
             'accent' => 'accent-emerald-600 hover:accent-emerald-700',
+            'highlight' => 'emerald-600',
+            'highlightDark' => 'emerald-400',
+            'inactive' => 'emerald-300',
+            'inactiveDark' => 'emerald-600',
         ],
 
         'warning' => [
@@ -148,6 +176,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-orange-700 to-orange-400 text-orange-100',
             'divide' => 'divide-orange-300 dark:divide-orange-900',
             'accent' => 'accent-orange-600 hover:accent-orange-700',
+            'highlight' => 'orange-600',
+            'highlightDark' => 'orange-400',
+            'inactive' => 'orange-300',
+            'inactiveDark' => 'orange-600',
         ],
 
         'danger' => [
@@ -162,6 +194,10 @@ return [
             'gradient' => 'bg-gradient-to-br from-red-700 to-red-400 text-red-100',
             'divide' => 'divide-red-300 dark:divide-red-900',
             'accent' => 'accent-red-600 hover:accent-red-700',
+            'highlight' => 'red-600',
+            'highlightDark' => 'red-400',
+            'inactive' => 'red-300',
+            'inactiveDark' => 'red-600',
         ],
     ],
 
@@ -453,6 +489,33 @@ return [
             ],
             'options' => [
                 'background' => false,
+            ],
+        ],
+
+        'progress-bar' => [
+            'base' => 'flex items-center w-full text-center',
+            'elements' => [
+                'li-complete' => [
+                    'base' => '',
+                ],
+                'li-incomplete' => [
+                    'base' => '',
+                ],
+                'li' => [
+                    'base' => 'flex-1 flex flex-col items-center border-b-4 border-solid',
+                ],
+                'li-not-last' => [
+                    'base' => '',
+                ],
+                'icon' => [
+                    'base' => 'flex items-center after:content-[\'/\'] sm:after:hidden after:mx-2',
+                ],
+                'icon-span' => [
+                    'base' => 'flex items-center justify-center w-24 h-24 rounded-full shrink-0',
+                ],
+                'content' => [
+                    'base' => 'me-2',
+                ],
             ],
         ],
     ],
