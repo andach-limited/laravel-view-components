@@ -2,13 +2,12 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
-use Closure;
-use Illuminate\View\Component;
-
 class Code extends BaseComponent
 {
     protected array $arrayBuildClasses = ['border', 'ring', 'rounded', 'shadow'];
+
     protected array $arrayElementClasses = ['content', 'header'];
+
     public string $commandLineHtml = '';
 
     public function __construct(
@@ -29,13 +28,11 @@ class Code extends BaseComponent
     ) {
         parent::__construct();
 
-        if ($language)
-        {
+        if ($language) {
             $this->classes .= ' language-' . $language;
         }
 
-        if ($this->commandLine)
-        {
+        if ($this->commandLine) {
             $this->contentClasses .= ' command-line';
 
             $vars = [
@@ -46,15 +43,12 @@ class Code extends BaseComponent
                 'data-filter-output',
                 'data-continuation-str',
                 'data-continuation-prompt',
-                'data-filter-continuation'
+                'data-filter-continuation',
             ];
 
-            if (is_array($this->commandLine))
-            {
-                foreach ($this->commandLine as $key => $value)
-                {
-                    if (in_array($key, $vars))
-                    {
+            if (is_array($this->commandLine)) {
+                foreach ($this->commandLine as $key => $value) {
+                    if (in_array($key, $vars)) {
                         $this->commandLineHtml .= $key . '=' . $value . ' ';
                     }
                 }
@@ -63,14 +57,13 @@ class Code extends BaseComponent
             $lineNumbers = false;
         }
 
-        if ($lineNumbers)
-        {
+        if ($lineNumbers) {
             $this->contentClasses .= ' line-numbers';
         } else {
             $this->contentClasses .= ' no-line-numbers';
         }
 
-        if ($this->windowStyle == 'windows') {
+        if ('windows' === $this->windowStyle) {
             $this->headerClasses .= ' justify-end';
         }
     }

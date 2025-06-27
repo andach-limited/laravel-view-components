@@ -6,7 +6,7 @@ use Andach\LaravelViewComponents\Tests\AndachTestCase;
 
 class TbodyTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $view = $this->blade('<x-andach-tbody>Tbody Content</x-andach-tbody>');
 

@@ -2,29 +2,22 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
-use Andach\LaravelViewComponents\LaravelViewComponents;
-use Closure;
-use Faker\Provider\Base;
-use Illuminate\View\Component;
-
 class OauthButton extends BaseComponent
 {
     protected array $arrayBuildClasses = ['background', 'border', 'ring', 'rounded', 'shadow'];
+
     protected array $arrayElementClasses = ['icon', 'separator', 'text'];
 
     public function __construct(
         public ?string $icon = null,
         public ?string $url = null,
-
         public ?bool $background = null,
         public ?bool $border = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
-
         public ?string $size = null,
         public ?string $variant = null,
-
         public ?string $classes = null,
         public ?string $iconClasses = null,
         public ?string $separatorClasses = null,

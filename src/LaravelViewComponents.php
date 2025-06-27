@@ -8,14 +8,17 @@ use Illuminate\Support\Str;
 class LaravelViewComponents
 {
     private array $components = [];
+
     private array $variant = [];
+
     private string $variantName = '';
+
     private array $variants = [];
 
     public function __construct(?string $variant)
     {
         $this->components = config('view-components.components');
-        $this->variants = config('view-components.variants');
+        $this->variants   = config('view-components.variants');
         $this->setVariant($variant);
     }
 
@@ -27,27 +30,27 @@ class LaravelViewComponents
     {
         $classes = collect();
 
-        $baseClasses = collect(['base' => $this->components[$component]['base'] ?? null]);
+        $baseClasses      = collect(['base' => $this->components[$component]['base'] ?? null]);
         $attributeClasses = $this->classesAttributes($component, $attributes);
-        $variantClasses = $this->classesVariant($component, $this->variantName, $attributes);
-        $sizeClasses = $this->classesSize($component, $attributes['size'] ?? null);
-//        $gridClasses = $this->gridClasses($component, $attributes['grid'] ?? null);
-//        $colClasses = $this->colClasses($component, $attributes['cols'] ?? null);
-//        $gapClasses = $this->gapClasses($component, $attributes['gap'] ?? null);
+        $variantClasses   = $this->classesVariant($component, $this->variantName, $attributes);
+        $sizeClasses      = $this->classesSize($component, $attributes['size'] ?? null);
+        //        $gridClasses = $this->gridClasses($component, $attributes['grid'] ?? null);
+        //        $colClasses = $this->colClasses($component, $attributes['cols'] ?? null);
+        //        $gapClasses = $this->gapClasses($component, $attributes['gap'] ?? null);
         $classes = $baseClasses->mergeRecursive($sizeClasses);
         $classes = $classes->mergeRecursive($variantClasses);
         $classes = $classes->mergeRecursive($attributeClasses);
-//        $classes = $classes->mergeRecursive($gridClasses);
-//        $classes = $classes->mergeRecursive($colClasses);
-//        $classes = $classes->mergeRecursive($gapClasses);
+        //        $classes = $classes->mergeRecursive($gridClasses);
+        //        $classes = $classes->mergeRecursive($colClasses);
+        //        $classes = $classes->mergeRecursive($gapClasses);
 
-//        $componentName = Str::camel($component);
-//        $methodName = $componentName.'Component';
-//        if (method_exists($this, $methodName)) {
-//            $classes = $this->$methodName($component, $attributes, $classes);
-//        }
+        //        $componentName = Str::camel($component);
+        //        $methodName = $componentName.'Component';
+        //        if (method_exists($this, $methodName)) {
+        //            $classes = $this->$methodName($component, $attributes, $classes);
+        //        }
 
-//        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+        //        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
 
         return $classes->flatten()->implode(' ');
     }
@@ -65,16 +68,16 @@ class LaravelViewComponents
 
             foreach ($elements as $elementString) {
                 $elementName = Str::kebab($elementString);
-                $element = $this->components[$component]['elements'][$elementName] ?? [];
+                $element     = $this->components[$component]['elements'][$elementName] ?? [];
 
-                $base = $element['base'] ?? null;
+                $base    = $element['base'] ?? null;
                 $hasSize = $element['sizes'][$size] ?? null;
 
                 if (!$hasSize) {
                     $hasSize = $element['sizes']['base'] ?? null;
                 }
 
-                $elementClasses[$elementString.'Classes'] = $base . ' ' . $hasSize;
+                $elementClasses[$elementString . 'Classes'] = $base . ' ' . $hasSize;
             }
         }
 
@@ -84,18 +87,16 @@ class LaravelViewComponents
     private function classesAttributes(string $component, array $attributes): Collection
     {
         $componentConfigAttribute = $this->components[$component]['attributes'] ?? [];
-        $enabledAttributes = $this->enabledAttributes($component, $attributes);
+        $enabledAttributes        = $this->enabledAttributes($component, $attributes);
 
-        return collect($enabledAttributes)->mapWithKeys(function ($enabledAttribute) use ($componentConfigAttribute) {
-            return [$enabledAttribute => $componentConfigAttribute[$enabledAttribute][1]];
-        });
+        return collect($enabledAttributes)->mapWithKeys(fn ($enabledAttribute) => [$enabledAttribute => $componentConfigAttribute[$enabledAttribute][1]]);
     }
 
     public function classesSize($component, $size)
     {
         $sizeClasses = collect();
-        $hasSize = $this->components[$component]['sizes'][$size] ?? null;
-        $base = config('turbine.components.'.$component.'.size') ?? 'base';
+        $hasSize     = $this->components[$component]['sizes'][$size] ?? null;
+        $base        = config('turbine.components.' . $component . '.size') ?? 'base';
 
         if ($hasSize) {
             $sizeClasses->put('size', $hasSize);
@@ -114,21 +115,21 @@ class LaravelViewComponents
      */
     private function classesVariant($component, $variant, $attributes): Collection
     {
-        $hasHollow = $attributes['hollow'] ?? null;
-        $hasHover = $this->components[$component]['options']['hover'] ?? null;
-        $hasFocus = $this->components[$component]['options']['focus'] ?? null;
-        $hasGradient = $this->components[$component]['options']['gradient'] ?? null;
+        $hasHollow     = $attributes['hollow'] ?? null;
+        $hasHover      = $this->components[$component]['options']['hover'] ?? null;
+        $hasFocus      = $this->components[$component]['options']['focus'] ?? null;
+        $hasGradient   = $this->components[$component]['options']['gradient'] ?? null;
         $hasBackground = $this->components[$component]['options']['background'] ?? null;
-        $hasText = $this->components[$component]['options']['text'] ?? null;
-        $hasAccent = $attributes['accent'] ?? null;
+        $hasText       = $this->components[$component]['options']['text'] ?? null;
+        $hasAccent     = $attributes['accent'] ?? null;
 
-        if ($hasBackground !== false) {
+        if (false !== $hasBackground) {
             $backgroundEnabled = true;
         } else {
             $backgroundEnabled = false;
         }
 
-        if ($hasText !== false) {
+        if (false !== $hasText) {
             $textEnabled = true;
         } else {
             $textEnabled = false;
@@ -136,23 +137,22 @@ class LaravelViewComponents
 
         $keysNames = [
             'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
-            'text' => true,
-            'border' => $hasAccent,
-            'shadow' => false,
-            'ring' => false,
-            'hover' => $hasHover,
-            'focus' => $hasFocus,
-            'active' => false,
-            'gradient' => $hasGradient && !$hasHollow, // Also forget text?
-            'divide' => false,
-            'accent' => true,
+            'text'       => true,
+            'border'     => $hasAccent,
+            'shadow'     => false,
+            'ring'       => false,
+            'hover'      => $hasHover,
+            'focus'      => $hasFocus,
+            'active'     => false,
+            'gradient'   => $hasGradient && !$hasHollow, // Also forget text?
+            'divide'     => false,
+            'accent'     => true,
         ];
 
-//        $enabledAttributes = $this->enabledAttributes($component, $attributes);
+        //        $enabledAttributes = $this->enabledAttributes($component, $attributes);
         $variantClasses = collect();
 
-        foreach ($keysNames as $keyName => $evaluation)
-        {
+        foreach ($keysNames as $keyName => $evaluation) {
             if (isset($this->variant[$keyName]) && $evaluation) {
                 $variantClasses->put($keyName, $this->variant[$keyName]);
             }
@@ -197,20 +197,20 @@ class LaravelViewComponents
                 if (array_key_exists($key, $attributes)) {
                     $value = $attributes[$key];
 
-                    if ($value === 1 || $value === '1') {
+                    if (1 === $value || '1' === $value) {
                         return true;
                     }
 
-                    if ($value === '') {
+                    if ('' === $value) {
                         return false;
                     }
 
                     // null: use default
-                    return $default === true;
+                    return true === $default;
                 }
 
                 // attribute not provided: use default
-                return $default === true;
+                return true === $default;
             })
             ->keys()
             ->values();

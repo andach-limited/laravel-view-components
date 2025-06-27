@@ -6,7 +6,7 @@ use Andach\LaravelViewComponents\Tests\AndachTestCase;
 
 class OauthButtonTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $view = $this->blade('<x-andach-oauth-button route="/link" fontAwesome="Icon Here">OAuth Button Content</x-andach-oauth-button>');
 

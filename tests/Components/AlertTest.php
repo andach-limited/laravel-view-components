@@ -2,17 +2,11 @@
 
 namespace Andach\LaravelViewComponents\Tests\Components;
 
-use Andach\LaravelViewComponents\LaravelViewComponentsServiceProvider;
 use Andach\LaravelViewComponents\Tests\AndachTestCase;
-use Illuminate\Support\Facades\Blade;
-use Orchestra\Testbench\TestCase;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\View;
-use Andach\LaravelViewComponents\Components\Alert;
 
 class AlertTest extends AndachTestCase
 {
-    public function testRenderWithIcon()
+    public function testRenderWithIcon(): void
     {
         $view = $this->blade('<x-andach-alert color="red" icon="fa fa-warning">Test message</x-alert>');
 
@@ -23,7 +17,7 @@ class AlertTest extends AndachTestCase
         $view->assertSee('Test message', false);
     }
 
-    public function testRenderWithoutIcon()
+    public function testRenderWithoutIcon(): void
     {
         $view = $this->blade('<x-andach-alert color="green">No icon message</x-andach-alert>');
 

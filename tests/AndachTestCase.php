@@ -4,13 +4,13 @@ namespace Andach\LaravelViewComponents\Tests;
 
 use Andach\LaravelViewComponents\LaravelViewComponentsServiceProvider;
 use Illuminate\Support\Facades\Blade;
-use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
-use Andach\LaravelViewComponents\Components\Alert;
+use Orchestra\Testbench\TestCase;
 use RecursiveIteratorIterator;
 use RecursiveRegexIterator;
 use RegexIterator;
+use RuntimeException;
 use Symfony\Component\Finder\Iterator\RecursiveDirectoryIterator;
 
 class AndachTestCase extends TestCase
@@ -34,10 +34,10 @@ class AndachTestCase extends TestCase
     protected function registerAllBladeComponents(): void
     {
         $componentNamespace = 'Andach\\LaravelViewComponents\\Components';
-        $componentPath = realpath(__DIR__ . '/../src/Components');
+        $componentPath      = realpath(__DIR__ . '/../src/Components');
 
         if (!$componentPath || !is_dir($componentPath)) {
-            throw new \RuntimeException("Component path not found: {$componentPath}");
+            throw new RuntimeException("Component path not found: {$componentPath}");
         }
 
         $files = new RegexIterator(
@@ -49,19 +49,18 @@ class AndachTestCase extends TestCase
         );
 
         foreach ($files as $file) {
-            $filePath = $file[0];
+            $filePath     = $file[0];
             $relativePath = str_replace($componentPath . DIRECTORY_SEPARATOR, '', $filePath);
-            $className = $componentNamespace . '\\' . str_replace(
-                    ['/', '\\', '.php'],
-                    ['\\', '\\', ''],
-                    $relativePath
-                );
+            $className    = $componentNamespace . '\\' . str_replace(
+                ['/', '\\', '.php'],
+                ['\\', '\\', ''],
+                $relativePath
+            );
 
             if (class_exists($className) && is_subclass_of($className, \Illuminate\View\Component::class)) {
                 $alias = \Illuminate\Support\Str::kebab(class_basename($className));
-                \Illuminate\Support\Facades\Blade::component($alias, $className);
+                Blade::component($alias, $className);
             }
         }
     }
-
 }

@@ -7,36 +7,25 @@ use Andach\LaravelViewComponents\Components\AttachmentsAndComments;
 use Andach\LaravelViewComponents\Components\Button;
 use Andach\LaravelViewComponents\Components\Card;
 use Andach\LaravelViewComponents\Components\Chat;
-use Andach\LaravelViewComponents\Components\ChatAttachment;
 use Andach\LaravelViewComponents\Components\Code;
 use Andach\LaravelViewComponents\Components\FormAttachment;
 use Andach\LaravelViewComponents\Components\FormCheckboxIcon;
 use Andach\LaravelViewComponents\Components\FormSection;
 use Andach\LaravelViewComponents\Components\H;
-use Andach\LaravelViewComponents\Components\Header;
-use Andach\LaravelViewComponents\Components\HeaderHistoryItem;
-use Andach\LaravelViewComponents\Components\HeaderNotificationItem;
-use Andach\LaravelViewComponents\Components\HeaderNotifications;
-use Andach\LaravelViewComponents\Components\HeaderSearch;
-use Andach\LaravelViewComponents\Components\HeaderSearchItem;
 use Andach\LaravelViewComponents\Components\MenuGroup;
-use Andach\LaravelViewComponents\Components\MenuLine;
 use Andach\LaravelViewComponents\Components\NoResults;
 use Andach\LaravelViewComponents\Components\OauthButton;
 use Andach\LaravelViewComponents\Components\ProgressBar;
 use Andach\LaravelViewComponents\Components\ProgressBarItem;
-use Andach\LaravelViewComponents\Components\SignaturePad;
 use Andach\LaravelViewComponents\Components\Table;
 use Andach\LaravelViewComponents\Components\Tbody;
 use Andach\LaravelViewComponents\Components\Td;
 use Andach\LaravelViewComponents\Components\Th;
 use Andach\LaravelViewComponents\Components\Thead;
 use Illuminate\Pagination\Paginator;
-use Illuminate\View\ComponentAttributeBag;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use TailwindMerge\Laravel\Facades\TailwindMerge;
 
 class LaravelViewComponentsServiceProvider extends PackageServiceProvider
 {
@@ -75,13 +64,13 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Td::class)
             ->hasViewComponent('andach', Th::class)
             ->hasViewComponent('andach', Thead::class)
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
-                    ->startWith(function (InstallCommand $command) {
+                    ->startWith(function (InstallCommand $command): void {
                         $command->info('Hello, and welcome to my great new package!');
                     })
                     ->askToStarRepoOnGitHub('andach-limited/laravel-view-components')
-                    ->endWith(function (InstallCommand $command) {
+                    ->endWith(function (InstallCommand $command): void {
                         $command->info('Have a great day!');
                     });
             });

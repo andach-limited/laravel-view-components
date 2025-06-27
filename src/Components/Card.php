@@ -2,13 +2,13 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
-use Andach\LaravelViewComponents\LaravelViewComponents;
 use Closure;
 use Illuminate\View\Component;
 
 class Card extends BaseComponent
 {
     protected array $arrayBuildClasses = ['border', 'divide', 'hollow', 'ring', 'rounded', 'shadow', 'size'];
+
     protected array $arrayElementClasses = ['body', 'header', 'footer'];
 
     /**
@@ -29,8 +29,8 @@ class Card extends BaseComponent
         public ?string $variant = null,
         public ?string $bodyClasses = null,
         public ?string $footerClasses = null,
-        public ?string $headerClasses = null,)
-    {
+        public ?string $headerClasses = null,
+    ) {
         parent::__construct();
     }
 

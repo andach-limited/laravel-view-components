@@ -6,7 +6,7 @@ use Andach\LaravelViewComponents\Tests\AndachTestCase;
 
 class ProgressBarTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $view = $this->blade('<x-andach-progress-bar>Progress Bar Content</x-andach-progress-bar>');
 

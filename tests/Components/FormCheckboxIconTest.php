@@ -2,13 +2,11 @@
 
 namespace Andach\LaravelViewComponents\Tests\Components;
 
-use Andach\LaravelViewComponents\Components\FormCheckboxIcon;
 use Andach\LaravelViewComponents\Tests\AndachTestCase;
-use Illuminate\Support\Facades\Blade;
 
 class FormCheckboxIconTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $view = $this->blade('<x-andach-form-checkbox-icon name="Name Here">Checkbox Content</x-andach-form-checkbox-icon>');
 

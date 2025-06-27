@@ -2,13 +2,11 @@
 
 namespace Andach\LaravelViewComponents\Tests\Components;
 
-use Andach\LaravelViewComponents\Components\Card;
 use Andach\LaravelViewComponents\Tests\AndachTestCase;
-use Illuminate\Support\Facades\Blade;
 
 class CardTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $view = $this->blade('<x-andach-card :title="Title Here" :class="Class Here">Card Content</x-andach-card>');
 

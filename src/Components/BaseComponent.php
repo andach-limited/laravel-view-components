@@ -9,14 +9,17 @@ use Illuminate\View\Component;
 abstract class BaseComponent extends Component
 {
     protected array $arrayBuildClasses;
+
     protected array $arrayElementClasses;
+
     protected array $sizes = ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
+
     protected array $variantArray;
 
     public function __construct()
     {
-        $vars = get_object_vars($this);
-        $size = $vars['size'] ?? null;
+        $vars    = get_object_vars($this);
+        $size    = $vars['size'] ?? null;
         $variant = $vars['variant'] ?? null;
 
         $lvc = new LaravelViewComponents($variant);

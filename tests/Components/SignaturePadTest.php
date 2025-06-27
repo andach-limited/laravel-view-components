@@ -6,7 +6,7 @@ use Andach\LaravelViewComponents\Tests\AndachTestCase;
 
 class SignaturePadTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $view = $this->blade('<x-andach-signature-pad />');
 

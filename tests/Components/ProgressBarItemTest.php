@@ -6,7 +6,7 @@ use Andach\LaravelViewComponents\Tests\AndachTestCase;
 
 class ProgressBarItemTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $view = $this->blade('<x-andach-progress-bar-item :href="/link">Progress Item Content</x-andach-progress-bar-item>');
 

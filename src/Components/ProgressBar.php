@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class ProgressBar extends BaseComponent
 {
     protected array $arrayBuildClasses = ['background', 'border', 'ring', 'rounded', 'shadow'];
+
     protected array $arrayElementClasses = ['liComplete', 'liIncomplete', 'li', 'liNotLast', 'icon', 'iconSpan', 'content'];
+
     public int $count = 1;
 
     /**
@@ -22,11 +24,9 @@ class ProgressBar extends BaseComponent
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
-
         public ?string $size = null,
         public ?string $variant = null,
         public ?string $inactiveVariant = null,
-
         public ?string $classes = null,
         public ?string $liCompleteClasses = null,
         public ?string $liIncompleteClasses = null,
@@ -35,12 +35,11 @@ class ProgressBar extends BaseComponent
         public ?string $iconClasses = null,
         public ?string $iconSpanClasses = null,
         public ?string $contentClasses = null,
-    )
-    {
+    ) {
         parent::__construct();
 
-        $this->liCompleteClasses = 'border-' . $this->variantArray['highlight'] . ' ' . $this->liCompleteClasses . '  dark:border-' . $this->variantArray['highlightDark'] ;
-        $this->liIncompleteClasses = 'border-' . $this->variantArray['inactive'] . ' ' . $this->liIncompleteClasses . '  dark:border-' . $this->variantArray['inactiveDark'] ;
+        $this->liCompleteClasses   = 'border-' . $this->variantArray['highlight'] . ' ' . $this->liCompleteClasses . '  dark:border-' . $this->variantArray['highlightDark'];
+        $this->liIncompleteClasses = 'border-' . $this->variantArray['inactive'] . ' ' . $this->liIncompleteClasses . '  dark:border-' . $this->variantArray['inactiveDark'];
     }
 
     /**

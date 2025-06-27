@@ -2,15 +2,12 @@
 
 namespace Andach\LaravelViewComponents\Tests\Components;
 
-use Andach\LaravelViewComponents\Components\AttachmentsAndComments;
 use Andach\LaravelViewComponents\Tests\AndachTestCase;
-use Illuminate\Support\Facades\Blade;
 use Mockery;
-use stdClass;
 
 class AttachmentsAndCommentsTest extends AndachTestCase
 {
-    public function testRender()
+    public function testRender(): void
     {
         $model = Mockery::mock();
         $model->shouldReceive('attachmentsAndComments')

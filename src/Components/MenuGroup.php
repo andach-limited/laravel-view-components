@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 class MenuGroup extends BaseComponent
 {
     protected array $arrayBuildClasses = ['border', 'ring', 'rounded', 'shadow'];
+
     protected array $arrayElementClasses = ['firstLi', 'parent', 'icon', 'submenuDiv', 'chevronDiv', 'chevronSvg'];
 
     /**
@@ -21,15 +22,12 @@ class MenuGroup extends BaseComponent
         public ?bool $selected = false,
         public ?array $items = [],
         public ?string $icon = '',
-
         public ?bool $border = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
-
         public ?string $size = null,
         public ?string $variant = null,
-
         public ?string $classes = null,
         public ?string $firstLiClasses = null,
         public ?string $parentClasses = null,
@@ -37,11 +35,8 @@ class MenuGroup extends BaseComponent
         public ?string $submenuDivClasses = null,
         public ?string $chevronDivClasses = null,
         public ?string $chevronSvgClasses = null,
-    )
-    {
+    ) {
         parent::__construct();
-
-//        dd($this->data());
     }
 
     /**

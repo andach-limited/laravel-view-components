@@ -2,28 +2,21 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
-use Andach\LaravelViewComponents\LaravelViewComponents;
-use Closure;
-use Faker\Provider\Base;
-use Illuminate\View\Component;
-
 class H extends BaseComponent
 {
     protected array $arrayBuildClasses = ['background', 'border', 'ring', 'rounded', 'shadow'];
+
     protected array $arrayElementClasses = [];
 
     public function __construct(
         public int $number = 1,
-
         public ?bool $background = null,
         public ?bool $border = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
-
         public ?string $size = null,
         public ?string $variant = null,
-
         public ?string $classes = null,
     ) {
         parent::__construct();
@@ -32,7 +25,7 @@ class H extends BaseComponent
         $sizeIndex = $this->getSizeIndex($sizeClass);
         $newSize   = $this->sizes[$sizeIndex + $number - 1];
 
-        $this->classes .= ' text-'.$newSize;
+        $this->classes .= ' text-' . $newSize;
     }
 
     public function render()

@@ -8,7 +8,9 @@ use Illuminate\View\Component;
 class Table extends BaseComponent
 {
     protected array $arrayBuildClasses = ['border', 'ring', 'rounded', 'shadow'];
+
     protected array $arrayElementClasses = [];
+
     public string $fullClasses;
 
     /**
@@ -21,16 +23,13 @@ class Table extends BaseComponent
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
-
         public ?string $size = null,
         public ?string $variant = null,
-
         public ?string $classes = null,
-    )
-    {
+    ) {
         parent::__construct();
 
-//       dd($this->classes, $this->theadClasses, $this->trClasses, $this->thClasses, $this->tbodyClasses, $this->tdClasses);
+        //       dd($this->classes, $this->theadClasses, $this->trClasses, $this->thClasses, $this->tbodyClasses, $this->tdClasses);
         $this->compileFullClassString();
     }
 
@@ -55,11 +54,13 @@ class Table extends BaseComponent
 
     protected function compileIndividualClassString(?string $classString, string $prefix): ?string
     {
-        if (!$classString) return null;
+        if (!$classString) {
+            return null;
+        }
 
         return collect(explode(' ', trim($classString)))
             ->filter()
-            ->map(fn($cls) => $prefix . $cls)
+            ->map(fn ($cls) => $prefix . $cls)
             ->implode(' ');
     }
 }

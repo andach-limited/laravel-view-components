@@ -2,14 +2,10 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
-use Andach\LaravelViewComponents\LaravelViewComponents;
-use Closure;
-use Faker\Provider\Base;
-use Illuminate\View\Component;
-
 class Alert extends BaseComponent
 {
     protected array $arrayBuildClasses = ['border', 'ring', 'rounded', 'shadow'];
+
     protected array $arrayElementClasses = ['content', 'dismissButton', 'dismissIcon', 'title'];
 
     public function __construct(
@@ -17,15 +13,12 @@ class Alert extends BaseComponent
         public ?bool $divide = null,
         public ?string $icon = null,
         public ?string $title = null,
-
         public ?bool $border = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
-
         public ?string $size = null,
         public ?string $variant = null,
-
         public ?string $classes = null,
         public ?string $contentClasses = null,
         public ?string $dismissButtonClasses = null,

@@ -2,9 +2,9 @@
 
 namespace Andach\LaravelViewComponents\Tests;
 
+use Andach\LaravelViewComponents\LaravelViewComponentsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Andach\LaravelViewComponents\LaravelViewComponentsServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Andach\\LaravelViewComponents\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Andach\\LaravelViewComponents\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
@@ -24,7 +24,7 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
 

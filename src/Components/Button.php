@@ -16,7 +16,7 @@ class Button extends Component
      */
     public function __construct(public string $link, public string $color, public string $icon = '')
     {
-        $this->class = 'font-bold py-2 px-4 rounded-lg bg-'.$color.'-500 hover:bg-'.$color.'-600 text-gray-100';
+        $this->class = 'font-bold py-2 px-4 rounded-lg bg-' . $color . '-500 hover:bg-' . $color . '-600 text-gray-100';
     }
 
     /**

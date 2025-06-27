@@ -4,12 +4,12 @@ namespace Andach\LaravelViewComponents\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Chat extends Component
 {
     public string $classInner = 'text-sm bg-gray-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 p-3 rounded-lg rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-md mb-1';
+
     public string $classOuter = 'flex items-start mb-4 last:mb-0';
 
     /**
