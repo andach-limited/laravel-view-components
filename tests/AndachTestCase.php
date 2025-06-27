@@ -12,6 +12,7 @@ use RecursiveRegexIterator;
 use RegexIterator;
 use RuntimeException;
 use Symfony\Component\Finder\Iterator\RecursiveDirectoryIterator;
+use TailwindMerge\Laravel\TailwindMergeServiceProvider;
 
 class AndachTestCase extends TestCase
 {
@@ -28,6 +29,7 @@ class AndachTestCase extends TestCase
     {
         return [
             LaravelViewComponentsServiceProvider::class,
+            TailwindMergeServiceProvider::class,
         ];
     }
 

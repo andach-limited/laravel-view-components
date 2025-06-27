@@ -219,6 +219,9 @@ return [
                         'xl'   => 'text-3xl',
                     ],
                 ],
+                'dismiss-button' => [
+                    'base'  => '',
+                ],
                 'dismiss-icon' => [
                     'base'  => 'fill-current text-inherit over:opacity-75 ease-in-out duration-300',
                     'sizes' => [
@@ -353,8 +356,18 @@ return [
                         'xl'   => 'text-xl',
                     ],
                 ],
+                'first-li-selected' => [
+                    'base'  => 'px-3 py-2 rounded-sm mb-0.5 last:mb-0 brightness-80 font-bold',
+                    'sizes' => [
+                        'xs'   => 'text-xs',
+                        'sm'   => 'text-xs',
+                        'base' => 'text-base',
+                        'lg'   => 'text-lg',
+                        'xl'   => 'text-xl',
+                    ],
+                ],
                 'parent' => [
-                    'base'  => 'block truncate transition duration-150',
+                    'base'  => 'flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
                     'sizes' => [
                         'xs'   => 'text-xs',
                         'sm'   => 'text-xs',
@@ -377,7 +390,7 @@ return [
                     'base' => 'flex shrink-0 ml-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200',
                 ],
                 'chevron-svg' => [
-                    'base'  => 'w-3 h-3 shrink-0 ml-1 fill-current text-slate-400',
+                    'base'  => 'w-3 h-3 transition-transform duration-200',
                     'sizes' => [
                         'xs'   => 'text-2xs',
                         'sm'   => 'text-xs',
@@ -388,6 +401,12 @@ return [
                 ],
                 'submenu-div' => [
                     'base' => 'lg:hidden lg:sidebar-expanded:block 2xl:block',
+                ],
+                'second-li' => [
+                    'base' => 'block p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700',
+                ],
+                'second-li-selected' => [
+                    'base' => 'block p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 brightness-80 font-bold',
                 ],
             ],
             'sizes' => [
@@ -528,8 +547,6 @@ return [
                 [&_th]:px-2 [&_th:first-child]:pl-5 [&_th:last-child]:pr-5 [&_th]:py-3 [&_th]:whitespace-nowrap
                 [&_th>div]:font-semibold [&_th>div]:text-left
                 [&_td]:px-2 [&_td:first-child]:pl-5 [&_td:last-child]:pr-5 [&_td]:py-1 [&_td]:whitespace-nowrap',
-            'elements' => [
-            ],
         ],
     ],
 ];

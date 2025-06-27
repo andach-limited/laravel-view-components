@@ -1,1 +1,1 @@
-<h{{ $number }} {{ $attributes->twMerge(['class' => $classes]) }}>{{ $slot }}</h{{ $number }}>
+<h{{ $number }} {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>{{ $slot }}</h{{ $number }}>

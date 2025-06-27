@@ -11,29 +11,26 @@ class Code extends BaseComponent
     public string $commandLineHtml = '';
 
     public function __construct(
-        public ?bool $border = null,
-        public ?string $classes = null,
         public array|bool $commandLine = [],
-        public ?string $hollow = null,
         public ?string $language = null,
         public ?bool $lineNumbers = true,
+        public ?string $windowStyle = 'windows',
+        public ?bool $border = null,
+        public ?string $hollow = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
-        public ?string $windowStyle = 'windows',
-        public ?string $contentClasses = null,
-        public ?string $headerClasses = null,
     ) {
         parent::__construct();
 
         if ($language) {
-            $this->classes .= ' language-' . $language;
+            $this->twMergeStrings['base'] .= ' language-' . $language;
         }
 
         if ($this->commandLine) {
-            $this->contentClasses .= ' command-line';
+            $this->twMergeStrings['content'] .= ' command-line';
 
             $vars = [
                 'data-user',
@@ -58,13 +55,13 @@ class Code extends BaseComponent
         }
 
         if ($lineNumbers) {
-            $this->contentClasses .= ' line-numbers';
+            $this->twMergeStrings['content'] .= ' line-numbers';
         } else {
-            $this->contentClasses .= ' no-line-numbers';
+            $this->twMergeStrings['content'] .= ' no-line-numbers';
         }
 
         if ('windows' === $this->windowStyle) {
-            $this->headerClasses .= ' justify-end';
+            $this->twMergeStrings['header'] .= ' justify-end';
         }
     }
 

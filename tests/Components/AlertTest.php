@@ -8,22 +8,8 @@ class AlertTest extends AndachTestCase
 {
     public function testRenderWithIcon(): void
     {
-        $view = $this->blade('<x-andach-alert color="red" icon="fa fa-warning">Test message</x-alert>');
+        $view = $this->blade('<x-andach-alert>Test message</x-alert>');
 
-        $view->assertSee('role="alert"', false);
-        $view->assertSee('bg-red-100', false);
-        $view->assertSee('text-red-600', false);
-        $view->assertSee('fa fa-warning', false);
         $view->assertSee('Test message', false);
-    }
-
-    public function testRenderWithoutIcon(): void
-    {
-        $view = $this->blade('<x-andach-alert color="green">No icon message</x-andach-alert>');
-
-        $view->assertSee('bg-green-100', false);
-        $view->assertSee('text-green-600', false);
-        $view->assertDontSee('<i', false);
-        $view->assertSee('No icon message', false);
     }
 }

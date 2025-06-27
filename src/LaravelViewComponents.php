@@ -4,10 +4,14 @@ namespace Andach\LaravelViewComponents;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use TailwindMerge\Laravel\Facades\TailwindMerge;
 
 class LaravelViewComponents
 {
+    private array $buildClassNames;
+    private array $component;
     private array $components = [];
+    private array $elementClassNames;
 
     private array $variant = [];
 
@@ -15,20 +19,24 @@ class LaravelViewComponents
 
     private array $variants = [];
 
-    public function __construct(?string $variant)
+    public function __construct(string $component, ?string $variant)
     {
         $this->components = config('view-components.components');
         $this->variants   = config('view-components.variants');
-        $this->setVariant($variant);
+        $this->component  = $this->components[$component];
+        $this->variant = $this->variants[$variant] ?? $this->variants['default'];
+        $this->buildClassNames = $this->getBuildClasses();
+        $this->elementClassNames = $this->getElementClasses();
     }
 
     /*
      * Returns a string of all the classes required for the base item in the blade.php file based on an array of
      * attributes provided and configurable by the end user.
      */
-    public function buildClasses(string $component, array $attributes): string
+    public function buildClasses(string $component): string
     {
         $classes = collect();
+        $attributes = $this->buildClassNames;
 
         $baseClasses      = collect(['base' => $this->components[$component]['base'] ?? null]);
         $attributeClasses = $this->classesAttributes($component, $attributes);
@@ -52,12 +60,13 @@ class LaravelViewComponents
 
         //        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
 
-        return $classes->flatten()->implode(' ');
+        return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
 
-    public function buildElementClasses($component, $elements = null, $size)
+    public function buildElementClasses($component, $size): array
     {
         $elementClasses = [];
+        $elements = $this->elementClassNames;
 
         if ($elements) {
             $sizeOverride = $this->components[$component]['size'] ?? null;
@@ -77,7 +86,7 @@ class LaravelViewComponents
                     $hasSize = $element['sizes']['base'] ?? null;
                 }
 
-                $elementClasses[$elementString . 'Classes'] = $base . ' ' . $hasSize;
+                $elementClasses[$elementString] = $base . ' ' . $hasSize;
             }
         }
 
@@ -216,13 +225,22 @@ class LaravelViewComponents
             ->values();
     }
 
+    function getBuildClasses(): array
+    {
+        return array_key_exists('attributes', $this->component) && is_array($this->component['attributes'])
+            ? array_keys($this->component['attributes'])
+            : [];
+    }
+
+    function getElementClasses(): array
+    {
+        return array_key_exists('elements', $this->component) && is_array($this->component['elements'])
+            ? array_keys($this->component['elements'])
+            : [];
+    }
+
     public function getVariant(): array
     {
         return $this->variant;
-    }
-
-    public function setVariant(?string $variant): void
-    {
-        $this->variant = $this->variants[$variant] ?? $this->variants['default'];
     }
 }

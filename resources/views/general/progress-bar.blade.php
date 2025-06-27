@@ -1,23 +1,23 @@
-<ol {{ $attributes->twMerge(['class' => $classes]) }}>
+<ol {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
     @foreach ($items as $item)
         @php
-            $merge = [$liClasses];
+            $merge = [$twMergeStrings['li']];
 
             if ($count <= count($items))
             {
-                $merge[] = $liNotLastClasses;
+                $merge[] = $twMergeStrings['li-not-last'];
             }
 
             if ($item['complete'] ?? false)
             {
-                $merge[] = $liCompleteClasses;
+                $merge[] = $twMergeStrings['li-complete'];
             } else {
-                $merge[] = $liIncompleteClasses;
+                $merge[] = $twMergeStrings['li-incomplete'];
             }
         @endphp
         <li {{ $attributes->twMergeFor('li', $merge) }}>
                 @if ($item['icon'] ?? false)
-                    <span {{ $attributes->twMergeFor('iconSpan', $iconSpanClasses) }}>
+                    <span {{ $attributes->twMergeFor('iconSpan', $twMergeStrings['icon-span']) }}>
                         {!! $item['icon'] !!}
                     </span>
                 @endif

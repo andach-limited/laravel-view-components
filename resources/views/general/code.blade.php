@@ -19,8 +19,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-BttltKXFyWnGZQcRWj6osIg7lbizJchuAMotOkdLxHxwt/Hyo+cl47bZU0QADg+Qt5DJwni3SbYGXeGMB5cBcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endonce
 
-<div {{ $attributes->twMerge(['class' => $classes]) }}>
-    <div {{ $attributes->twMergeFor('header', $headerClasses) }}>
+<div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
+    <div {{ $attributes->twMergeFor('header', $twMergeStrings['header']) }}>
         @if ($windowStyle == 'windows')
             <svg width="58" height="14" viewBox="0 0 58 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7H11" stroke="#878787" stroke-linecap="round" stroke-linejoin="round"></path><path d="M35 1H25C24.4477 1 24 1.44772 24 2V12C24 12.5523 24.4477 13 25 13H35C35.5523 13 36 12.5523 36 12V2C36 1.44772 35.5523 1 35 1Z" stroke="#878787"></path><path d="M47 2L57 12" stroke="#878787" stroke-linecap="round" stroke-linejoin="round"></path><path d="M47 12L57 2" stroke="#878787" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         @elseif ($windowStyle == 'mac')
@@ -30,6 +30,6 @@
         @endif
     </div>
     <div class="font-mono">
-        <pre {{ $attributes->twMergeFor('content', $contentClasses) }} {{ $commandLineHtml }}><code>{!! e(trim($slot)) !!}</code></pre>
+        <pre {{ $attributes->twMergeFor('content', $twMergeStrings['content']) }} {{ $commandLineHtml }}><code>{!! e(trim($slot)) !!}</code></pre>
     </div>
 </div>
