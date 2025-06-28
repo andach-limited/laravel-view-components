@@ -188,53 +188,6 @@ class LaravelViewComponents
         return $variantClasses;
     }
 
-    /*
-     * This function returns an array of names of enabled attributes for the component. Attributes are accessed via the
-     * attributes array in the config file, for example:
-     *
-     * 'attributes' => [
-     *      'accent' => [false, 'border-l-8'],
-     *      'border' => [true, 'border-2'],
-     *      'ring' => [false, 'ring-2 ring-offset-2'],
-     *      'rounded' => [true, 'rounded'],
-     *      'shadow' => [false, 'shadow-md'],
-     *  ],
-     *
-     * Each element is an array where the first item is the default enabled/disabled status, and the second is a string
-     * list of tailwind classes to include if needed.
-     *
-     * The attributes array (for boolean inputs) will be:
-     *
-     * "1"  => Set to true
-     * ""   => Set to false
-     * null => Use default value
-     */
-    private function enabledAttributes(string $component): Collection
-    {
-        $config = $this->component['attributes'] ?? [];
-        $return = [];
-
-        foreach ($config as $name => $classArray)
-        {
-            $enabled = $classArray[0];
-
-            if (isset($this->vars[$name]))
-            {
-                if ($this->vars[$name] !== null)
-                {
-                    $enabled = $this->vars[$name];
-                }
-            }
-
-            if ($enabled)
-            {
-                $return[$name] = $classArray[1];
-            }
-        }
-
-        return collect($return);
-    }
-
     function getBuildClasses(): array
     {
         return array_key_exists('attributes', $this->component) && is_array($this->component['attributes'])
