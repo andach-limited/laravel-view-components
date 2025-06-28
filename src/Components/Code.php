@@ -30,7 +30,7 @@ class Code extends BaseComponent
         }
 
         if ($this->commandLine) {
-            $this->twMergeStrings['content'] .= ' command-line';
+            $this->commandLineHtml = ' command-line';
 
             $vars = [
                 'data-user',

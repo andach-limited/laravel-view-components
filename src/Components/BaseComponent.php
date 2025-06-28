@@ -23,7 +23,12 @@ abstract class BaseComponent extends Component
         $size    = $vars['size'] ?? null;
         $variant = $vars['variant'] ?? null;
 
-        $lvc = new LaravelViewComponents($this->getClassName(), $variant);
+        $lvc = new LaravelViewComponents($this->getClassName(), $variant, $vars);
+
+//        dd(
+//            ['base' => $lvc->buildClasses($this->getClassName())],
+//            $lvc->buildElementClasses($this->getClassName(), $size)
+//        );
 
         $this->twMergeStrings = array_merge(
             ['base' => $lvc->buildClasses($this->getClassName())],

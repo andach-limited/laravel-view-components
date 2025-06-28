@@ -43,32 +43,13 @@ npm install @fortawesome/fontawesome-free
 Also update your ```resources/css/app.css to include:```
 
 ```css
-@import "@fortawesome/fontawesome-free/css/all.css";
-@source inline('{dark:,}{bg,text,border}-{slate,gray,zinc,neutral,stone,red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose}-{50,{100..900..100},950}');
-```
+@import 'tailwindcss';
+@import '@fortawesome/fontawesome-free/css/all.css';
 
-To use vite, edit your `./tailwind.config.js` file to include the following:
-
-```js
-module.exports = {
-  content: [
-    // ..
-    "./vendor/andach/laravel-view-components/src/Components/*.php",
-    "./vendor/andach/laravel-view-components/resources/views/**/*.blade.php",
-    "./vendor/andach/laravel-view-components/config/view-components.php",
-    "./config/view-components.php",
-  ],
-  // ...
-}
-```
-
-Or in v4, update ```/resources/css/app.css```:
-
-```css
-@source "./vendor/andach/laravel-view-components/src/Components/*.php";
-@source "./vendor/andach/laravel-view-components/resources/views/**/*.blade.php";
-@source "./vendor/andach/laravel-view-components/config/view-components.php";
-@source "./config/view-components.php";
+@source '../../vendor/andach/laravel-view-components/src/Components/*.php';
+@source '../../vendor/andach/laravel-view-components/resources/views/**/*.blade.php';
+@source '../../vendor/andach/laravel-view-components/config/view-components.php';
+@source '../../config/view-components.php';
 ```
 
 ## Testing

@@ -18,8 +18,9 @@ class LaravelViewComponents
     private string $variantName = '';
 
     private array $variants = [];
+    private array $vars;
 
-    public function __construct(string $component, ?string $variant)
+    public function __construct(string $component, ?string $variant, array $vars)
     {
         $this->components = config('view-components.components');
         $this->variants   = config('view-components.variants');
@@ -27,6 +28,7 @@ class LaravelViewComponents
         $this->variant = $this->variants[$variant] ?? $this->variants['default'];
         $this->buildClassNames = $this->getBuildClasses();
         $this->elementClassNames = $this->getElementClasses();
+        $this->vars = $vars;
     }
 
     /*
@@ -39,7 +41,7 @@ class LaravelViewComponents
         $attributes = $this->buildClassNames;
 
         $baseClasses      = collect(['base' => $this->components[$component]['base'] ?? null]);
-        $attributeClasses = $this->classesAttributes($component, $attributes);
+        $attributeClasses = $this->classesAttributes();
         $variantClasses   = $this->classesVariant($component, $this->variantName, $attributes);
         $sizeClasses      = $this->classesSize($component, $attributes['size'] ?? null);
         //        $gridClasses = $this->gridClasses($component, $attributes['grid'] ?? null);
@@ -58,7 +60,8 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-        //        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+//                dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+//                dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
@@ -93,29 +96,40 @@ class LaravelViewComponents
         return $elementClasses;
     }
 
-    private function classesAttributes(string $component, array $attributes): Collection
+    private function classesAttributes(): Collection
     {
-        $componentConfigAttribute = $this->components[$component]['attributes'] ?? [];
-        $enabledAttributes        = $this->enabledAttributes($component, $attributes);
+        $config = $this->component['attributes'] ?? [];
+        $return = [];
 
-        return collect($enabledAttributes)->mapWithKeys(fn ($enabledAttribute) => [$enabledAttribute => $componentConfigAttribute[$enabledAttribute][1]]);
-    }
+        foreach ($config as $name => $classArray)
+        {
+            $enabled = $classArray[0];
 
-    public function classesSize($component, $size)
-    {
-        $sizeClasses = collect();
-        $hasSize     = $this->components[$component]['sizes'][$size] ?? null;
-        $base        = config('turbine.components.' . $component . '.size') ?? 'base';
+            if (isset($this->vars[$name]))
+            {
+                if ($this->vars[$name] !== null)
+                {
+                    $enabled = $this->vars[$name];
+                }
+            }
 
-        if ($hasSize) {
-            $sizeClasses->put('size', $hasSize);
-        } else {
-            if (isset($this->components[$component]['sizes'][$base])) {
-                $sizeClasses->put('size', $this->components[$component]['sizes'][$base]);
+            if ($enabled)
+            {
+                $return[$name] = $classArray[1];
             }
         }
 
-        return $sizeClasses ?? null;
+        return collect($return);
+    }
+
+    public function classesSize(): Collection
+    {
+        $return = collect();
+        $selectedSize = $this->vars['size'] ?? 'base';
+        $sizeString = $this->component['sizes'][$selectedSize] ?? '';
+        $return->put('size', $sizeString);
+
+        return $return;
     }
 
     /*
@@ -195,34 +209,30 @@ class LaravelViewComponents
      * ""   => Set to false
      * null => Use default value
      */
-    private function enabledAttributes(string $component, array $attributes): Collection
+    private function enabledAttributes(string $component): Collection
     {
-        $config = $this->components[$component]['attributes'] ?? [];
+        $config = $this->component['attributes'] ?? [];
+        $return = [];
 
-        return collect($config)
-            ->filter(function (array $settings, string $key) use ($attributes) {
-                $default = $settings[0];
+        foreach ($config as $name => $classArray)
+        {
+            $enabled = $classArray[0];
 
-                if (array_key_exists($key, $attributes)) {
-                    $value = $attributes[$key];
-
-                    if (1 === $value || '1' === $value) {
-                        return true;
-                    }
-
-                    if ('' === $value) {
-                        return false;
-                    }
-
-                    // null: use default
-                    return true === $default;
+            if (isset($this->vars[$name]))
+            {
+                if ($this->vars[$name] !== null)
+                {
+                    $enabled = $this->vars[$name];
                 }
+            }
 
-                // attribute not provided: use default
-                return true === $default;
-            })
-            ->keys()
-            ->values();
+            if ($enabled)
+            {
+                $return[$name] = $classArray[1];
+            }
+        }
+
+        return collect($return);
     }
 
     function getBuildClasses(): array

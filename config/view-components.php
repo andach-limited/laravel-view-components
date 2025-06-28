@@ -341,6 +341,8 @@ return [
             'options' => [
                 'background' => false,
             ],
+            // Set this to the five sizes under 'text-6xl' (or whatever you pick as the H1 size) above so they load in Tailwind.
+            'include' => 'text-5xl text-4xl text-3xl text-2xl text-xl',
         ],
 
         'menu-group' => [
