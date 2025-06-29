@@ -13,6 +13,7 @@ abstract class BaseComponent extends Component
     protected array $arrayElementClasses;
 
     protected array $sizes = ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
+
     public array $twMergeStrings = [];
 
     protected array $variantArray;
@@ -25,10 +26,10 @@ abstract class BaseComponent extends Component
 
         $lvc = new LaravelViewComponents($this->getClassName(), $variant, $vars);
 
-//        dd(
-//            ['base' => $lvc->buildClasses($this->getClassName())],
-//            $lvc->buildElementClasses($this->getClassName(), $size)
-//        );
+        //        dd(
+        //            ['base' => $lvc->buildClasses($this->getClassName())],
+        //            $lvc->buildElementClasses($this->getClassName(), $size)
+        //        );
 
         $this->twMergeStrings = array_merge(
             ['base' => $lvc->buildClasses($this->getClassName())],

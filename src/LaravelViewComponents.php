@@ -9,8 +9,11 @@ use TailwindMerge\Laravel\Facades\TailwindMerge;
 class LaravelViewComponents
 {
     private array $buildClassNames;
+
     private array $component;
+
     private array $components = [];
+
     private array $elementClassNames;
 
     private array $variant = [];
@@ -18,17 +21,18 @@ class LaravelViewComponents
     private string $variantName = '';
 
     private array $variants = [];
+
     private array $vars;
 
     public function __construct(string $component, ?string $variant, array $vars)
     {
-        $this->components = config('view-components.components');
-        $this->variants   = config('view-components.variants');
-        $this->component  = $this->components[$component];
-        $this->variant = $this->variants[$variant] ?? $this->variants['default'];
-        $this->buildClassNames = $this->getBuildClasses();
+        $this->components        = config('view-components.components');
+        $this->variants          = config('view-components.variants');
+        $this->component         = $this->components[$component];
+        $this->variant           = $this->variants[$variant] ?? $this->variants['default'];
+        $this->buildClassNames   = $this->getBuildClasses();
         $this->elementClassNames = $this->getElementClasses();
-        $this->vars = $vars;
+        $this->vars              = $vars;
     }
 
     /*
@@ -37,7 +41,7 @@ class LaravelViewComponents
      */
     public function buildClasses(string $component): string
     {
-        $classes = collect();
+        $classes    = collect();
         $attributes = $this->buildClassNames;
 
         $baseClasses      = collect(['base' => $this->components[$component]['base'] ?? null]);
@@ -60,8 +64,8 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-//                dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
-//                dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
+        //                dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+        //                dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
@@ -69,7 +73,7 @@ class LaravelViewComponents
     public function buildElementClasses($component, $size): array
     {
         $elementClasses = [];
-        $elements = $this->elementClassNames;
+        $elements       = $this->elementClassNames;
 
         if ($elements) {
             $sizeOverride = $this->components[$component]['size'] ?? null;
@@ -101,20 +105,16 @@ class LaravelViewComponents
         $config = $this->component['attributes'] ?? [];
         $return = [];
 
-        foreach ($config as $name => $classArray)
-        {
+        foreach ($config as $name => $classArray) {
             $enabled = $classArray[0];
 
-            if (isset($this->vars[$name]))
-            {
-                if ($this->vars[$name] !== null)
-                {
+            if (isset($this->vars[$name])) {
+                if (null !== $this->vars[$name]) {
                     $enabled = $this->vars[$name];
                 }
             }
 
-            if ($enabled)
-            {
+            if ($enabled) {
                 $return[$name] = $classArray[1];
             }
         }
@@ -124,9 +124,9 @@ class LaravelViewComponents
 
     public function classesSize(): Collection
     {
-        $return = collect();
+        $return       = collect();
         $selectedSize = $this->vars['size'] ?? 'base';
-        $sizeString = $this->component['sizes'][$selectedSize] ?? '';
+        $sizeString   = $this->component['sizes'][$selectedSize] ?? '';
         $return->put('size', $sizeString);
 
         return $return;
@@ -188,14 +188,14 @@ class LaravelViewComponents
         return $variantClasses;
     }
 
-    function getBuildClasses(): array
+    public function getBuildClasses(): array
     {
         return array_key_exists('attributes', $this->component) && is_array($this->component['attributes'])
             ? array_keys($this->component['attributes'])
             : [];
     }
 
-    function getElementClasses(): array
+    public function getElementClasses(): array
     {
         return array_key_exists('elements', $this->component) && is_array($this->component['elements'])
             ? array_keys($this->component['elements'])

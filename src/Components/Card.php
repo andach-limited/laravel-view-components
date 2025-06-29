@@ -2,9 +2,6 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
-use Closure;
-use Illuminate\View\Component;
-
 class Card extends BaseComponent
 {
     public function __construct(
