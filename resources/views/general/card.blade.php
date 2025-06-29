@@ -1,17 +1,17 @@
 <div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
     {{ $slot }}
     @isset($header)
-        <div {{ $attributes->twMergeFor('header', $twMergeStrings['header'].' '.$header->attributes['class']) }}>
+        <div {{ $attributes->twMergeFor('header', $twMergeStrings['header']) }}>
             {{ $header }}
         </div>
     @endisset
     @isset($body)
-        <div {{ $attributes->twMergeFor('body', $twMergeStrings['body'].' '.$body->attributes['class']) }}>
+        <div {{ $attributes->twMergeFor('body', $twMergeStrings['body']) }}>
             {{ $body }}
         </div>
     @endisset
     @isset($footer)
-        <div {{ $attributes->twMergeFor('footer', $twMergeStrings['footer'].' '.$footer->attributes['class']) }}>
+        <div {{ $attributes->twMergeFor('footer', $twMergeStrings['footer']) }}>
             {{ $footer }}
         </div>
     @endisset
