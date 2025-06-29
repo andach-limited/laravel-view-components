@@ -18,12 +18,15 @@ class ProgressBar extends BaseComponent
      * Create a new component instance.
      */
     public function __construct(
+        // Unique Arguments
         public array $items,
+        // Attribute Arguments
         public ?bool $background = null,
         public ?bool $border = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
+        // Generic Arguments
         public ?string $size = null,
         public ?string $variant = null,
         public ?string $inactiveVariant = null,

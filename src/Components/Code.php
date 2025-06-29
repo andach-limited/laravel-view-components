@@ -11,15 +11,18 @@ class Code extends BaseComponent
     public string $commandLineHtml = '';
 
     public function __construct(
+        // Unique Arguments
         public array|bool $commandLine = [],
         public ?string $language = null,
         public ?bool $lineNumbers = true,
         public ?string $windowStyle = 'windows',
+        // Attribute Arguments
         public ?bool $border = null,
         public ?string $hollow = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
+        // Generic Arguments
         public ?string $size = null,
         public ?string $variant = null,
     ) {

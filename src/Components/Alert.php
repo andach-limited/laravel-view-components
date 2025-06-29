@@ -10,7 +10,6 @@ class Alert extends BaseComponent
         public ?string $title = null,
         public ?bool $dismissible = null,
         // Attribute Arguments
-        public ?bool $divide = null,
         public ?bool $border = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,

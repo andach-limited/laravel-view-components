@@ -5,10 +5,12 @@ namespace Andach\LaravelViewComponents\Components;
 class Table extends BaseComponent
 {
     public function __construct(
+        // Attribute Arguments
         public ?bool $border = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
+        // Generic Arguments
         public ?string $size = null,
         public ?string $variant = null,
     ) {
