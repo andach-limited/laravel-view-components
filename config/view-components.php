@@ -41,7 +41,7 @@ return [
         'default' => [
             'background'    => 'bg-white dark:bg-slate-900',
             'text'          => 'text-slate-800 dark:text-slate-200',
-            'border'        => 'border-slate-300 dark:border-slate-700',
+            'border'        => 'border-slate-200 dark:border-slate-700',
             'shadow'        => 'shadow-slate-300/50 dark:shadow-slate-900/50',
             'ring'          => 'ring-slate-200 dark:ring-slate-700 ring-offset-slate-100 dark:ring-offset-slate-800',
             'hover'         => 'hover:bg-slate-300 hover:dark:bg-slate-900 hover:from-slate-400 hover:to-slate-700 hover:text-slate-800/70 hover:dark:text-slate-400/70',
@@ -249,78 +249,77 @@ return [
         ],
 
         'card' => [
-            'base'     => 'flex flex-col overflow-hidden',
+            'base'     => 'relative flex flex-col mb-4 rounded-lg',
             'elements' => [
                 'header' => [
-                    'base'  => '',
-                    'sizes' => [
-                        'xs'   => 'px-2 py-1',
-                        'sm'   => 'px-3 py-2',
-                        'base' => 'px-4 py-3',
-                        'lg'   => 'px-5 py-4',
-                        'xl'   => 'px-6 py-5',
-                    ],
+                    'base'  => 'mx-3 mb-0 border-b p-3 text-sm font-medium',
+//                    'sizes' => [
+//                        'xs'   => 'px-2 py-1',
+//                        'sm'   => 'px-3 py-2',
+//                        'base' => 'px-4 py-3',
+//                        'lg'   => 'px-5 py-4',
+//                        'xl'   => 'px-6 py-5',
+//                    ],
                 ],
                 'body' => [
-                    'base'  => 'bg-white/80 dark:bg-slate-800',
-                    'sizes' => [
-                        'xs'   => 'px-2 py-1',
-                        'sm'   => 'px-3 py-2',
-                        'base' => 'px-4 py-3',
-                        'lg'   => 'px-5 py-4',
-                        'xl'   => 'px-6 py-5',
-                    ],
+                    'base'  => 'mx-3 p-3',
+//                    'sizes' => [
+//                        'xs'   => 'px-2 py-1',
+//                        'sm'   => 'px-3 py-2',
+//                        'base' => 'px-4 py-3',
+//                        'lg'   => 'px-5 py-4',
+//                        'xl'   => 'px-6 py-5',
+//                    ],
                 ],
                 'footer' => [
-                    'base'  => 'text-sm',
-                    'sizes' => [
-                        'xs'   => 'px-2 py-1',
-                        'sm'   => 'px-3 py-2',
-                        'base' => 'px-4 py-3',
-                        'lg'   => 'px-5 py-4',
-                        'xl'   => 'px-6 py-5',
-                    ],
+                    'base'  => 'border-t p-3 text-sm font-medium mx-3',
+//                    'sizes' => [
+//                        'xs'   => 'px-2 py-1',
+//                        'sm'   => 'px-3 py-2',
+//                        'base' => 'px-4 py-3',
+//                        'lg'   => 'px-5 py-4',
+//                        'xl'   => 'px-6 py-5',
+//                    ],
                 ],
+            ],
+            'sizes' => [
+                'xs'   => 'text-xs',
+                'sm'   => 'text-sm',
+                'base' => 'text-base',
+                'lg'   => 'text-lg',
+                'xl'   => 'text-xl',
             ],
             'attributes' => [
                 'border'  => [true, 'border-2'],
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
                 'shadow'  => [false, 'shadow-md'],
-                'divide'  => [false, 'divide-y'],
             ],
         ],
 
         'code' => [
-            'base'     => 'w-full bg-gray-800 shadow-2xl rounded-lg overflow-hidden mb-4 px-4',
+            'base'     => 'w-full bg-gray-800 shadow-2xl rounded-lg overflow-hidden mb-4',
             'elements' => [
                 'header' => [
-                    'base'  => 'pt-3 px-4 flex',
+                    'base'  => 'flex',
                     'sizes' => [
-                        'xs'   => 'px-2 py-1',
-                        'sm'   => 'px-3 py-2',
-                        'base' => 'px-4 py-3',
-                        'lg'   => 'px-5 py-4',
-                        'xl'   => 'px-6 py-5',
+                        'xs'   => 'text-xs px-2 pt-1',
+                        'sm'   => 'text-sm px-3 pt-2',
+                        'base' => 'text-base px-4 pt-3',
+                        'lg'   => 'text-lg px-5 pt-4',
+                        'xl'   => 'text-xl px-6 pt-5',
                     ],
                 ],
                 'content' => [
-                    'base'  => 'text-sm overflow-x-auto',
+                    'base'  => 'overflow-x-auto',
                     'sizes' => [
-                        'xs'   => 'px-2 py-1',
-                        'sm'   => 'px-3 py-2',
-                        'base' => 'px-4 py-3',
-                        'lg'   => 'px-5 py-4',
-                        'xl'   => 'px-6 py-5',
+                        'xs'   => 'text-xs px-2 py-1',
+                        'sm'   => 'text-sm px-3 py-2',
+                        'base' => 'text-base px-4 py-3',
+                        'lg'   => 'text-lg px-5 py-4',
+                        'xl'   => 'text-xl px-6 py-5',
                     ],
                 ],
-            ],
-            'sizes' => [
-                'xs'   => 'text-xs px-2 py-1',
-                'sm'   => 'text-sm px-3 py-2',
-                'base' => 'text-base px-4 py-3',
-                'lg'   => 'text-lg px-5 py-4',
-                'xl'   => 'text-xl px-6 py-5',
             ],
             'attributes' => [
                 'border'  => [true, 'border-2'],

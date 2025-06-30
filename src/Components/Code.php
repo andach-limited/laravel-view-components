@@ -15,7 +15,7 @@ class Code extends BaseComponent
         public array|bool $commandLine = [],
         public ?string $language = null,
         public ?bool $lineNumbers = true,
-        public ?string $windowStyle = 'windows',
+        public ?string $windowStyle = 'mac',
         // Generic Arguments
         public ?string $background = null,
         public ?string $border = null,

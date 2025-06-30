@@ -8,6 +8,7 @@ use TailwindMerge\Laravel\Facades\TailwindMerge;
 
 class LaravelViewComponents
 {
+    // An array of strings of the names of the options available under 'attributes' in the config file.
     private array $buildClassNames;
 
     private array $component;
@@ -15,6 +16,8 @@ class LaravelViewComponents
     private array $components = [];
 
     private array $elementClassNames;
+    // A subset of $buildClassNames giving only the attributes that are enabled, accounting for overrides.
+    private array $enabledAttributes;
 
     private array $variant = [];
 
@@ -62,7 +65,7 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-        //                dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+//                        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
         //                dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
@@ -118,6 +121,8 @@ class LaravelViewComponents
             }
         }
 
+        $this->enabledAttributes = array_keys($return);
+
         return collect($return);
     }
 
@@ -139,7 +144,7 @@ class LaravelViewComponents
     {
         $attributes = $this->buildClassNames;
 
-        $hasHollow     = $attributes['hollow'] ?? null;
+        $hasHollow     = $this->vars['hollow'] ?? false;
         $hasHover      = $this->component['options']['hover'] ?? null;
         $hasFocus      = $this->component['options']['focus'] ?? null;
         $hasGradient   = $this->component['options']['gradient'] ?? null;
@@ -162,9 +167,9 @@ class LaravelViewComponents
         $keysNames = [
             'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
             'text'       => true,
-            'border'     => $hasAccent,
-            'shadow'     => false,
-            'ring'       => false,
+            'border'     => in_array('border', $this->enabledAttributes),
+            'shadow'     => in_array('shadow', $this->enabledAttributes),
+            'ring'       => in_array('ring', $this->enabledAttributes),
             'hover'      => $hasHover,
             'focus'      => $hasFocus,
             'active'     => false,
