@@ -34,8 +34,8 @@ class ProgressBar extends BaseComponent
     ) {
         parent::__construct();
 
-        $this->twMergeStrings['li-complete']   = 'border-' . $this->variantArray['highlight'] . ' ' . $this->twMergeStrings['li-complete'] . '  dark:border-' . $this->variantArray['highlightDark'];
-        $this->twMergeStrings['li-incomplete'] = 'border-' . $this->variantArray['inactive'] . ' ' . $this->twMergeStrings['li-incomplete'] . '  dark:border-' . $this->variantArray['inactiveDark'];
+        $this->twMergeStrings['li-complete']   = $this->variantArray['highlightBorder'] . ' ' . $this->twMergeStrings['li-complete'] . ' ' . $this->variantArray['highlightDarkBorder'];
+        $this->twMergeStrings['li-incomplete'] = $this->variantArray['inactiveBorder'] . ' ' . $this->twMergeStrings['li-incomplete'] . ' ' . $this->variantArray['inactiveDarkBorder'];
     }
 
     /**
