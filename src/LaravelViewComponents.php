@@ -16,6 +16,7 @@ class LaravelViewComponents
     private array $components = [];
 
     private array $elementClassNames;
+
     // A subset of $buildClassNames giving only the attributes that are enabled, accounting for overrides.
     private array $enabledAttributes;
 
@@ -65,7 +66,7 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-//                        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+        //                        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
         //                dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
