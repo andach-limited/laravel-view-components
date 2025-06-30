@@ -24,12 +24,13 @@ class LaravelViewComponents
 
     private array $vars;
 
-    public function __construct(string $component, ?string $variant, array $vars)
+    public function __construct(string $component, array $vars)
     {
+        $this->variantName       = $vars['variant'] ?? 'default';
         $this->components        = config('view-components.components');
         $this->variants          = config('view-components.variants');
         $this->component         = $this->components[$component];
-        $this->variant           = $this->variants[$variant] ?? $this->variants['default'];
+        $this->variant           = $this->variants[$this->variantName] ?? $this->variants['default'];
         $this->buildClassNames   = $this->getBuildClasses();
         $this->elementClassNames = $this->getElementClasses();
         $this->vars              = $vars;
@@ -39,15 +40,12 @@ class LaravelViewComponents
      * Returns a string of all the classes required for the base item in the blade.php file based on an array of
      * attributes provided and configurable by the end user.
      */
-    public function buildClasses(string $component): string
+    public function buildClasses(): string
     {
-        $classes    = collect();
-        $attributes = $this->buildClassNames;
-
-        $baseClasses      = collect(['base' => $this->components[$component]['base'] ?? null]);
+        $baseClasses      = collect(['base' => $this->component['base'] ?? null]);
         $attributeClasses = $this->classesAttributes();
-        $variantClasses   = $this->classesVariant($component, $this->variantName, $attributes);
-        $sizeClasses      = $this->classesSize($component, $attributes['size'] ?? null);
+        $variantClasses   = $this->classesVariant();
+        $sizeClasses      = $this->classesSize();
         //        $gridClasses = $this->gridClasses($component, $attributes['grid'] ?? null);
         //        $colClasses = $this->colClasses($component, $attributes['cols'] ?? null);
         //        $gapClasses = $this->gapClasses($component, $attributes['gap'] ?? null);
@@ -70,13 +68,14 @@ class LaravelViewComponents
         return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
 
-    public function buildElementClasses($component, $size): array
+    public function buildElementClasses(): array
     {
+        $size           = $this->vars['size'] ?? null;
         $elementClasses = [];
         $elements       = $this->elementClassNames;
 
         if ($elements) {
-            $sizeOverride = $this->components[$component]['size'] ?? null;
+            $sizeOverride = $this->component['size'] ?? null;
 
             if (!$size) {
                 $size = $sizeOverride ?? $size ?? null;
@@ -84,7 +83,7 @@ class LaravelViewComponents
 
             foreach ($elements as $elementString) {
                 $elementName = Str::kebab($elementString);
-                $element     = $this->components[$component]['elements'][$elementName] ?? [];
+                $element     = $this->component['elements'][$elementName] ?? [];
 
                 $base    = $element['base'] ?? null;
                 $hasSize = $element['sizes'][$size] ?? null;
@@ -133,17 +132,19 @@ class LaravelViewComponents
     }
 
     /*
-     * Pulls a selection of vlasses from the appropriate $variant section of the config file, using logic derived from
+     * Pulls a selection of classes from the appropriate $variant section of the config file, using logic derived from
      * the provided $attributes from the Component itself ($this->arrayBuildClasses), and
      */
-    private function classesVariant($component, $variant, $attributes): Collection
+    private function classesVariant(): Collection
     {
+        $attributes = $this->buildClassNames;
+
         $hasHollow     = $attributes['hollow'] ?? null;
-        $hasHover      = $this->components[$component]['options']['hover'] ?? null;
-        $hasFocus      = $this->components[$component]['options']['focus'] ?? null;
-        $hasGradient   = $this->components[$component]['options']['gradient'] ?? null;
-        $hasBackground = $this->components[$component]['options']['background'] ?? null;
-        $hasText       = $this->components[$component]['options']['text'] ?? null;
+        $hasHover      = $this->component['options']['hover'] ?? null;
+        $hasFocus      = $this->component['options']['focus'] ?? null;
+        $hasGradient   = $this->component['options']['gradient'] ?? null;
+        $hasBackground = $this->component['options']['background'] ?? null;
+        $hasText       = $this->component['options']['text'] ?? null;
         $hasAccent     = $attributes['accent'] ?? null;
 
         if (false !== $hasBackground) {
@@ -200,6 +201,14 @@ class LaravelViewComponents
         return array_key_exists('elements', $this->component) && is_array($this->component['elements'])
             ? array_keys($this->component['elements'])
             : [];
+    }
+
+    public function getTwMergeStrings(): array
+    {
+        return array_merge(
+            ['base' => $this->buildClasses()],
+            $this->buildElementClasses()
+        );
     }
 
     public function getVariant(): array

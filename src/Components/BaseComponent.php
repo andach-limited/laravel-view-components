@@ -20,23 +20,9 @@ abstract class BaseComponent extends Component
 
     public function __construct()
     {
-        $vars    = get_object_vars($this);
-        $size    = $vars['size'] ?? null;
-        $variant = $vars['variant'] ?? null;
-
-        $lvc = new LaravelViewComponents($this->getClassName(), $variant, $vars);
-
-        //        dd(
-        //            ['base' => $lvc->buildClasses($this->getClassName())],
-        //            $lvc->buildElementClasses($this->getClassName(), $size)
-        //        );
-
-        $this->twMergeStrings = array_merge(
-            ['base' => $lvc->buildClasses($this->getClassName())],
-            $lvc->buildElementClasses($this->getClassName(), $size)
-        );
-
-        $this->variantArray = $lvc->getVariant();
+        $lvc                  = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
+        $this->twMergeStrings = $lvc->getTwMergeStrings();
+        $this->variantArray   = $lvc->getVariant();
     }
 
     protected function extractTextSize(string $classString): ?string
@@ -48,7 +34,7 @@ abstract class BaseComponent extends Component
         return null;
     }
 
-    private function getClassName(): string
+    protected function getClassName(): string
     {
         return Str::of(class_basename(static::class))->snake('-');
     }

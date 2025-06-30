@@ -16,13 +16,14 @@ class Code extends BaseComponent
         public ?string $language = null,
         public ?bool $lineNumbers = true,
         public ?string $windowStyle = 'windows',
-        // Attribute Arguments
-        public ?bool $border = null,
-        public ?string $hollow = null,
-        public ?bool $ring = null,
-        public ?bool $rounded = null,
-        public ?bool $shadow = null,
         // Generic Arguments
+        public ?string $background = null,
+        public ?string $border = null,
+        public ?string $divide = null,
+        public ?string $hollow = null,
+        public ?string $ring = null,
+        public ?string $rounded = null,
+        public ?string $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
     ) {

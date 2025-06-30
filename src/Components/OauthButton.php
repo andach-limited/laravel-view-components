@@ -8,13 +8,14 @@ class OauthButton extends BaseComponent
         // Unique Arguments
         public ?string $icon = null,
         public ?string $url = null,
-        // Attribute Arguments
-        public ?bool $background = null,
-        public ?bool $border = null,
-        public ?bool $ring = null,
-        public ?bool $rounded = null,
-        public ?bool $shadow = null,
         // Generic Arguments
+        public ?string $background = null,
+        public ?string $border = null,
+        public ?string $divide = null,
+        public ?string $hollow = null,
+        public ?string $ring = null,
+        public ?string $rounded = null,
+        public ?string $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
     ) {

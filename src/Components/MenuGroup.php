@@ -14,12 +14,14 @@ class MenuGroup extends BaseComponent
         public ?bool $selected = false,
         public ?array $items = [],
         public ?string $icon = '',
-        // Attribute Arguments
-        public ?bool $border = null,
-        public ?bool $ring = null,
-        public ?bool $rounded = null,
-        public ?bool $shadow = null,
         // Generic Arguments
+        public ?string $background = null,
+        public ?string $border = null,
+        public ?string $divide = null,
+        public ?string $hollow = null,
+        public ?string $ring = null,
+        public ?string $rounded = null,
+        public ?string $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
     ) {
