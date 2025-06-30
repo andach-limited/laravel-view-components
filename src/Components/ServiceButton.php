@@ -2,7 +2,7 @@
 
 namespace Andach\LaravelViewComponents\Components;
 
-class OauthButton extends BaseComponent
+class ServiceButton extends BaseComponent
 {
     public function __construct(
         // Unique Arguments
@@ -24,6 +24,6 @@ class OauthButton extends BaseComponent
 
     public function render()
     {
-        return view(config('view-components.views.oauth-button'));
+        return view(config('view-components.views.service-button'));
     }
 }

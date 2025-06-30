@@ -14,7 +14,7 @@ use Andach\LaravelViewComponents\Components\FormSection;
 use Andach\LaravelViewComponents\Components\H;
 use Andach\LaravelViewComponents\Components\MenuGroup;
 use Andach\LaravelViewComponents\Components\NoResults;
-use Andach\LaravelViewComponents\Components\OauthButton;
+use Andach\LaravelViewComponents\Components\ServiceButton;
 use Andach\LaravelViewComponents\Components\ProgressBar;
 use Andach\LaravelViewComponents\Components\ProgressBarItem;
 use Andach\LaravelViewComponents\Components\Table;
@@ -56,9 +56,9 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', H::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)
-            ->hasViewComponent('andach', OauthButton::class)
             ->hasViewComponent('andach', ProgressBar::class)
             ->hasViewComponent('andach', ProgressBarItem::class)
+            ->hasViewComponent('andach', ServiceButton::class)
             ->hasViewComponent('andach', Table::class)
             ->hasViewComponent('andach', Tbody::class)
             ->hasViewComponent('andach', Td::class)

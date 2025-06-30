@@ -15,7 +15,6 @@ return [
         'button'                   => 'view-components::general.button',
         'card'                     => 'view-components::general.card',
         'chat'                     => 'view-components::general.chat',
-        'chat-attachment'          => 'view-components::general.chat-attachment',
         'code'                     => 'view-components::general.code',
         'form-attachment'          => 'view-components::general.form-attachment',
         'form-checkbox-icon'       => 'view-components::general.form-checkbox-icon',
@@ -23,17 +22,10 @@ return [
         'h'                        => 'view-components::general.h',
         'icon'                     => 'view-components::icon',
         'menu-group'               => 'view-components::general.menu-group',
-        'menu-line'                => 'view-components::general.menu-line',
         'no-results'               => 'view-components::general.no-results',
-        'oauth-button'             => 'view-components::general.oauth-button',
         'progress-bar'             => 'view-components::general.progress-bar',
-        'progress-bar-item'        => 'view-components::general.progress-bar-item',
-        'signature-pad'            => 'view-components::general.signature-pad',
-        't-body'                   => 'view-components::general.t-body',
-        't-head'                   => 'view-components::general.t-head',
+        'service-button'           => 'view-components::general.service-button',
         'table'                    => 'view-components::general.table',
-        'td'                       => 'view-components::general.td',
-        'th'                       => 'view-components::general.th',
     ],
 
     'variants' => [
@@ -345,10 +337,10 @@ return [
         ],
 
         'menu-group' => [
-            'base'     => 'list-none',
+            'base'     => 'list-none p-4 mb-4',
             'elements' => [
                 'first-li' => [
-                    'base'  => 'px-3 py-2 rounded-sm mb-0.5 last:mb-0',
+                    'base'  => 'rounded-sm mb-0.5 last:mb-0',
                     'sizes' => [
                         'xs'   => 'text-xs',
                         'sm'   => 'text-xs',
@@ -358,7 +350,7 @@ return [
                     ],
                 ],
                 'first-li-selected' => [
-                    'base'  => 'px-3 py-2 rounded-sm mb-0.5 last:mb-0 brightness-80 font-bold',
+                    'base'  => 'rounded-sm mb-0.5 last:mb-0 brightness-80 font-bold',
                     'sizes' => [
                         'xs'   => 'text-xs',
                         'sm'   => 'text-xs',
@@ -401,7 +393,7 @@ return [
                     ],
                 ],
                 'submenu-div' => [
-                    'base' => 'lg:hidden lg:sidebar-expanded:block 2xl:block',
+                    'base' => 'lg:hidden lg:sidebar-expanded:block 2xl:block pl-4',
                 ],
                 'second-li' => [
                     'base' => 'block p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700',
@@ -411,11 +403,11 @@ return [
                 ],
             ],
             'sizes' => [
-                'xs'   => 'text-xs px-2 py-1',
-                'sm'   => 'text-sm px-3 py-2',
-                'base' => 'text-base px-4 py-3',
-                'lg'   => 'text-lg px-5 py-4',
-                'xl'   => 'text-xl px-6 py-5',
+                'xs'   => 'text-xs',
+                'sm'   => 'text-sm',
+                'base' => 'text-base',
+                'lg'   => 'text-lg',
+                'xl'   => 'text-xl',
             ],
             'attributes' => [
                 'border'  => [true, 'border-2'],
@@ -474,7 +466,34 @@ return [
             ],
         ],
 
-        'oauth-button' => [
+        'progress-bar' => [
+            'base'     => 'flex items-center w-full text-center',
+            'elements' => [
+                'li-complete' => [
+                    'base' => '',
+                ],
+                'li-incomplete' => [
+                    'base' => '',
+                ],
+                'li' => [
+                    'base' => 'flex-1 flex flex-col items-center border-b-4 border-solid',
+                ],
+                'li-not-last' => [
+                    'base' => '',
+                ],
+                'icon' => [
+                    'base' => 'flex items-center after:content-[\'/\'] sm:after:hidden after:mx-2',
+                ],
+                'icon-span' => [
+                    'base' => 'flex items-center justify-center w-24 h-24 rounded-full shrink-0',
+                ],
+                'content' => [
+                    'base' => 'me-2',
+                ],
+            ],
+        ],
+
+        'service-button' => [
             'base'     => 'flex items-center justify-start w-64 px-6 py-2 mb-2 hover:brightness-90 hover:font-bold filter hover:filter transition-all duration-200',
             'elements' => [
                 'icon' => [
@@ -509,33 +528,6 @@ return [
             ],
             'options' => [
                 'background' => false,
-            ],
-        ],
-
-        'progress-bar' => [
-            'base'     => 'flex items-center w-full text-center',
-            'elements' => [
-                'li-complete' => [
-                    'base' => '',
-                ],
-                'li-incomplete' => [
-                    'base' => '',
-                ],
-                'li' => [
-                    'base' => 'flex-1 flex flex-col items-center border-b-4 border-solid',
-                ],
-                'li-not-last' => [
-                    'base' => '',
-                ],
-                'icon' => [
-                    'base' => 'flex items-center after:content-[\'/\'] sm:after:hidden after:mx-2',
-                ],
-                'icon-span' => [
-                    'base' => 'flex items-center justify-center w-24 h-24 rounded-full shrink-0',
-                ],
-                'content' => [
-                    'base' => 'me-2',
-                ],
             ],
         ],
 
