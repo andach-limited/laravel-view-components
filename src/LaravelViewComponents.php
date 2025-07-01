@@ -66,8 +66,8 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-        //                        dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
-        //                dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
+//                                dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
+//                        dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
@@ -145,13 +145,14 @@ class LaravelViewComponents
     {
         $attributes = $this->buildClassNames;
 
+        $hasAccent     = $this->vars['accent'] ?? false;
+        $hasBackground = $this->component['options']['divide'] ?? null;
         $hasHollow     = $this->vars['hollow'] ?? false;
         $hasHover      = $this->component['options']['hover'] ?? null;
         $hasFocus      = $this->component['options']['focus'] ?? null;
         $hasGradient   = $this->component['options']['gradient'] ?? null;
         $hasBackground = $this->component['options']['background'] ?? null;
         $hasText       = $this->component['options']['text'] ?? null;
-        $hasAccent     = $attributes['accent'] ?? null;
 
         if (false !== $hasBackground) {
             $backgroundEnabled = true;
@@ -175,8 +176,8 @@ class LaravelViewComponents
             'focus'      => $hasFocus,
             'active'     => false,
             'gradient'   => $hasGradient && !$hasHollow, // Also forget text?
-            'divide'     => false,
-            'accent'     => true,
+            'divide'     => in_array('divide', $this->enabledAttributes),
+            'accent'     => $hasAccent,
         ];
 
         //        $enabledAttributes = $this->enabledAttributes($component, $attributes);

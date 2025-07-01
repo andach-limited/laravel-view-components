@@ -539,14 +539,22 @@ return [
         ],
 
         'table' => [
-            'base' => 'table-auto w-full dark:text-slate-300
-                [&>thead]:text-xs [&>thead]:font-semibold [&>thead]:uppercase [&>thead]:text-slate-500
-                [&>thead]:dark:text-slate-400 [&>thead]:bg-slate-50 [&>thead]:dark:bg-slate-900/20
-                [&>thead]:border-t [&>thead]:border-b [&>thead]:border-slate-200 [&>thead]:dark:border-slate-700
-                [&>tbody]:text-sm [&>tbody]:divide-y [&>tbody]:divide-slate-200 [&>tbody]:dark:divide-slate-700
+            'base' => 'table-auto w-full
+                [&>thead]:font-semibold [&>thead]:uppercase
+                [&>tbody]:divide-y
                 [&_th]:px-2 [&_th:first-child]:pl-5 [&_th:last-child]:pr-5 [&_th]:py-3 [&_th]:whitespace-nowrap
                 [&_th>div]:font-semibold [&_th>div]:text-left
                 [&_td]:px-2 [&_td:first-child]:pl-5 [&_td:last-child]:pr-5 [&_td]:py-1 [&_td]:whitespace-nowrap',
+            'sizes' => [
+                'xs'   => 'text-xs',
+                'sm'   => 'text-sm',
+                'base' => 'text-base',
+                'lg'   => 'text-lg',
+                'xl'   => 'text-xl',
+            ],
+            'attributes' => [
+                'divide'  => [true, ''],
+            ],
         ],
     ],
 ];
