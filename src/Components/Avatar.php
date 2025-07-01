@@ -10,12 +10,12 @@ class Avatar extends BaseComponent
         public ?string $img = null,
         public ?string $label = null,
         // Generic Arguments
-        public ?string $background = null,
-        public ?string $border = null,
-        public ?string $hollow = null,
-        public ?string $ring = null,
-        public ?string $rounded = null,
-        public ?string $shadow = null,
+        public ?bool $background = null,
+        public ?bool $border = null,
+        public ?bool $hollow = null,
+        public ?bool $ring = null,
+        public ?bool $rounded = null,
+        public ?bool $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
     ) {

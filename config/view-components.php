@@ -267,7 +267,7 @@ return [
                 'border'  => [true, 'border-2'],
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded-full'],
-                'shadow'  => [false, 'shadow-md'],
+                'shadow'  => [false, 'shadow-md/50'],
             ],
         ],
 
