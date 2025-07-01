@@ -12,6 +12,7 @@ return [
     'views' => [
         'alert'                    => 'view-components::general.alert',
         'attachments-and-comments' => 'view-components::general.attachments-and-comments',
+        'avatar'                   => 'view-components::general.avatar',
         'button'                   => 'view-components::general.button',
         'card'                     => 'view-components::general.card',
         'chat'                     => 'view-components::general.chat',
@@ -236,6 +237,36 @@ return [
                 'border'  => [true, 'border-2'],
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
+                'shadow'  => [false, 'shadow-md'],
+            ],
+        ],
+
+        'avatar' => [
+            'base'     => 'inline-flex',
+            'elements' => [
+                'label' => [
+                    'base'  => 'flex w-full justify-center items-center',
+                    'sizes' => [
+                        'xs'   => 'text-base',
+                        'sm'   => 'text-lg',
+                        'base' => 'text-xl',
+                        'lg'   => 'text-2xl',
+                        'xl'   => 'text-3xl',
+                    ],
+                ],
+            ],
+            'sizes' => [
+                'xs'   => 'h-10 w-10',
+                'sm'   => 'h-12 w-12',
+                'base' => 'h-16 w-16',
+                'lg'   => 'h-20 w-20',
+                'xl'   => 'h-24 w-24',
+            ],
+            'attributes' => [
+                'accent'  => [false, 'border-l-8'],
+                'border'  => [true, 'border-2'],
+                'ring'    => [false, 'ring-2 ring-offset-2'],
+                'rounded' => [true, 'rounded-full'],
                 'shadow'  => [false, 'shadow-md'],
             ],
         ],

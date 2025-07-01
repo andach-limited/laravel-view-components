@@ -4,6 +4,7 @@ namespace Andach\LaravelViewComponents;
 
 use Andach\LaravelViewComponents\Components\Alert;
 use Andach\LaravelViewComponents\Components\AttachmentsAndComments;
+use Andach\LaravelViewComponents\Components\Avatar;
 use Andach\LaravelViewComponents\Components\Button;
 use Andach\LaravelViewComponents\Components\Card;
 use Andach\LaravelViewComponents\Components\Chat;
@@ -46,6 +47,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasViewComponent('andach', Alert::class)
             ->hasViewComponent('andach', AttachmentsAndComments::class)
+            ->hasViewComponent('andach', Avatar::class)
             ->hasViewComponent('andach', Button::class)
             ->hasViewComponent('andach', Card::class)
             ->hasViewComponent('andach', Chat::class)
