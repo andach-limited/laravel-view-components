@@ -8,6 +8,7 @@ class Card extends BaseComponent
         // Generic Arguments
         public ?string $background = null,
         public ?string $border = null,
+        public ?string $divide = null,
         public ?string $hollow = null,
         public ?string $ring = null,
         public ?string $rounded = null,

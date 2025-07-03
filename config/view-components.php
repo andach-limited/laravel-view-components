@@ -62,27 +62,27 @@ return [
             'divide'              => 'divide-slate-800',
             'accent'              => 'accent-slate-600 hover:accent-slate-700',
             'highlightBorder'     => 'border-slate-700',
-            'highlightDarkBorder' => 'dark:border-slate-100',
+            'highlightDarkBorder' => '',
             'inactiveBorder'      => 'border-slate-100',
-            'inactiveDarkBorder'  => 'dark:border-slate-700',
+            'inactiveDarkBorder'  => '',
         ],
 
         'light' => [
-            'background'          => 'bg-slate-50/80 dark:bg-slate-900',
-            'text'                => 'text-slate-800 dark:text-slate-200',
-            'border'              => 'border-slate-200 dark:border-slate-700',
-            'shadow'              => 'shadow-slate-500/10 dark:shadow-slate-900/10',
-            'ring'                => 'ring-slate-200 dark:ring-slate-700 ring-offset-slate-100 dark:ring-offset-slate-800',
-            'hover'               => 'hover:bg-slate-300 hover:dark:bg-slate-800 hover:from-slate-400 hover:to-slate-700 hover:text-slate-800/70 hover:dark:text-slate-400/70',
-            'focus'               => 'focus-within:outline focus-within:outline-slate-600 dark:focus-within:outline-slate-400 focus-within:outline-2',
-            'active'              => 'bg-slate-300 dark:bg-slate-800 from-slate-400 to-slate-700',
+            'background'          => 'bg-slate-50/80',
+            'text'                => 'text-slate-800',
+            'border'              => 'border-slate-200',
+            'shadow'              => 'shadow-slate-500/10',
+            'ring'                => 'ring-slate-200 ring-offset-slate-100',
+            'hover'               => 'hover:bg-slate-300 hover:from-slate-400 hover:to-slate-700 hover:text-slate-800/70',
+            'focus'               => 'focus-within:outline focus-within:outline-slate-600 focus-within:outline-2',
+            'active'              => 'bg-slate-300 from-slate-400 to-slate-700',
             'gradient'            => 'bg-gradient-to-br from-slate-700 to-slate-400 text-slate-100',
-            'divide'              => 'divide-slate-200 dark:divide-slate-700',
+            'divide'              => 'divide-slate-200',
             'accent'              => 'accent-slate-600 hover:accent-slate-700',
             'highlightBorder'     => 'border-slate-700',
-            'highlightDarkBorder' => 'dark:border-slate-100',
+            'highlightDarkBorder' => '',
             'inactiveBorder'      => 'border-slate-100',
-            'inactiveDarkBorder'  => 'dark:border-slate-700',
+            'inactiveDarkBorder'  => '',
         ],
 
         'brand' => [
@@ -275,34 +275,34 @@ return [
             'base'     => 'relative flex flex-col mb-4 rounded-lg',
             'elements' => [
                 'header' => [
-                    'base'  => 'mx-3 mb-0 border-b p-3 text-sm font-medium',
-                    //                    'sizes' => [
-                    //                        'xs'   => 'px-2 py-1',
-                    //                        'sm'   => 'px-3 py-2',
-                    //                        'base' => 'px-4 py-3',
-                    //                        'lg'   => 'px-5 py-4',
-                    //                        'xl'   => 'px-6 py-5',
-                    //                    ],
+                    'base'  => 'mx-3',
+                    'sizes' => [
+                        'xs'   => 'px-2 py-1 text-xs',
+                        'sm'   => 'px-3 py-2 text-sm',
+                        'base' => 'px-4 py-3 text-base',
+                        'lg'   => 'px-5 py-4 text-lg',
+                        'xl'   => 'px-6 py-5 text-xl',
+                    ],
                 ],
                 'body' => [
-                    'base'  => 'mx-3 p-3',
-                    //                    'sizes' => [
-                    //                        'xs'   => 'px-2 py-1',
-                    //                        'sm'   => 'px-3 py-2',
-                    //                        'base' => 'px-4 py-3',
-                    //                        'lg'   => 'px-5 py-4',
-                    //                        'xl'   => 'px-6 py-5',
-                    //                    ],
+                    'base'  => 'mx-3',
+                    'sizes' => [
+                        'xs'   => 'px-2 py-1 text-xs',
+                        'sm'   => 'px-3 py-2 text-sm',
+                        'base' => 'px-4 py-3 text-base',
+                        'lg'   => 'px-5 py-4 text-lg',
+                        'xl'   => 'px-6 py-5 text-xl',
+                    ],
                 ],
                 'footer' => [
-                    'base'  => 'border-t p-3 text-sm font-medium mx-3',
-                    //                    'sizes' => [
-                    //                        'xs'   => 'px-2 py-1',
-                    //                        'sm'   => 'px-3 py-2',
-                    //                        'base' => 'px-4 py-3',
-                    //                        'lg'   => 'px-5 py-4',
-                    //                        'xl'   => 'px-6 py-5',
-                    //                    ],
+                    'base'  => 'mx-3',
+                    'sizes' => [
+                        'xs'   => 'px-2 py-1 text-xs',
+                        'sm'   => 'px-3 py-2 text-sm',
+                        'base' => 'px-4 py-3 text-base',
+                        'lg'   => 'px-5 py-4 text-lg',
+                        'xl'   => 'px-6 py-5 text-xl',
+                    ],
                 ],
             ],
             'sizes' => [
@@ -314,6 +314,7 @@ return [
             ],
             'attributes' => [
                 'border'  => [true, 'border-2'],
+                'divide'  => [true, 'divide-y'],
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
                 'shadow'  => [false, 'shadow-md'],
@@ -380,18 +381,8 @@ return [
                         'xl'   => 'text-xl',
                     ],
                 ],
-                'first-li-selected' => [
-                    'base'  => 'rounded-sm mb-0.5 last:mb-0 brightness-80 font-bold',
-                    'sizes' => [
-                        'xs'   => 'text-xs',
-                        'sm'   => 'text-xs',
-                        'base' => 'text-base',
-                        'lg'   => 'text-lg',
-                        'xl'   => 'text-xl',
-                    ],
-                ],
                 'parent' => [
-                    'base'  => 'flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
+                    'base'  => 'flex items-center w-full p-2 text-base transition duration-75 rounded-lg group',
                     'sizes' => [
                         'xs'   => 'text-xs',
                         'sm'   => 'text-xs',
@@ -427,10 +418,10 @@ return [
                     'base' => 'lg:hidden lg:sidebar-expanded:block 2xl:block pl-4',
                 ],
                 'second-li' => [
-                    'base' => 'block p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700',
+                    'base' => 'block p-2 rounded',
                 ],
-                'second-li-selected' => [
-                    'base' => 'block p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 brightness-80 font-bold',
+                'a-selected' => [
+                    'base' => 'brightness-80 font-extrabold',
                 ],
             ],
             'sizes' => [

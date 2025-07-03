@@ -66,8 +66,7 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-        //                                dd($classes, $baseClasses, $attributeClasses, $variantClasses, $sizeClasses);
-        //                        dd(TailwindMerge::merge($classes->flatten()->implode(' ')));
+//        dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $variantClasses, $sizeClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
