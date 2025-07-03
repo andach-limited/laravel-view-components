@@ -17,6 +17,7 @@ return [
         'card'                     => 'view-components::general.card',
         'chat'                     => 'view-components::general.chat',
         'code'                     => 'view-components::general.code',
+        'faq'                     => 'view-components::general.faq',
         'form-attachment'          => 'view-components::general.form-attachment',
         'form-checkbox-icon'       => 'view-components::general.form-checkbox-icon',
         'form-section'             => 'view-components::general.form-section',
@@ -350,6 +351,56 @@ return [
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
                 'shadow'  => [false, 'shadow-md'],
+            ],
+        ],
+
+        'faq' => [
+            'base' => '[&_svg]:open:rotate-0 mb-4',
+            'elements' => [
+                'answer' => [
+                    'base' => 'bg-white/80 dark:bg-slate-800',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+                'expand-icon' => [
+                    'base' => 'fill-current text-inherit hover:opacity-75 rotate-45 ease-in-out duration-300',
+                    'sizes' => [
+                        'xs' => 'w-2',
+                        'sm' => 'w-3',
+                        'base' => 'w-4',
+                        'lg' => 'w-5',
+                        'xl' => 'w-6',
+                    ],
+                ],
+                'question' => [
+                    'base' => 'list-none -webkit-details-marker:hidden flex justify-between items-center cursor-pointer',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1 gap-1',
+                        'sm' => 'px-3 py-2 gap-2',
+                        'base' => 'px-4 py-3 gap-3',
+                        'lg' => 'px-5 py-4 gap-4',
+                        'xl' => 'px-6 py-5 gap-5',
+                    ],
+                ],
+            ],
+            'sizes' => [
+                'xs' => 'text-xs',
+                'sm' => 'text-sm',
+                'base' => 'text-base',
+                'lg' => 'text-lg',
+                'xl' => 'text-xl',
+            ],
+            'attributes' => [
+                'accent' => [false, 'border-l-8'],
+                'border' => [true, 'border-2'],
+                'ring' => [false, 'ring-2 ring-offset-2'],
+                'rounded' => [true, 'rounded'],
+                'shadow' => [false, 'shadow-md'],
             ],
         ],
 

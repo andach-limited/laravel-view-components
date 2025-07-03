@@ -9,6 +9,7 @@ use Andach\LaravelViewComponents\Components\Button;
 use Andach\LaravelViewComponents\Components\Card;
 use Andach\LaravelViewComponents\Components\Chat;
 use Andach\LaravelViewComponents\Components\Code;
+use Andach\LaravelViewComponents\Components\Faq;
 use Andach\LaravelViewComponents\Components\FormAttachment;
 use Andach\LaravelViewComponents\Components\FormCheckboxIcon;
 use Andach\LaravelViewComponents\Components\FormSection;
@@ -52,6 +53,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Card::class)
             ->hasViewComponent('andach', Chat::class)
             ->hasViewComponent('andach', Code::class)
+            ->hasViewComponent('andach', Faq::class)
             ->hasViewComponent('andach', FormAttachment::class)
             ->hasViewComponent('andach', FormCheckboxIcon::class)
             ->hasViewComponent('andach', FormSection::class)
