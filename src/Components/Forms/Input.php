@@ -5,13 +5,14 @@ namespace Andach\LaravelViewComponents\Components\Forms;
 use Andach\LaravelViewComponents\Components\BaseComponent;
 use Andach\LaravelViewComponents\Traits\HandlesDefaultAndOldValue;
 use Andach\LaravelViewComponents\Traits\HandlesValidationErrors;
+use TailwindMerge\Laravel\Facades\TailwindMerge;
 
 class Input extends BaseComponent
 {
     use HandlesDefaultAndOldValue;
     use HandlesValidationErrors;
 
-    public bool $spoofMethod = false;
+    public string $class;
     public string $value = '';
 
     public function __construct(
@@ -43,6 +44,12 @@ class Input extends BaseComponent
         }
 
         $this->value = $this->returnValue($name, $bind, $default, $language);
+
+        $this->class = TailwindMerge::merge($this->twMergeStrings['input']);
+        if ($this->hasErrorAndShow($name))
+        {
+            $this->class = TailwindMerge::merge($this->twMergeStrings['input'], $this->variantArray['errorBorder']);
+        }
     }
 
     public function render()

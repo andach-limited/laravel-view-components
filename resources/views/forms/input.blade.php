@@ -4,13 +4,13 @@
             <x-andach-label :label="$label" />
         @endif
 
-        <input {{ $attributes->twMergeFor('content', $twMergeStrings['input']) }}
+        <input class="{{ $class }}"
                value="{{ $value }}"
                name="{{ $name }}"
                type="{{ $type }}" />
     </label>
 
-    @if($hasErrorAndShow($name))
-{{--        <x-form-errors :name="$name" />--}}
+    @if ($hasErrorAndShow($name))
+        <x-andach-form-error :name="$name" />
     @endif
 </div>

@@ -19,6 +19,7 @@ return [
         'code'                     => 'view-components::general.code',
         'faq'                     => 'view-components::general.faq',
         'form'          => 'view-components::forms.form',
+        'form-error'          => 'view-components::forms.form-error',
         'form-checkbox-icon'       => 'view-components::general.form-checkbox-icon',
         'form-section'             => 'view-components::general.form-section',
         'h'                        => 'view-components::general.h',
@@ -45,6 +46,8 @@ return [
             'gradient'            => 'bg-gradient-to-br from-slate-200 to-slate-100 text-slate-800',
             'divide'              => 'divide-slate-300 dark:divide-slate-700',
             'accent'              => 'accent-slate-600 hover:accent-slate-700',
+            'errorBorder'     => 'border-red-500 dark:border-red-500',
+            'errorText'     => 'text-red-500 dark:text-red-500',
             'highlightBorder'     => 'border-slate-700',
             'highlightDarkBorder' => 'dark:border-slate-100',
             'inactiveBorder'      => 'border-slate-100',
@@ -406,6 +409,10 @@ return [
         ],
 
         'form' => [],
+
+        'form-error' => [
+            'base' => 'text-red-500 text-xs italic',
+        ],
 
         'h' => [
             'base'       => 'text-6xl font-bold pb-4',
