@@ -23,6 +23,7 @@ return [
         'form-section'             => 'view-components::general.form-section',
         'h'                        => 'view-components::general.h',
         'input'                     => 'view-components::forms.input',
+        'label'                     => 'view-components::forms.label',
         'menu-group'               => 'view-components::general.menu-group',
         'no-results'               => 'view-components::general.no-results',
         'progress-bar'             => 'view-components::general.progress-bar',
@@ -424,18 +425,20 @@ return [
         'input' => [
             'base' => 'mb-4',
             'elements' => [
-                'label' => [
-                    'base' => 'block mb-2',
-                ],
                 'input' => [
-                    'base' => 'block w-full appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
+                    'base' => 'block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
                 ],
             ],
             'attributes' => [
-                'border'  => [true, 'border-2'],
+                'border'  => [false, 'border-2'],
+                'hollow'  => [true, ''],
                 'rounded' => [true, 'rounded'],
-                'shadow'  => [true, 'shadow'],
-            ]
+                'shadow'  => [false, 'shadow'],
+            ],
+        ],
+
+        'label' => [
+            'base' => 'block mb-2 py-2 px-3',
         ],
 
         'menu-group' => [

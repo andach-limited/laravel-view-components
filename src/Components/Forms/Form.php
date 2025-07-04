@@ -9,6 +9,7 @@ class Form extends BaseComponent
     public bool $spoofMethod;
     public function __construct(
         // Unique Arguments
+        public string $action,
         public string $method = 'POST',
         // Generic Arguments
         public ?string $background = null,

@@ -1,6 +1,8 @@
 <div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
     <label class="block">
-{{--        <x-form-label :label="$label" />--}}
+        @if ($type !== 'hidden')
+            <x-andach-label :label="$label" />
+        @endif
 
         <input {{ $attributes->twMergeFor('content', $twMergeStrings['input']) }}
                value="{{ $value }}"
