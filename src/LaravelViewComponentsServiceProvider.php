@@ -13,6 +13,7 @@ use Andach\LaravelViewComponents\Components\Faq;
 use Andach\LaravelViewComponents\Components\FormAttachment;
 use Andach\LaravelViewComponents\Components\FormCheckboxIcon;
 use Andach\LaravelViewComponents\Components\Forms\Form;
+use Andach\LaravelViewComponents\Components\Forms\Input;
 use Andach\LaravelViewComponents\Components\FormSection;
 use Andach\LaravelViewComponents\Components\H;
 use Andach\LaravelViewComponents\Components\MenuGroup;
@@ -56,6 +57,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Faq::class)
             ->hasViewComponent('andach', Form::class)
             ->hasViewComponent('andach', H::class)
+            ->hasViewComponent('andach', Input::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)
             ->hasViewComponent('andach', ProgressBar::class)

@@ -22,7 +22,7 @@ return [
         'form-checkbox-icon'       => 'view-components::general.form-checkbox-icon',
         'form-section'             => 'view-components::general.form-section',
         'h'                        => 'view-components::general.h',
-        'icon'                     => 'view-components::icon',
+        'input'                     => 'view-components::forms.input',
         'menu-group'               => 'view-components::general.menu-group',
         'no-results'               => 'view-components::general.no-results',
         'progress-bar'             => 'view-components::general.progress-bar',
@@ -419,6 +419,23 @@ return [
             ],
             // Set this to the five sizes under 'text-6xl' (or whatever you pick as the H1 size) above so they load in Tailwind.
             'include' => 'text-5xl text-4xl text-3xl text-2xl text-xl',
+        ],
+
+        'input' => [
+            'base' => 'mb-4',
+            'elements' => [
+                'label' => [
+                    'base' => 'block mb-2',
+                ],
+                'input' => [
+                    'base' => 'block w-full appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
+                ],
+            ],
+            'attributes' => [
+                'border'  => [true, 'border-2'],
+                'rounded' => [true, 'rounded'],
+                'shadow'  => [true, 'shadow'],
+            ]
         ],
 
         'menu-group' => [

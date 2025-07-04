@@ -20,9 +20,16 @@ abstract class BaseComponent extends Component
 
     public function __construct()
     {
-        $lvc                  = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
-        $this->twMergeStrings = $lvc->getTwMergeStrings();
-        $this->variantArray   = $lvc->getVariant();
+        try {
+            $lvc = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
+            $this->twMergeStrings = $lvc->getTwMergeStrings();
+            $this->variantArray   = $lvc->getVariant();
+        } catch (\ErrorException $e) {
+            if (str_contains($e->getMessage(), 'Undefined array key')) {
+                throw new \RuntimeException('Configuration error: Missing expected key in the config array. Please check your configuration.', 0, $e);
+            }
+            throw $e;
+        }
     }
 
     protected function extractTextSize(string $classString): ?string
@@ -42,5 +49,37 @@ abstract class BaseComponent extends Component
     protected function getSizeIndex(string $size): ?int
     {
         return array_search($size, $this->sizes, true);
+    }
+
+    private function setFormValue(
+        string $name,
+       $bind = null,
+       $default = null,
+       $language = null
+    ) {
+        $inputName = static::convertBracketsToDots($name);
+
+        if (!$language) {
+            $boundValue = $this->getBoundValue($bind, $inputName);
+
+            $default = is_null($boundValue) ? $default : $boundValue;
+
+            return $this->value = old($inputName, $default);
+        }
+
+        if ($bind !== false) {
+            $bind = $bind ?: $this->getBoundTarget();
+        }
+
+        if ($bind) {
+            $default = $bind->getTranslation($name, $language, false) ?: $default;
+        }
+
+        $this->value = old("{$inputName}.{$language}", $default);
+    }
+
+    protected static function convertBracketsToDots($name): string
+    {
+        return str_replace(['[', ']'], ['.', ''], $name);
     }
 }
