@@ -18,7 +18,7 @@ return [
         'chat'                     => 'view-components::general.chat',
         'code'                     => 'view-components::general.code',
         'faq'                     => 'view-components::general.faq',
-        'form-attachment'          => 'view-components::general.form-attachment',
+        'form'          => 'view-components::forms.form',
         'form-checkbox-icon'       => 'view-components::general.form-checkbox-icon',
         'form-section'             => 'view-components::general.form-section',
         'h'                        => 'view-components::general.h',
@@ -403,6 +403,8 @@ return [
                 'shadow' => [false, 'shadow-md'],
             ],
         ],
+
+        'form' => [],
 
         'h' => [
             'base'       => 'text-6xl font-bold pb-4',

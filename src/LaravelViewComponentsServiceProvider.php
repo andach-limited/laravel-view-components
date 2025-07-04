@@ -12,6 +12,7 @@ use Andach\LaravelViewComponents\Components\Code;
 use Andach\LaravelViewComponents\Components\Faq;
 use Andach\LaravelViewComponents\Components\FormAttachment;
 use Andach\LaravelViewComponents\Components\FormCheckboxIcon;
+use Andach\LaravelViewComponents\Components\Forms\Form;
 use Andach\LaravelViewComponents\Components\FormSection;
 use Andach\LaravelViewComponents\Components\H;
 use Andach\LaravelViewComponents\Components\MenuGroup;
@@ -47,27 +48,19 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasViewComponent('andach', Alert::class)
-            ->hasViewComponent('andach', AttachmentsAndComments::class)
             ->hasViewComponent('andach', Avatar::class)
             ->hasViewComponent('andach', Button::class)
             ->hasViewComponent('andach', Card::class)
             ->hasViewComponent('andach', Chat::class)
             ->hasViewComponent('andach', Code::class)
             ->hasViewComponent('andach', Faq::class)
-            ->hasViewComponent('andach', FormAttachment::class)
-            ->hasViewComponent('andach', FormCheckboxIcon::class)
-            ->hasViewComponent('andach', FormSection::class)
+            ->hasViewComponent('andach', Form::class)
             ->hasViewComponent('andach', H::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)
             ->hasViewComponent('andach', ProgressBar::class)
-            ->hasViewComponent('andach', ProgressBarItem::class)
             ->hasViewComponent('andach', ServiceButton::class)
             ->hasViewComponent('andach', Table::class)
-            ->hasViewComponent('andach', Tbody::class)
-            ->hasViewComponent('andach', Td::class)
-            ->hasViewComponent('andach', Th::class)
-            ->hasViewComponent('andach', Thead::class)
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
                     ->startWith(function (InstallCommand $command): void {
