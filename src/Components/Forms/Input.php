@@ -13,6 +13,7 @@ class Input extends BaseComponent
     use HandlesValidationErrors;
 
     public string $class;
+
     public string $value = '';
 
     public function __construct(
@@ -37,7 +38,7 @@ class Input extends BaseComponent
     ) {
         parent::__construct();
 
-        $this->floating = $floating && $type !== 'hidden';
+        $this->floating = $floating && 'hidden' !== $type;
 
         if ($language) {
             $this->name = "{$name}[{$language}]";
@@ -46,8 +47,7 @@ class Input extends BaseComponent
         $this->value = $this->returnValue($name, $bind, $default, $language);
 
         $this->class = TailwindMerge::merge($this->twMergeStrings['input']);
-        if ($this->hasErrorAndShow($name))
-        {
+        if ($this->hasErrorAndShow($name)) {
             $this->class = TailwindMerge::merge($this->twMergeStrings['input'], $this->variantArray['errorBorder']);
         }
     }

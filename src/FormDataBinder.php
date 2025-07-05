@@ -64,12 +64,12 @@ class FormDataBinder
 
             $defaultWire = config('form-components.default_wire');
 
-            if ($defaultWire !== false) {
+            if (false !== $defaultWire) {
                 $this->wire = $defaultWire;
             }
         }
 
-        return $this->wire !== false;
+        return false !== $this->wire;
     }
 
     /**
@@ -90,7 +90,7 @@ class FormDataBinder
      */
     public function wire($modifier = null): void
     {
-        $this->wire = $modifier !== false
+        $this->wire = false !== $modifier
             ? ($modifier ?: null)
             : false;
 

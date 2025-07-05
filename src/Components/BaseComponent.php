@@ -3,8 +3,10 @@
 namespace Andach\LaravelViewComponents\Components;
 
 use Andach\LaravelViewComponents\LaravelViewComponents;
+use ErrorException;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
+use RuntimeException;
 
 abstract class BaseComponent extends Component
 {
@@ -21,12 +23,12 @@ abstract class BaseComponent extends Component
     public function __construct()
     {
         try {
-            $lvc = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
+            $lvc                  = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
             $this->twMergeStrings = $lvc->getTwMergeStrings();
             $this->variantArray   = $lvc->getVariant();
-        } catch (\ErrorException $e) {
+        } catch (ErrorException $e) {
             if (str_contains($e->getMessage(), 'Undefined array key')) {
-                throw new \RuntimeException('Configuration error: Missing expected key in the config array. Please check your configuration.', 0, $e);
+                throw new RuntimeException('Configuration error: Missing expected key in the config array. Please check your configuration.', 0, $e);
             }
             throw $e;
         }
@@ -53,9 +55,9 @@ abstract class BaseComponent extends Component
 
     private function setFormValue(
         string $name,
-       $bind = null,
-       $default = null,
-       $language = null
+        $bind = null,
+        $default = null,
+        $language = null
     ) {
         $inputName = static::convertBracketsToDots($name);
 
@@ -67,7 +69,7 @@ abstract class BaseComponent extends Component
             return $this->value = old($inputName, $default);
         }
 
-        if ($bind !== false) {
+        if (false !== $bind) {
             $bind = $bind ?: $this->getBoundTarget();
         }
 

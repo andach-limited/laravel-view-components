@@ -11,6 +11,6 @@
     </label>
 
     @if ($hasErrorAndShow($name))
-        <x-andach-form-error :name="$name" />
+        <x-andach-form-error :name="$name" :variant="$variant" />
     @endif
 </div>

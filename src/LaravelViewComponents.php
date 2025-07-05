@@ -13,6 +13,8 @@ class LaravelViewComponents
 
     private array $component;
 
+    private string $componentName;
+
     private array $components = [];
 
     private array $elementClassNames;
@@ -30,6 +32,7 @@ class LaravelViewComponents
 
     public function __construct(string $component, array $vars)
     {
+        $this->componentName     = $component;
         $this->variantName       = $vars['variant'] ?? 'default';
         $this->components        = config('view-components.components');
         $this->variants          = config('view-components.variants');
@@ -66,7 +69,7 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-//        dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $variantClasses, $sizeClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
+        //        dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $variantClasses, $sizeClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
@@ -167,7 +170,7 @@ class LaravelViewComponents
 
         $keysNames = [
             'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
-            'text'       => true,
+            'text'       => $this->component['text'] ?? true,
             'border'     => in_array('border', $this->enabledAttributes),
             'shadow'     => in_array('shadow', $this->enabledAttributes),
             'ring'       => in_array('ring', $this->enabledAttributes),

@@ -30,11 +30,11 @@ trait HandlesValidationErrors
      * Getter for the ErrorBag.
      *
      * @param string $bag
-     * @return \Illuminate\Contracts\Support\MessageBag
+     * @return MessageBag
      */
     protected function getErrorBag(string $bag = 'default'): MessageBag
     {
-        $bags = View::shared('errors', fn () => request()->session()->get('errors', new ViewErrorBag));
+        $bags = View::shared('errors', fn () => request()->session()->get('errors', new ViewErrorBag()));
 
         return $bags->getBag($bag);
     }

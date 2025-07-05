@@ -49,8 +49,8 @@ trait HandlesBoundValues
      */
     private function getBoundValue($bind, string $name)
     {
-        if ($bind === false) {
-            return null;
+        if (false === $bind) {
+            return;
         }
 
         $bind = $bind ?: $this->getBoundTarget();
@@ -71,7 +71,7 @@ trait HandlesBoundValues
     /**
      * Formats a DateTimeInterface if the key is specified as a date or datetime in the model.
      *
-     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param Model $model
      * @param string $key
      * @param DateTimeInterface $date
      * @return void
@@ -84,7 +84,7 @@ trait HandlesBoundValues
 
         $cast = $model->getCasts()[$key] ?? null;
 
-        if (!$cast || $cast === 'date' || $cast === 'datetime') {
+        if (!$cast || 'date' === $cast || 'datetime' === $cast) {
             return Carbon::instance($date)->toJSON();
         }
 

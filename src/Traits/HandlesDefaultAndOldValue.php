@@ -22,7 +22,7 @@ trait HandlesDefaultAndOldValue
             return old($inputName, $default) ?? '';
         }
 
-        if ($bind !== false) {
+        if (false !== $bind) {
             $bind = $bind ?: $this->getBoundTarget();
         }
 

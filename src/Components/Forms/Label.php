@@ -7,6 +7,7 @@ use Andach\LaravelViewComponents\Components\BaseComponent;
 class Label extends BaseComponent
 {
     public bool $spoofMethod = false;
+
     public string $value = '';
 
     public function __construct(
