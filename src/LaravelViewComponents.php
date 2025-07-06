@@ -78,46 +78,21 @@ class LaravelViewComponents
 
     public function buildElementClasses(): array
     {
-        $size           = $this->vars['size'] ?? null;
+        $size = $this->vars['size'] ?? ($this->component['size'] ?? null);
         $elementClasses = [];
-        $elements       = $this->elementClassNames;
+        $elements       = $this->elementClassNames ?? [];
 
-        if ($elements) {
-            $sizeOverride = $this->component['size'] ?? null;
+        foreach ($elements as $elementString) {
+            $elementName = Str::kebab($elementString);
+            $element     = $this->component['elements'][$elementName] ?? [];
 
-            if (!$size) {
-                $size = $sizeOverride ?? $size ?? null;
-            }
+            $baseClasses = collect(['base' => $element['base'] ?? null]);
+            $conditionalClasses = $this->classesElementConditional($elementName);
+            $sizeClasses = $this->classesElementSize($element, $size);
 
-            foreach ($elements as $elementString) {
-                $elementName = Str::kebab($elementString);
-                $element     = $this->component['elements'][$elementName] ?? [];
+            $elementClasses[$elementString] = $this->mergeCollectionsUsingTailwind([$baseClasses, $conditionalClasses, $sizeClasses]);
 
-                $baseClasses = collect(['base' => $element['base'] ?? null]);
-                $conditional = $this->classesElementConditional($elementName);
-
-                $hasSize = $element['sizes'][$size] ?? null;
-                if (!$hasSize) {
-                    $hasSize = $element['sizes']['base'] ?? null;
-                }
-                $sized = collect(['size' => $hasSize]);
-
-                $classes = $baseClasses
-                    ->mergeRecursive($conditional)
-                    ->mergeRecursive($sized);
-
-//                dd($element,
-//                    $sizeOverride,
-//                    $baseClasses,
-//                    $conditional,
-//                    $sized,
-//                    $classes,
-//                    $classes->flatten()->implode(' '),
-//                    TailwindMerge::merge($classes->flatten()->implode(' ')),
-//                    );
-
-                $elementClasses[$elementString] = TailwindMerge::merge($classes->flatten()->implode(' '));
-            }
+//            dd($baseClasses, $conditionalClasses, $sizeClasses, $elementClasses, $elementString, $element);
         }
 
         return $elementClasses;
@@ -155,8 +130,6 @@ class LaravelViewComponents
             foreach ($this->component['conditional'] as $key => $options) {
                 $value = $this->vars[$key] ?? null;
 
-//                dd($key, $options, $value, $this->vars, $options[$value]);
-
                 if ($value && isset($options[$value]['base'])) {
                     $classes->put('conditional', $options[$value]['base']);
                 }
@@ -174,14 +147,21 @@ class LaravelViewComponents
         foreach ($element as $key => $options) {
             $value = $this->vars[$key] ?? null;
 
-//                dd($key, $options, $value, $this->vars, $options[$value]);
-
             if ($value && isset($options[$value]['base'])) {
                 $classes->put('base', $options[$value]['base']);
             }
         }
 
         return $classes;
+    }
+
+    private function classesElementSize(array $element, ?string $size = null): Collection
+    {
+        $hasSize = $element['sizes'][$size] ?? null;
+        if (!$hasSize) {
+            $hasSize = $element['sizes']['base'] ?? null;
+        }
+        return collect(['size' => $hasSize]);
     }
 
     public function classesSize(): Collection
@@ -278,5 +258,16 @@ class LaravelViewComponents
     public function getVariant(): array
     {
         return $this->variant;
+    }
+
+    private function mergeCollectionsUsingTailwind(array $collections): string
+    {
+        $parseCollections = collect();
+
+        foreach ($collections as $collection) {
+            $parseCollections = $parseCollections->mergeRecursive($collection);
+        }
+
+        return TailwindMerge::merge($parseCollections->flatten()->implode(' '));
     }
 }
