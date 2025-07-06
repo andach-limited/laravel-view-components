@@ -95,13 +95,20 @@ class LaravelViewComponents
 
                 $baseClasses = collect(['base' => $element['base'] ?? null]);
                 $conditional = $this->classesElementConditional($elementName);
-                $sized = collect(is_array($element['sizes'][$size] ?? null) ? $element['sizes'][$size] : []);
+
+                $hasSize = $element['sizes'][$size] ?? null;
+                if (!$hasSize) {
+                    $hasSize = $element['sizes']['base'] ?? null;
+                }
+                $sized = collect(['size' => $hasSize]);
 
                 $classes = $baseClasses
                     ->mergeRecursive($conditional)
                     ->mergeRecursive($sized);
 
-//                dd($baseClasses,
+//                dd($element,
+//                    $sizeOverride,
+//                    $baseClasses,
 //                    $conditional,
 //                    $sized,
 //                    $classes,
