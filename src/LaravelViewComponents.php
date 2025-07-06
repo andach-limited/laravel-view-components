@@ -51,14 +51,16 @@ class LaravelViewComponents
     {
         $baseClasses      = collect(['base' => $this->component['base'] ?? null]);
         $attributeClasses = $this->classesAttributes();
-        $variantClasses   = $this->classesVariant();
+        $conditionalClasses = $this->classesConditional();
         $sizeClasses      = $this->classesSize();
+        $variantClasses   = $this->classesVariant();
         //        $gridClasses = $this->gridClasses($component, $attributes['grid'] ?? null);
         //        $colClasses = $this->colClasses($component, $attributes['cols'] ?? null);
         //        $gapClasses = $this->gapClasses($component, $attributes['gap'] ?? null);
         $classes = $baseClasses->mergeRecursive($sizeClasses);
         $classes = $classes->mergeRecursive($variantClasses);
         $classes = $classes->mergeRecursive($attributeClasses);
+        $classes = $classes->mergeRecursive($conditionalClasses);
         //        $classes = $classes->mergeRecursive($gridClasses);
         //        $classes = $classes->mergeRecursive($colClasses);
         //        $classes = $classes->mergeRecursive($gapClasses);
@@ -69,7 +71,7 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-        //        dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $variantClasses, $sizeClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
+//                dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $conditionalClasses, $sizeClasses, $variantClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return TailwindMerge::merge($classes->flatten()->implode(' '));
     }
@@ -91,14 +93,23 @@ class LaravelViewComponents
                 $elementName = Str::kebab($elementString);
                 $element     = $this->component['elements'][$elementName] ?? [];
 
-                $base    = $element['base'] ?? null;
-                $hasSize = $element['sizes'][$size] ?? null;
+                $baseClasses = collect(['base' => $element['base'] ?? null]);
+                $conditional = $this->classesElementConditional($elementName);
+                $sized = collect(is_array($element['sizes'][$size] ?? null) ? $element['sizes'][$size] : []);
 
-                if (!$hasSize) {
-                    $hasSize = $element['sizes']['base'] ?? null;
-                }
+                $classes = $baseClasses
+                    ->mergeRecursive($conditional)
+                    ->mergeRecursive($sized);
 
-                $elementClasses[$elementString] = $base . ' ' . $hasSize;
+//                dd($baseClasses,
+//                    $conditional,
+//                    $sized,
+//                    $classes,
+//                    $classes->flatten()->implode(' '),
+//                    TailwindMerge::merge($classes->flatten()->implode(' ')),
+//                    );
+
+                $elementClasses[$elementString] = TailwindMerge::merge($classes->flatten()->implode(' '));
             }
         }
 
@@ -127,6 +138,43 @@ class LaravelViewComponents
         $this->enabledAttributes = array_keys($return);
 
         return collect($return);
+    }
+
+    public function classesConditional(): Collection
+    {
+        $classes = collect();
+
+        if (isset($this->component['conditional']) && is_array($this->component['conditional'])) {
+            foreach ($this->component['conditional'] as $key => $options) {
+                $value = $this->vars[$key] ?? null;
+
+//                dd($key, $options, $value, $this->vars, $options[$value]);
+
+                if ($value && isset($options[$value]['base'])) {
+                    $classes->put('conditional', $options[$value]['base']);
+                }
+            }
+        }
+
+        return $classes->filter()->unique()->values();
+    }
+
+    public function classesElementConditional(string $elementName): Collection
+    {
+        $classes = collect();
+        $element     = $this->component['conditional-elements'][$elementName] ?? [];
+
+        foreach ($element as $key => $options) {
+            $value = $this->vars[$key] ?? null;
+
+//                dd($key, $options, $value, $this->vars, $options[$value]);
+
+            if ($value && isset($options[$value]['base'])) {
+                $classes->put('base', $options[$value]['base']);
+            }
+        }
+
+        return $classes;
     }
 
     public function classesSize(): Collection

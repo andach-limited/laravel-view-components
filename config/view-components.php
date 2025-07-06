@@ -453,6 +453,15 @@ return [
                     'base' => 'block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
                 ],
             ],
+            'conditional-elements' => [
+                'input' => [
+                    'type' => [
+                        'color' => [
+                            'base' => 'py-0',
+                        ],
+                    ],
+                ],
+            ],
             'attributes' => [
                 'border'  => [false, 'border-2'],
                 'hollow'  => [true, ''],
