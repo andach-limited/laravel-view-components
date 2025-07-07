@@ -30,6 +30,7 @@ return [
         'no-results'                => 'view-components::general.no-results',
         'progress-bar'              => 'view-components::general.progress-bar',
         'service-button'            => 'view-components::general.service-button',
+        'submit'            => 'view-components::forms.submit',
         'table'                     => 'view-components::general.table',
     ],
 
@@ -290,6 +291,63 @@ return [
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded-full'],
                 'shadow'  => [false, 'shadow-md/50'],
+            ],
+        ],
+
+        'button' => [
+            'base' => 'inline-flex justify-center items-center text-center overflow-hidden',
+            'elements' => [
+                'content' => [
+                    'base' => 'grow',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+                'prefix' => [
+                    'base' => '',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+                'suffix' => [
+                    'base' => '',
+                    'sizes' => [
+                        'xs' => 'px-2 py-1',
+                        'sm' => 'px-3 py-2',
+                        'base' => 'px-4 py-3',
+                        'lg' => 'px-5 py-4',
+                        'xl' => 'px-6 py-5',
+                    ],
+                ],
+            ],
+            'sizes' => [
+                'xs' => 'text-xs gap-1',
+                'sm' => 'text-sm gap-2',
+                'base' => 'text-base gap-3',
+                'lg' => 'text-lg gap-4',
+                'xl' => 'text-xl gap-5',
+            ],
+            'attributes' => [
+                'accent' => [false, 'border-l-8'],
+                'animate' => [false, 'hover:shadow-none hover:scale-95 ease-in-out duration-300'],
+                'border' => [true, 'border-2'],
+                'divide' => [false, 'divide-x-2'],
+                'full' => [false, 'w-full'],
+                'ring' => [false, 'ring-2 ring-offset-2'],
+                'rounded' => [true, 'rounded'],
+                'shadow' => [false, 'shadow-md'],
+            ],
+            'options' => [
+                'gradient' => false,
+                'hover' => true,
             ],
         ],
 
@@ -676,6 +734,23 @@ return [
             ],
             'options' => [
                 'background' => false,
+            ],
+        ],
+
+        'submit' => [
+            'base' => 'mb-4 flex items-center justify-between',
+            'elements' => [
+                'button' => ['base' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline'],
+            ],
+            'attributes' => [
+                'accent' => [false, 'border-l-8'],
+                'animate' => [false, 'hover:shadow-none hover:scale-95 ease-in-out duration-300'],
+                'border' => [false, 'border-2'],
+                'divide' => [false, 'divide-x-2'],
+                'full' => [true, 'w-full'],
+                'ring' => [false, 'ring-2 ring-offset-2'],
+                'rounded' => [true, 'rounded'],
+                'shadow' => [false, 'shadow-md'],
             ],
         ],
 

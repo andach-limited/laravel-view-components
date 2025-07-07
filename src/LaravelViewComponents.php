@@ -20,7 +20,7 @@ class LaravelViewComponents
     private array $elementClassNames;
 
     // A subset of $buildClassNames giving only the attributes that are enabled, accounting for overrides.
-    private array $enabledAttributes;
+    private array $enabledAttributesFromConfig = [];
 
     private array $variant = [];
 
@@ -117,7 +117,7 @@ class LaravelViewComponents
             }
         }
 
-        $this->enabledAttributes = array_keys($return);
+        $this->enabledAttributesFromConfig = array_keys($return);
 
         return collect($return);
     }
@@ -180,16 +180,44 @@ class LaravelViewComponents
      */
     private function classesVariant(): Collection
     {
-        $attributes = $this->buildClassNames;
+        $variantClasses = collect();
+        $calculatedAttributes = $this->calculatedVariantKeys();
 
+        foreach ($calculatedAttributes as $name) {
+            $variantClasses->put($name, $this->variant[$name]);
+        }
+
+        return $variantClasses;
+    }
+
+    /*
+     * Returns an array of names of enabled attributes that also exist in the config file.
+     */
+    public function calculatedAttributes(): array
+    {
+        $return = [];
+        $keysNames = $this->calculatedAttributeIncludeFlags();
+
+        foreach ($keysNames as $keyName => $evaluation) {
+            if (isset($this->component['attributes'][$keyName]) && $evaluation) {
+                $return[] = $keyName;
+            }
+        }
+
+        return $return;
+    }
+
+    /*
+     * Returns an array of all possible attributes mapped to true or false for whether they should be included.
+     */
+    public function calculatedAttributeIncludeFlags(): array
+    {
         $hasAccent     = $this->vars['accent'] ?? false;
-        $hasBackground = $this->component['options']['divide'] ?? null;
         $hasHollow     = $this->vars['hollow'] ?? false;
         $hasHover      = $this->component['options']['hover'] ?? null;
         $hasFocus      = $this->component['options']['focus'] ?? null;
         $hasGradient   = $this->component['options']['gradient'] ?? null;
         $hasBackground = $this->component['options']['background'] ?? null;
-        $hasText       = $this->component['options']['text'] ?? null;
 
         if (false !== $hasBackground) {
             $backgroundEnabled = true;
@@ -197,40 +225,46 @@ class LaravelViewComponents
             $backgroundEnabled = false;
         }
 
-        if (false !== $hasText) {
-            $textEnabled = true;
-        } else {
-            $textEnabled = false;
-        }
-
-        $keysNames = [
-            'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
-            'text'       => $this->component['text'] ?? true,
-            'border'     => in_array('border', $this->enabledAttributes),
-            'shadow'     => in_array('shadow', $this->enabledAttributes),
-            'ring'       => in_array('ring', $this->enabledAttributes),
-            'hover'      => $hasHover,
-            'focus'      => $hasFocus,
-            'active'     => false,
-            'gradient'   => $hasGradient && !$hasHollow, // Also forget text?
-            'divide'     => in_array('divide', $this->enabledAttributes),
+        return [
             'accent'     => $hasAccent,
+            'active'     => false,
+            'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
+            'border'     => in_array('border', $this->enabledAttributesFromConfig),
+            'divide'     => in_array('divide', $this->enabledAttributesFromConfig),
+            'focus'      => $hasFocus,
+            'gradient'   => $hasGradient && !$hasHollow, // Also forget text?
+            'hover'      => $hasHover,
+            'ring'       => in_array('ring', $this->enabledAttributesFromConfig),
+            'rounded'    => in_array('rounded', $this->enabledAttributesFromConfig),
+            'shadow'     => in_array('shadow', $this->enabledAttributesFromConfig),
+            'text'       => $this->component['text'] ?? true,
         ];
+    }
 
-        //        $enabledAttributes = $this->enabledAttributes($component, $attributes);
-        $variantClasses = collect();
+    public function calculatedSize(): string
+    {
+        return $this->vars['size'] ?? ($this->component['size'] ?? 'base');
+    }
+
+    public function calculatedVariant(): string
+    {
+        return $this->variantName;
+    }
+
+    /*
+     * Returns an array of names of enabled attributes that also exist in the variant array.
+     */
+    public function calculatedVariantKeys(): array
+    {
+        $keysNames = $this->calculatedAttributeIncludeFlags();
 
         foreach ($keysNames as $keyName => $evaluation) {
             if (isset($this->variant[$keyName]) && $evaluation) {
-                $variantClasses->put($keyName, $this->variant[$keyName]);
+                $return[] = $keyName;
             }
         }
 
-        if (!$textEnabled) {
-            $variantClasses->forget('text');
-        }
-
-        return $variantClasses;
+        return $return;
     }
 
     public function getBuildClasses(): array

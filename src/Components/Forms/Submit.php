@@ -1,42 +1,38 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Components;
+namespace Andach\LaravelViewComponents\Components\Forms;
 
-use Closure;
-use Illuminate\View\Component;
+use Andach\LaravelViewComponents\Components\BaseComponent;
+use Andach\LaravelViewComponents\Traits\HandlesDefaultAndOldValue;
+use Andach\LaravelViewComponents\Traits\HandlesValidationErrors;
+use TailwindMerge\Laravel\Facades\TailwindMerge;
 
-class Button extends BaseComponent
+class Submit extends BaseComponent
 {
     public function __construct(
-        public ?string $href = null,
-        public ?string $prefix = null,
-        public ?string $suffix = null,
-        public ?string $type = null,
+        public ?string $type = 'submit',
         // Generic Arguments
         public ?string $accent = null,
         public ?string $animate = null,
         public ?string $background = null,
         public ?string $border = null,
         public ?string $divide = null,
-        public ?string $full = null,
+        public ?string $full = 'true',
         public ?string $hollow = null,
         public ?string $hover = null,
         public ?string $ring = null,
         public ?string $rounded = null,
         public ?string $shadow = null,
         public ?string $size = null,
-        public ?string $variant = null,
+        public ?string $variant = 'success',
     ) {
         parent::__construct();
+
+        $this->setAttributeBooleans();
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|Closure|string
-     */
     public function render()
     {
-        return view(config('view-components.views.button'));
+        return view(config('view-components.views.submit'));
     }
 }

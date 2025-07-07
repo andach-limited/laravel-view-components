@@ -13,6 +13,9 @@ abstract class BaseComponent extends Component
     protected array $arrayBuildClasses;
 
     protected array $arrayElementClasses;
+    protected array $calculatedAttributes;
+    protected string $calculatedSize;
+    protected string $calculatedVariant;
 
     protected array $sizes = ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
 
@@ -26,6 +29,9 @@ abstract class BaseComponent extends Component
             $lvc                  = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
             $this->twMergeStrings = $lvc->getTwMergeStrings();
             $this->variantArray   = $lvc->getVariant();
+            $this->calculatedAttributes = $lvc->calculatedAttributes();
+            $this->calculatedSize = $lvc->calculatedSize();
+            $this->calculatedVariant = $lvc->calculatedVariant();
         } catch (ErrorException $e) {
             if (str_contains($e->getMessage(), 'Undefined array key')) {
                 throw new RuntimeException('Configuration error: Missing expected key in the config array. Please check your configuration.', 0, $e);
@@ -83,5 +89,31 @@ abstract class BaseComponent extends Component
     protected static function convertBracketsToDots($name): string
     {
         return str_replace(['[', ']'], ['.', ''], $name);
+    }
+
+    protected function setAttributeBooleans()
+    {
+        $varNames = [
+            'accent',
+            'animate',
+            'background',
+            'border',
+            'divide',
+            'full',
+            'hollow',
+            'hover',
+            'ring',
+            'rounded',
+            'shadow',
+        ];
+
+        foreach ($varNames as $varName) {
+            if (in_array($varName, $this->calculatedAttributes)) {
+                $this->{$varName} = 'true';
+            }
+        }
+
+        $this->size = $this->calculatedSize;
+        $this->variant = $this->calculatedVariant;
     }
 }

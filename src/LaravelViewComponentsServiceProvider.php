@@ -14,6 +14,7 @@ use Andach\LaravelViewComponents\Components\Forms\Form;
 use Andach\LaravelViewComponents\Components\Forms\FormError;
 use Andach\LaravelViewComponents\Components\Forms\Input;
 use Andach\LaravelViewComponents\Components\Forms\Label;
+use Andach\LaravelViewComponents\Components\Forms\Submit;
 use Andach\LaravelViewComponents\Components\H;
 use Andach\LaravelViewComponents\Components\MenuGroup;
 use Andach\LaravelViewComponents\Components\NoResults;
@@ -73,6 +74,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', NoResults::class)
             ->hasViewComponent('andach', ProgressBar::class)
             ->hasViewComponent('andach', ServiceButton::class)
+            ->hasViewComponent('andach', Submit::class)
             ->hasViewComponent('andach', Table::class)
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
