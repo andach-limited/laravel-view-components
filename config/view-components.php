@@ -16,6 +16,7 @@ return [
         'button'                    => 'view-components::general.button',
         'card'                      => 'view-components::general.card',
         'chat'                      => 'view-components::general.chat',
+        'checkbox'                      => 'view-components::forms.checkbox',
         'code'                      => 'view-components::general.code',
         'faq'                       => 'view-components::general.faq',
         'form'                      => 'view-components::forms.form',
@@ -339,6 +340,18 @@ return [
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
                 'shadow'  => [false, 'shadow-md'],
+            ],
+        ],
+
+        'checkbox' => [
+            'base' => 'flex flex-col',
+            'elements' => [
+                'label' => [
+                    'base' => 'flex items-center',
+                ],
+                'input' => [
+                    'base' => 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600',
+                ],
             ],
         ],
 

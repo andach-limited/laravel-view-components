@@ -9,6 +9,7 @@ use Andach\LaravelViewComponents\Components\Card;
 use Andach\LaravelViewComponents\Components\Chat;
 use Andach\LaravelViewComponents\Components\Code;
 use Andach\LaravelViewComponents\Components\Faq;
+use Andach\LaravelViewComponents\Components\Forms\Checkbox;
 use Andach\LaravelViewComponents\Components\Forms\Form;
 use Andach\LaravelViewComponents\Components\Forms\FormError;
 use Andach\LaravelViewComponents\Components\Forms\Input;
@@ -20,12 +21,26 @@ use Andach\LaravelViewComponents\Components\ProgressBar;
 use Andach\LaravelViewComponents\Components\ServiceButton;
 use Andach\LaravelViewComponents\Components\Table;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelViewComponentsServiceProvider extends PackageServiceProvider
 {
+    public function boot()
+    {
+        parent::boot();
+
+        Blade::directive('bind', function ($bind) {
+            return '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
+        });
+
+        Blade::directive('endbind', function () {
+            return '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->pop(); ?>';
+        });
+    }
+
     public function configurePackage(Package $package): void
     {
         Paginator::defaultView(config('view-components.pagination.standard'));
@@ -46,6 +61,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Button::class)
             ->hasViewComponent('andach', Card::class)
             ->hasViewComponent('andach', Chat::class)
+            ->hasViewComponent('andach', Checkbox::class)
             ->hasViewComponent('andach', Code::class)
             ->hasViewComponent('andach', Faq::class)
             ->hasViewComponent('andach', Form::class)
@@ -68,5 +84,12 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
                         $command->info('Have a great day!');
                     });
             });
+    }
+
+    public function register(): void
+    {
+        parent::register();
+
+        $this->app->singleton(FormDataBinder::class, fn () => new FormDataBinder);
     }
 }
