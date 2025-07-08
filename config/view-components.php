@@ -29,6 +29,7 @@ return [
         'menu-group'                => 'view-components::general.menu-group',
         'no-results'                => 'view-components::general.no-results',
         'progress-bar'              => 'view-components::general.progress-bar',
+        'select'              => 'view-components::forms.select',
         'service-button'            => 'view-components::general.service-button',
         'submit'            => 'view-components::forms.submit',
         'table'                     => 'view-components::general.table',
@@ -696,6 +697,24 @@ return [
                 'base' => 'text-base',
                 'lg'   => 'text-lg',
                 'xl'   => 'text-xl',
+            ],
+        ],
+
+        'select' => [
+            'base'     => 'mb-4',
+            'elements' => [
+                'select' => [
+                    'base' => 'block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
+                    'inherit' => [
+                        'background'
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'border'  => [false, 'border-2'],
+                'hollow'  => [true, ''],
+                'rounded' => [true, 'rounded'],
+                'shadow'  => [false, 'shadow'],
             ],
         ],
 

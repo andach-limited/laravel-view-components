@@ -88,9 +88,10 @@ class LaravelViewComponents
 
             $baseClasses = collect(['base' => $element['base'] ?? null]);
             $conditionalClasses = $this->classesElementConditional($elementName);
+            $inheritClasses = $this->classesElementInherit($element);
             $sizeClasses = $this->classesElementSize($element, $size);
 
-            $elementClasses[$elementString] = $this->mergeCollectionsUsingTailwind([$baseClasses, $conditionalClasses, $sizeClasses]);
+            $elementClasses[$elementString] = $this->mergeCollectionsUsingTailwind([$baseClasses, $conditionalClasses, $inheritClasses, $sizeClasses]);
 
 //            dd($baseClasses, $conditionalClasses, $sizeClasses, $elementClasses, $elementString, $element);
         }
@@ -149,6 +150,20 @@ class LaravelViewComponents
 
             if ($value && isset($options[$value]['base'])) {
                 $classes->put('base', $options[$value]['base']);
+            }
+        }
+
+        return $classes;
+    }
+
+    private function classesElementInherit(array $element): Collection
+    {
+        $classes = collect();
+        $calculatedVariantKeys = $this->calculatedVariantKeys();
+
+        foreach ($element['inherit'] ?? [] as $inherit) {
+            if (in_array($inherit, $calculatedVariantKeys)) {
+                $classes->put($inherit, $this->variant[$inherit] ?? []);
             }
         }
 
