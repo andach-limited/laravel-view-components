@@ -295,7 +295,7 @@ return [
         ],
 
         'button' => [
-            'base' => 'inline-flex justify-center items-center text-center overflow-hidden',
+            'base' => 'inline-flex justify-center items-center text-center overflow-hidden mb-4',
             'elements' => [
                 'content' => [
                     'base' => 'grow',
