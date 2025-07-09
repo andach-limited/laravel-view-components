@@ -29,6 +29,7 @@ return [
         'menu-group'                => 'view-components::general.menu-group',
         'no-results'                => 'view-components::general.no-results',
         'progress-bar'              => 'view-components::general.progress-bar',
+        'radio'              => 'view-components::forms.radio',
         'select'              => 'view-components::forms.select',
         'service-button'            => 'view-components::general.service-button',
         'submit'            => 'view-components::forms.submit',
@@ -698,6 +699,18 @@ return [
                 'base' => 'text-base',
                 'lg'   => 'text-lg',
                 'xl'   => 'text-xl',
+            ],
+        ],
+
+        'radio' => [
+            'base' => 'flex flex-col',
+            'elements' => [
+                'label' => [
+                    'base' => 'flex items-center',
+                ],
+                'input' => [
+                    'base' => 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600',
+                ],
             ],
         ],
 

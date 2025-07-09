@@ -6,12 +6,9 @@ use Andach\LaravelViewComponents\Components\BaseComponent;
 use Andach\LaravelViewComponents\Traits\HandlesBoundValues;
 use Andach\LaravelViewComponents\Traits\HandlesDefaultAndOldValue;
 use Andach\LaravelViewComponents\Traits\HandlesValidationErrors;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use TailwindMerge\Laravel\Facades\TailwindMerge;
 
-class Checkbox extends BaseComponent
+class Radio extends BaseComponent
 {
     use HandlesBoundValues;
     use HandlesValidationErrors;
@@ -22,8 +19,8 @@ class Checkbox extends BaseComponent
         public string $label = '',
         public string $value = '1',
         public bool $checked = false,
-        $bind = null,
-        $default = null,
+                      $bind = null,
+        public bool $default = false,
         // Generic Arguments
         public ?string $background = null,
         public ?string $border = null,
@@ -37,30 +34,25 @@ class Checkbox extends BaseComponent
     ) {
         parent::__construct();
 
-        $inputName = static::convertBracketsToDots(Str::before($name, '[]'));
+        $inputName = static::convertBracketsToDots($name);
 
-        if ($oldData = old($inputName)) {
-            $this->checked = in_array($value, Arr::wrap($oldData));
+        if (old($inputName) !== null) {
+            $this->checked = old($inputName) == $value;
         }
 
         if (!session()->hasOldInput()) {
             $boundValue = $this->getBoundValue($bind, $inputName);
 
-            if ($boundValue instanceof Arrayable) {
-                $boundValue = $boundValue->toArray();
+            if (!is_null($boundValue)) {
+                $this->checked = $boundValue == $this->value;
+            } else {
+                $this->checked = $default;
             }
-
-            if (is_array($boundValue)) {
-                $this->checked = in_array($value, $boundValue);
-                return;
-            }
-
-            $this->checked = is_null($boundValue) ? $default : $boundValue;
         }
     }
 
     public function render()
     {
-        return view(config('view-components.views.checkbox'));
+        return view(config('view-components.views.radio'));
     }
 }
