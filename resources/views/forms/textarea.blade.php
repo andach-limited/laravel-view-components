@@ -1,14 +1,10 @@
 <div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
     <label class="block">
-        @if ($type !== 'hidden')
+        @if ($label)
             <x-andach-label :label="$label" />
         @endif
 
-        <input class="{{ $class }}"
-               value="{{ $value }}"
-               name="{{ $name }}"
-               placeholder="{{ $placeholder }}"
-               type="{{ $type }}" />
+        <textarea class="{{ $class }}" name="{{ $name }}" placeholder="{{ $placeholder }}">{{ $value }}</textarea>
     </label>
 
     @if ($hasErrorAndShow($name))

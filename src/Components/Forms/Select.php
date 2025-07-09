@@ -25,9 +25,6 @@ class Select extends BaseComponent
                $bind = null,
                $default = null,
         public bool $multiple = false,
-//        public bool $showErrors = true,
-//        public bool $manyRelation = false,
-        public bool $floating = false,
         public string $placeholder = '',
         // Generic Arguments
         public ?string $accent = null,

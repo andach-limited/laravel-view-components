@@ -16,6 +16,7 @@ use Andach\LaravelViewComponents\Components\Forms\Input;
 use Andach\LaravelViewComponents\Components\Forms\Label;
 use Andach\LaravelViewComponents\Components\Forms\Select;
 use Andach\LaravelViewComponents\Components\Forms\Submit;
+use Andach\LaravelViewComponents\Components\Forms\Textarea;
 use Andach\LaravelViewComponents\Components\H;
 use Andach\LaravelViewComponents\Components\MenuGroup;
 use Andach\LaravelViewComponents\Components\NoResults;
@@ -78,6 +79,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', ServiceButton::class)
             ->hasViewComponent('andach', Submit::class)
             ->hasViewComponent('andach', Table::class)
+            ->hasViewComponent('andach', Textarea::class)
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
                     ->startWith(function (InstallCommand $command): void {

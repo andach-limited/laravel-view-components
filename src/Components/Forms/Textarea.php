@@ -7,7 +7,7 @@ use Andach\LaravelViewComponents\Traits\HandlesDefaultAndOldValue;
 use Andach\LaravelViewComponents\Traits\HandlesValidationErrors;
 use TailwindMerge\Laravel\Facades\TailwindMerge;
 
-class Input extends BaseComponent
+class Textarea extends BaseComponent
 {
     use HandlesDefaultAndOldValue;
     use HandlesValidationErrors;
@@ -22,9 +22,8 @@ class Input extends BaseComponent
         public string $label = '',
         public string $language = '',
         public string $placeholder = '',
-        public string $type = 'text',
-        $bind = null,
-        $default = null,
+                      $bind = null,
+                      $default = null,
         // Generic Arguments
         public ?string $background = null,
         public ?string $border = null,
@@ -52,6 +51,6 @@ class Input extends BaseComponent
 
     public function render()
     {
-        return view(config('view-components.views.input'));
+        return view(config('view-components.views.textarea'));
     }
 }

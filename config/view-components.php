@@ -33,6 +33,7 @@ return [
         'service-button'            => 'view-components::general.service-button',
         'submit'            => 'view-components::forms.submit',
         'table'                     => 'view-components::general.table',
+        'textarea'                     => 'view-components::forms.textarea',
     ],
 
     'variants' => [
@@ -789,6 +790,30 @@ return [
             ],
             'attributes' => [
                 'divide'  => [true, ''],
+            ],
+        ],
+
+        'textarea' => [
+            'base'     => 'mb-4',
+            'elements' => [
+                'input' => [
+                    'base' => 'block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
+                ],
+            ],
+            'conditional-elements' => [
+                'input' => [
+                    'type' => [
+                        'color' => [
+                            'base' => 'py-0',
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'border'  => [false, 'border-2'],
+                'hollow'  => [true, ''],
+                'rounded' => [true, 'rounded'],
+                'shadow'  => [false, 'shadow'],
             ],
         ],
     ],
