@@ -530,16 +530,16 @@ return [
         ],
 
         'input' => [
-            'base'     => 'mb-4 relative',
+            'base'     => 'mb-4',
             'elements' => [
                 'input' => [
                     'base' => 'peer block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
                 ],
                 'label' => [
-                    'base' => 'relative block mb-2 py-2 px-3',
+                    'base' => 'relative block px-3',
                 ],
                 'span' => [
-                    'base' => 'py-2 px-3',
+                    'base' => 'block mb-2 px-3',
                 ],
                 'floating' => [
                     'base' => 'absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]
@@ -744,10 +744,10 @@ return [
                     ],
                 ],
                 'label' => [
-                    'base' => 'relative block p-2',
+                    'base' => 'relative block px-3',
                 ],
                 'span' => [
-                    'base' => 'block p-2',
+                    'base' => 'block mb-2 px-3',
                 ],
                 'floating' => [
                     'base' => 'absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]
@@ -848,15 +848,15 @@ return [
                     'base' => 'peer block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
                 ],
                 'label' => [
-                    'base' => 'relative block mb-2 py-2 px-3',
+                    'base' => 'relative block px-3',
                 ],
                 'span' => [
-                    'base' => 'py-2 px-3',
+                    'base' => 'block mb-2 px-3',
                 ],
                 'floating' => [
                     'base' => 'absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0-0]
                         px-2 peer-focus:px-2 ml-2
-                        peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-8 peer-focus:top-2
+                        peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2
                         peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto left-3',
                     'forceInherit' => [
                         'pageBackground'
