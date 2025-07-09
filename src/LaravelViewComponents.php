@@ -167,6 +167,10 @@ class LaravelViewComponents
             }
         }
 
+        foreach ($element['forceInherit'] ?? [] as $inherit) {
+            $classes->put($inherit, $this->variant[$inherit] ?? []);
+        }
+
         return $classes;
     }
 

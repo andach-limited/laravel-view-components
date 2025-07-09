@@ -41,6 +41,7 @@ return [
 
         'default' => [
             'background'          => 'bg-white dark:bg-slate-900',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-slate-800 dark:text-slate-200',
             'border'              => 'border-slate-200 dark:border-slate-700',
             'shadow'              => 'shadow-slate-300/50 dark:shadow-slate-900/50',
@@ -61,6 +62,7 @@ return [
 
         'dark' => [
             'background'          => 'bg-slate-900',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-slate-300',
             'border'              => 'border-slate-700',
             'shadow'              => 'shadow-slate-900/10',
@@ -81,6 +83,7 @@ return [
 
         'light' => [
             'background'          => 'bg-slate-50/80',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-slate-800',
             'border'              => 'border-slate-200',
             'shadow'              => 'shadow-slate-500/10',
@@ -101,6 +104,7 @@ return [
 
         'brand' => [
             'background'          => 'bg-brand-200 dark:bg-brand-800',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-brand-800 dark:text-brand-200',
             'border'              => 'border-brand-300 dark:border-brand-900',
             'shadow'              => 'shadow-brand-300/50 dark:shadow-brand-900/50',
@@ -121,6 +125,7 @@ return [
 
         'primary' => [
             'background'          => 'bg-cyan-200 dark:bg-cyan-700',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-cyan-800 dark:text-cyan-200',
             'border'              => 'border-cyan-300 dark:border-cyan-900',
             'shadow'              => 'shadow-cyan-300/50 dark:shadow-cyan-900/50',
@@ -141,6 +146,7 @@ return [
 
         'secondary' => [
             'background'          => 'bg-slate-200 dark:bg-slate-700',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-slate-800 dark:text-slate-200',
             'border'              => 'border-slate-300 dark:border-slate-900',
             'shadow'              => 'shadow-slate-300/50 dark:shadow-slate-900/50',
@@ -161,6 +167,7 @@ return [
 
         'success' => [
             'background'          => 'bg-emerald-200 dark:bg-emerald-700',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-emerald-800 dark:text-emerald-200',
             'border'              => 'border-emerald-300 dark:border-emerald-900',
             'shadow'              => 'shadow-emerald-300/50 dark:shadow-emerald-900/50',
@@ -181,6 +188,7 @@ return [
 
         'warning' => [
             'background'          => 'bg-orange-200 dark:bg-orange-700',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-orange-800 dark:text-orange-200',
             'border'              => 'border-orange-300 dark:border-orange-900',
             'shadow'              => 'shadow-orange-300/50 dark:shadow-orange-900/50',
@@ -201,6 +209,7 @@ return [
 
         'danger' => [
             'background'          => 'bg-red-200 dark:bg-red-700',
+            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
             'text'                => 'text-red-800 dark:text-red-200',
             'border'              => 'border-red-300 dark:border-red-900',
             'shadow'              => 'shadow-red-300/50 dark:shadow-red-900/50',
@@ -521,10 +530,22 @@ return [
         ],
 
         'input' => [
-            'base'     => 'mb-4',
+            'base'     => 'mb-4 relative',
             'elements' => [
                 'input' => [
-                    'base' => 'block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
+                    'base' => 'peer block w-full border-2 rounded appearance-none py-2 px-3 leading-tight focus:outline-none focus:shadow-outline',
+                ],
+                'label' => [
+                    'base' => 'relative block mb-2 py-2 px-3',
+                ],
+                'floating' => [
+                    'base' => 'absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]
+                        px-2 peer-focus:px-2 ml-2
+                        peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2
+                        peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto left-3',
+                    'forceInherit' => [
+                        'pageBackground'
+                    ],
                 ],
             ],
             'conditional-elements' => [
@@ -542,10 +563,6 @@ return [
                 'rounded' => [true, 'rounded'],
                 'shadow'  => [false, 'shadow'],
             ],
-        ],
-
-        'label' => [
-            'base' => 'block mb-2 py-2 px-3',
         ],
 
         'menu-group' => [

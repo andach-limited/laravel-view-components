@@ -19,6 +19,7 @@ class Input extends BaseComponent
     public function __construct(
         // Unique Arguments
         public string $name,
+        public bool $floating = false,
         public string $label = '',
         public string $language = '',
         public string $placeholder = '',
@@ -37,6 +38,11 @@ class Input extends BaseComponent
         public ?string $variant = null,
     ) {
         parent::__construct();
+
+        if ($this->floating)
+        {
+            $this->placeholder = ' ';
+        }
 
         if ($language) {
             $this->name = "{$name}[{$language}]";

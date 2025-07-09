@@ -12,6 +12,7 @@ class Label extends BaseComponent
 
     public function __construct(
         // Unique Arguments
+        public bool $floating = false,
         public string $label = '',
         // Generic Arguments
         public ?string $background = null,

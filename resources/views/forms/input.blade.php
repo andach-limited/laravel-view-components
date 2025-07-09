@@ -1,7 +1,7 @@
 <div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
-    <label class="block">
-        @if ($type !== 'hidden')
-            <x-andach-label :label="$label" />
+    <label  {{ $attributes->twMergeFor('label', $twMergeStrings['label']) }}>
+        @if ($type !== 'hidden' && $floating === false)
+            <span {{ $attributes->twMerge(['class' => $twMergeStrings['label']]) }}>{{ $label }}</span>
         @endif
 
         <input class="{{ $class }}"
@@ -9,6 +9,10 @@
                name="{{ $name }}"
                placeholder="{{ $placeholder }}"
                type="{{ $type }}" />
+
+        @if ($type !== 'hidden' && $floating === true)
+                <span  {{ $attributes->twMergeFor('floating', $twMergeStrings['floating']) }}>{{ $label }}</span>
+        @endif
     </label>
 
     @if ($hasErrorAndShow($name))
