@@ -5,7 +5,7 @@
                value="{{ $value }}"
                name="{{ $name }}"
 
-               @if($checked)
+               @if ($checked)
                    checked="checked"
                @endif
         />

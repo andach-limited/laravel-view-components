@@ -55,7 +55,7 @@ class Checkbox extends BaseComponent
                 return;
             }
 
-            $this->checked = is_null($boundValue) ? $default : $boundValue;
+            $this->checked = is_null($boundValue) ? $checked : $boundValue;
         }
     }
 

@@ -45,8 +45,6 @@ class Radio extends BaseComponent
 
             if (!is_null($boundValue)) {
                 $this->checked = $boundValue == $this->value;
-            } else {
-                $this->checked = $default;
             }
         }
     }

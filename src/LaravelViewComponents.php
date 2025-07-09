@@ -231,7 +231,6 @@ class LaravelViewComponents
      */
     public function calculatedAttributeIncludeFlags(): array
     {
-        $hasAccent     = $this->vars['accent'] ?? false;
         $hasHollow     = $this->vars['hollow'] ?? false;
         $hasHover      = $this->component['options']['hover'] ?? null;
         $hasFocus      = $this->component['options']['focus'] ?? null;
@@ -245,7 +244,7 @@ class LaravelViewComponents
         }
 
         return [
-            'accent'     => $hasAccent,
+            'accent'     => in_array('accent', $this->enabledAttributesFromConfig),
             'active'     => false,
             'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
             'border'     => in_array('border', $this->enabledAttributesFromConfig),
