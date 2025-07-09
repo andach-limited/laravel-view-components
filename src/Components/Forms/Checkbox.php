@@ -21,7 +21,7 @@ class Checkbox extends BaseComponent
         public string $name,
         public string $label = '',
         public string $value = '1',
-        public bool $checked = false,
+        public ?bool $checked = false,
         $bind = null,
         $default = null,
         // Generic Arguments

@@ -20,6 +20,8 @@ class Select extends BaseComponent
 
     public function __construct(
         public string $name,
+        public bool $blank = false,
+        public bool $floating = false,
         public string $label = '',
         public array $options = [],
                $bind = null,
@@ -53,6 +55,11 @@ class Select extends BaseComponent
 
         if ($this->selectedKey instanceof Arrayable) {
             $this->selectedKey = $this->selectedKey->toArray();
+        }
+
+        if ($this->blank)
+        {
+            $this->options = ['' => ''] + $this->options;
         }
     }
 

@@ -1,7 +1,7 @@
 <div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
-    <label  {{ $attributes->twMergeFor('label', $twMergeStrings['label']) }}>
+    <label {{ $attributes->twMergeFor('label', $twMergeStrings['label']) }}>
         @if ($type !== 'hidden' && $floating === false)
-            <span {{ $attributes->twMerge(['class' => $twMergeStrings['label']]) }}>{{ $label }}</span>
+            <span {{ $attributes->twMergeFor('span', $twMergeStrings['span']) }}>{{ $label }}</span>
         @endif
 
         <input class="{{ $class }}"
@@ -11,7 +11,7 @@
                type="{{ $type }}" />
 
         @if ($type !== 'hidden' && $floating === true)
-                <span  {{ $attributes->twMergeFor('floating', $twMergeStrings['floating']) }}>{{ $label }}</span>
+            <span {{ $attributes->twMergeFor('floating', $twMergeStrings['floating']) }}>{{ $label }}</span>
         @endif
     </label>
 

@@ -72,7 +72,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', FormError::class)
             ->hasViewComponent('andach', H::class)
             ->hasViewComponent('andach', Input::class)
-            ->hasViewComponent('andach', Label::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)
             ->hasViewComponent('andach', ProgressBar::class)

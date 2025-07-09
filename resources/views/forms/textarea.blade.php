@@ -1,10 +1,14 @@
 <div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
-    <label class="block">
-        @if ($label)
-            <x-andach-label :label="$label" />
+    <label {{ $attributes->twMergeFor('label', $twMergeStrings['label']) }}>
+        @if ($floating === false)
+            <span {{ $attributes->twMergeFor('span', $twMergeStrings['span']) }}>{{ $label }}</span>
         @endif
 
         <textarea class="{{ $class }}" name="{{ $name }}" placeholder="{{ $placeholder }}">{{ $value }}</textarea>
+
+        @if ($floating === true)
+            <span {{ $attributes->twMergeFor('floating', $twMergeStrings['floating']) }}>{{ $label }}</span>
+        @endif
     </label>
 
     @if ($hasErrorAndShow($name))
