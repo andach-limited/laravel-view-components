@@ -594,11 +594,22 @@ return [
         ],
 
         'menu' => [
-            'base' => 'w-64 h-full z-30 transition-transform duration-200 transform
-                 fixed md:relative md:translate-x-0 top-0 left-0',
-            'attributes' => [
-                'border' => [true, 'border-r'],
-            ],
+            'base' => '[--auto-close:lg] -translate-x-full transition-all duration-300 transform  w-68 h-full fixed inset-y-0 start-0 z-60 border-e lg:block lg:translate-x-0 lg:end-auto lg:bottom-0',
+            'elements' => [
+                'inner-div' => ['base' => 'relative flex flex-col h-full max-h-full'],
+                'logo-div' => ['base' => 'px-6 pt-4 flex items-center'],
+                'logo-a' => ['base' => 'flex-none rounded-xl text-xl inline-block font-semibold focus:outline-hidden focus:opacity-80'],
+                'content-div' => ['base' => 'h-full'],
+                'content-nav' => ['base' => 'pt-3 w-full flex flex-col flex-wrap'],
+                'sidebar-div' => ['base' => 'min-w-fit'],
+                'sidebar-backdrop' => [
+                    'base' => 'fixed inset-0 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200'
+                ],
+                'sidebar' => ['base' => 'flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 transition-all duration-200 ease-in-out'],
+                'sidebar-header' => ['base' => 'lg:hidden flex justify-between mb-10 pr-3 sm:px-2'],
+                'close-button' => ['base' => 'lg:hidden'],
+
+            ]
         ],
 
         'menu-group' => [

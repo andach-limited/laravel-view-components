@@ -8,7 +8,7 @@ class Menu extends BaseComponent
 {
     public function __construct(
         // Unique Arguments
-        public ?string $icon = null,
+        public ?string $logo = null,
         public ?string $title = null,
         public ?bool $dismissible = null,
         // Generic Arguments
