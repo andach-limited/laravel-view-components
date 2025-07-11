@@ -19,6 +19,11 @@ use Andach\LaravelViewComponents\Components\Forms\Select;
 use Andach\LaravelViewComponents\Components\Forms\Submit;
 use Andach\LaravelViewComponents\Components\Forms\Textarea;
 use Andach\LaravelViewComponents\Components\H;
+use Andach\LaravelViewComponents\Components\Layouts\Content;
+use Andach\LaravelViewComponents\Components\Layouts\Footer;
+use Andach\LaravelViewComponents\Components\Layouts\Header;
+use Andach\LaravelViewComponents\Components\Layouts\Menu;
+use Andach\LaravelViewComponents\Components\Layouts\Layout;
 use Andach\LaravelViewComponents\Components\MenuGroup;
 use Andach\LaravelViewComponents\Components\NoResults;
 use Andach\LaravelViewComponents\Components\ProgressBar;
@@ -67,11 +72,14 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Chat::class)
             ->hasViewComponent('andach', Checkbox::class)
             ->hasViewComponent('andach', Code::class)
+            ->hasViewComponent('andach', Content::class)
             ->hasViewComponent('andach', Faq::class)
+            ->hasViewComponent('andach', Footer::class)
             ->hasViewComponent('andach', Form::class)
             ->hasViewComponent('andach', FormError::class)
             ->hasViewComponent('andach', H::class)
-            ->hasViewComponent('andach', Input::class)
+            ->hasViewComponent('andach', Header::class)
+            ->hasViewComponent('andach', Menu::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)
             ->hasViewComponent('andach', ProgressBar::class)

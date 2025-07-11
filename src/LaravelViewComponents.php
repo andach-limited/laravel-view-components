@@ -252,6 +252,7 @@ class LaravelViewComponents
             'focus'      => $hasFocus,
             'gradient'   => $hasGradient && !$hasHollow, // Also forget text?
             'hover'      => $hasHover,
+            'pageBackground' => $this->vars['pageBackground'] ?? false,
             'ring'       => in_array('ring', $this->enabledAttributesFromConfig),
             'rounded'    => in_array('rounded', $this->enabledAttributesFromConfig),
             'shadow'     => in_array('shadow', $this->enabledAttributesFromConfig),

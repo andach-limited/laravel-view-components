@@ -18,14 +18,18 @@ return [
         'chat'                      => 'view-components::general.chat',
         'checkbox'                      => 'view-components::forms.checkbox',
         'code'                      => 'view-components::general.code',
+        'content'                      => 'view-components::layouts.content',
         'faq'                       => 'view-components::general.faq',
+        'footer'                      => 'view-components::layouts.footer',
         'form'                      => 'view-components::forms.form',
         'form-error'                => 'view-components::forms.form-error',
         'form-checkbox-icon'        => 'view-components::general.form-checkbox-icon',
         'form-section'              => 'view-components::general.form-section',
         'h'                         => 'view-components::general.h',
+        'header'                     => 'view-components::layouts.header',
         'input'                     => 'view-components::forms.input',
         'label'                     => 'view-components::forms.label',
+        'menu'                      => 'view-components::layouts.menu',
         'menu-group'                => 'view-components::general.menu-group',
         'no-results'                => 'view-components::general.no-results',
         'progress-bar'              => 'view-components::general.progress-bar',
@@ -460,6 +464,13 @@ return [
             ],
         ],
 
+        'content' => [
+            'base' => 'w-full lg:ps-64',
+            'elements' => [
+                'inner-div' => ['base' => 'max-w-[1000px] p-4 sm:p-6 space-y-4 sm:space-y-6'],
+            ],
+        ],
+
         'faq' => [
             'base'     => '[&_svg]:open:rotate-0 mb-4',
             'elements' => [
@@ -510,6 +521,10 @@ return [
             ],
         ],
 
+        'footer' => [
+            'base' => 'w-full text-center p-4 text-sm',
+        ],
+
         'form' => [],
 
         'form-error' => [
@@ -530,6 +545,13 @@ return [
             ],
             // Set this to the five sizes under 'text-6xl' (or whatever you pick as the H1 size) above so they load in Tailwind.
             'include' => 'text-5xl text-4xl text-3xl text-2xl text-xl',
+        ],
+
+        'header' => [
+            'base' => 'w-full text-white p-4',
+            'attributes' => [
+                'border'  => [true, 'border-b-2'],
+            ],
         ],
 
         'input' => [
@@ -571,8 +593,16 @@ return [
             ],
         ],
 
+        'menu' => [
+            'base' => 'w-64 h-full z-30 transition-transform duration-200 transform
+                 fixed md:relative md:translate-x-0 top-0 left-0',
+            'attributes' => [
+                'border' => [true, 'border-r'],
+            ],
+        ],
+
         'menu-group' => [
-            'base'     => 'list-none p-4 mb-4',
+            'base'     => 'flex flex-col space-y-1',
             'elements' => [
                 'first-li' => [
                     'base'  => 'rounded-sm mb-0.5 last:mb-0',
@@ -583,9 +613,12 @@ return [
                         'lg'   => 'text-lg',
                         'xl'   => 'text-xl',
                     ],
+                    'forceInherit' => [
+                        'pageBackground'
+                    ],
                 ],
                 'parent' => [
-                    'base'  => 'flex items-center w-full p-2 text-base transition duration-75 rounded-lg group',
+                    'base'  => 'flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm rounded-lg',
                     'sizes' => [
                         'xs'   => 'text-xs',
                         'sm'   => 'text-xs',
@@ -635,7 +668,7 @@ return [
                 'xl'   => 'text-xl',
             ],
             'attributes' => [
-                'border'  => [true, 'border-2'],
+                'border'  => [false, 'border-2'],
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
                 'shadow'  => [false, 'shadow-md'],

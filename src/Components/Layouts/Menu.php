@@ -1,24 +1,22 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Components;
+namespace Andach\LaravelViewComponents\Components\Layouts;
 
-use Closure;
-use Illuminate\View\Component;
+use Andach\LaravelViewComponents\Components\BaseComponent;
 
-class MenuGroup extends BaseComponent
+class Menu extends BaseComponent
 {
     public function __construct(
         // Unique Arguments
-        public ?string $url = '',
-        public ?string $title = '',
-        public ?bool $selected = false,
-        public ?array $items = [],
-        public ?string $icon = '',
+        public ?string $icon = null,
+        public ?string $title = null,
+        public ?bool $dismissible = null,
         // Generic Arguments
         public ?string $background = null,
         public ?string $border = null,
         public ?string $divide = null,
         public ?string $hollow = 'true',
+        public ?string $pageBackground = 'true',
         public ?string $ring = null,
         public ?string $rounded = null,
         public ?string $shadow = null,
@@ -28,13 +26,8 @@ class MenuGroup extends BaseComponent
         parent::__construct();
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|Closure|string
-     */
     public function render()
     {
-        return view(config('view-components.views.menu-group'));
+        return view(config('view-components.views.menu'));
     }
 }
