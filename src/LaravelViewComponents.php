@@ -90,8 +90,9 @@ class LaravelViewComponents
             $conditionalClasses = $this->classesElementConditional($elementName);
             $inheritClasses = $this->classesElementInherit($element);
             $sizeClasses = $this->classesElementSize($element, $size);
+            $variantClasses = $this->classesElementVariant($element);
 
-            $elementClasses[$elementString] = $this->mergeCollectionsUsingTailwind([$baseClasses, $conditionalClasses, $inheritClasses, $sizeClasses]);
+            $elementClasses[$elementString] = $this->mergeCollectionsUsingTailwind([$baseClasses, $conditionalClasses, $inheritClasses, $sizeClasses, $variantClasses]);
 
 //            dd($baseClasses, $conditionalClasses, $sizeClasses, $elementClasses, $elementString, $element);
         }
@@ -181,6 +182,27 @@ class LaravelViewComponents
             $hasSize = $element['sizes']['base'] ?? null;
         }
         return collect(['size' => $hasSize]);
+    }
+
+    private function classesElementVariant(array $element): Collection
+    {
+        $variantClasses = collect();
+
+        foreach ($element['attributes'] ?? [] as $name => $options) {
+            $enabled = $options[0];
+
+            if (isset($this->vars['elementAttributes'][$name]))
+            {
+                $enabled = $this->vars['elementAttributes'][$name];
+            }
+
+            if ($enabled) {
+                $variantClasses->put($name.'Override', $options);
+                $variantClasses->put($name.'Variant', $this->variant[$name] ?? '');
+            }
+        }
+
+        return $variantClasses;
     }
 
     public function classesSize(): Collection

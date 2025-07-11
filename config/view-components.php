@@ -48,7 +48,7 @@ return [
 
         'default' => [
             'background'          => 'bg-white dark:bg-slate-900',
-            'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
+            'pageBackground'      => 'bg-slate-100 dark:bg-slate-800',
             'text'                => 'text-slate-800 dark:text-slate-200',
             'border'              => 'border-slate-200 dark:border-slate-700',
             'shadow'              => 'shadow-slate-300/50 dark:shadow-slate-900/50',
@@ -631,13 +631,13 @@ return [
         ],
 
         'menu' => [
-            'base' => '[--auto-close:lg] -translate-x-full transform w-68 h-full fixed inset-y-0 start-0 z-60 border-e lg:block lg:translate-x-0 lg:end-auto lg:bottom-0',
+            'base' => '[--auto-close:lg] -translate-x-full transform w-68 h-full fixed inset-y-0 start-0 z-60 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0',
             'elements' => [
                 'inner-div' => ['base' => 'relative flex flex-col h-full max-h-full'],
                 'logo-div' => ['base' => 'px-6 pt-4 flex items-center'],
                 'logo-a' => ['base' => 'flex-none rounded-xl text-xl inline-block font-semibold focus:outline-hidden focus:opacity-80'],
                 'content-div' => ['base' => 'h-full'],
-                'content-nav' => ['base' => 'pt-3 w-full flex flex-col flex-wrap'],
+                'content-nav' => ['base' => 'pt-3 w-full flex justify-center'],
                 'sidebar-div' => ['base' => 'min-w-fit'],
                 'sidebar-backdrop' => [
                     'base' => 'fixed inset-0 bg-opacity-30 z-40 lg:hidden lg:z-auto'
@@ -645,8 +645,10 @@ return [
                 'sidebar' => ['base' => 'flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 transition-all duration-200 ease-in-out'],
                 'sidebar-header' => ['base' => 'lg:hidden flex justify-between mb-10 pr-3 sm:px-2'],
                 'close-button' => ['base' => 'lg:hidden'],
-
-            ]
+            ],
+            'attributes' => [
+                'border'  => [true, 'border-e'],
+            ],
         ],
 
         'menu-group' => [
@@ -666,13 +668,16 @@ return [
                     ],
                 ],
                 'parent' => [
-                    'base'  => 'flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg',
+                    'base'  => 'flex items-center gap-2 py-2 px-4 text-sm rounded-lg',
                     'sizes' => [
                         'xs'   => 'text-xs',
                         'sm'   => 'text-xs',
                         'base' => 'text-base',
                         'lg'   => 'text-lg',
                         'xl'   => 'text-xl',
+                    ],
+                    'attributes' => [
+                        'hover' => [true, 'hover:brightness-90 hover:font-bold'],
                     ],
                 ],
                 'icon' => [
@@ -684,6 +689,9 @@ return [
                         'lg'   => 'text-base',
                         'xl'   => 'text-lg',
                     ],
+                ],
+                'icon-span' => [
+                    'base' => 'w-4 flex justify-center',
                 ],
                 'chevron-div' => [
                     'base' => 'flex shrink-0 ml-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200',
@@ -699,10 +707,13 @@ return [
                     ],
                 ],
                 'submenu-div' => [
-                    'base' => 'lg:hidden lg:sidebar-expanded:block 2xl:block pl-4',
+                    'base' => 'lg:hidden lg:sidebar-expanded:block 2xl:block pl-12',
                 ],
                 'second-li' => [
-                    'base' => 'block p-2 rounded',
+                    'base' => 'block p-1 rounded',
+                    'attributes' => [
+                        'hover' => [true, 'hover:brightness-90 hover:font-bold'],
+                    ],
                 ],
                 'a-selected' => [
                     'base' => 'brightness-80 font-extrabold',
