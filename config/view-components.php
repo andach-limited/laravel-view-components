@@ -579,9 +579,15 @@ return [
         ],
 
         'header' => [
-            'base' => 'w-full p-4',
+            'base' => 'sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-48 w-full py-2.5 lg:ps-65',
+            'elements' => [
+                'nav' => ['base' => 'px-4 sm:px-6 flex basis-full items-center w-full mx-auto'],
+                'logo-div' => ['base' => 'me-5 lg:me-0 lg:hidden'],
+                'logo-a' => ['base' => 'lex-none rounded-md text-xl inline-block font-semibold focus:outline-hidden focus:opacity-80'],
+                'search-div' => ['base' => 'w-full flex items-center justify-end ms-auto md:justify-between gap-x-1 md:gap-x-3'],
+            ],
             'attributes' => [
-                'border'  => [true, 'border-b-2'],
+                'border'  => [true, 'border-b'],
             ],
         ],
 
@@ -625,7 +631,7 @@ return [
         ],
 
         'menu' => [
-            'base' => '[--auto-close:lg] -translate-x-full transition-all duration-300 transform  w-68 h-full fixed inset-y-0 start-0 z-60 border-e lg:block lg:translate-x-0 lg:end-auto lg:bottom-0',
+            'base' => '[--auto-close:lg] -translate-x-full transform w-68 h-full fixed inset-y-0 start-0 z-60 border-e lg:block lg:translate-x-0 lg:end-auto lg:bottom-0',
             'elements' => [
                 'inner-div' => ['base' => 'relative flex flex-col h-full max-h-full'],
                 'logo-div' => ['base' => 'px-6 pt-4 flex items-center'],
@@ -634,7 +640,7 @@ return [
                 'content-nav' => ['base' => 'pt-3 w-full flex flex-col flex-wrap'],
                 'sidebar-div' => ['base' => 'min-w-fit'],
                 'sidebar-backdrop' => [
-                    'base' => 'fixed inset-0 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200'
+                    'base' => 'fixed inset-0 bg-opacity-30 z-40 lg:hidden lg:z-auto'
                 ],
                 'sidebar' => ['base' => 'flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 transition-all duration-200 ease-in-out'],
                 'sidebar-header' => ['base' => 'lg:hidden flex justify-between mb-10 pr-3 sm:px-2'],
