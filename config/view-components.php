@@ -20,6 +20,7 @@ return [
         'checkbox'                      => 'view-components::forms.checkbox',
         'code'                      => 'view-components::general.code',
         'content'                      => 'view-components::layouts.content',
+        'dark-toggle'                    => 'view-components::layouts.dark-toggle',
         'faq'                       => 'view-components::general.faq',
         'footer'                      => 'view-components::layouts.footer',
         'form'                      => 'view-components::forms.form',
@@ -35,6 +36,7 @@ return [
         'no-results'                => 'view-components::general.no-results',
         'progress-bar'              => 'view-components::general.progress-bar',
         'radio'              => 'view-components::forms.radio',
+        'search'                    => 'view-components::layouts.search',
         'select'              => 'view-components::forms.select',
         'service-button'            => 'view-components::general.service-button',
         'submit'            => 'view-components::forms.submit',
@@ -486,9 +488,17 @@ return [
         ],
 
         'content' => [
-            'base' => 'w-full lg:ps-64',
+            'base' => 'w-full lg:ps-64 min-h-screen',
             'elements' => [
-                'inner-div' => ['base' => 'max-w-[1000px] p-4 sm:p-6 space-y-4 sm:space-y-6'],
+                'inner-div' => ['base' => 'max-w-[1000px] mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6'],
+            ],
+        ],
+
+        'dark-toggle' => [
+            'base' => 'flex items-center gap-2 px-4 py-2 rounded',
+            'attributes' => [
+                'border' => [true, 'border-2'],
+                'rounded' => [true, 'rounded'],
             ],
         ],
 
@@ -569,7 +579,7 @@ return [
         ],
 
         'header' => [
-            'base' => 'w-full text-white p-4',
+            'base' => 'w-full p-4',
             'attributes' => [
                 'border'  => [true, 'border-b-2'],
             ],
@@ -650,7 +660,7 @@ return [
                     ],
                 ],
                 'parent' => [
-                    'base'  => 'flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm rounded-lg',
+                    'base'  => 'flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg',
                     'sizes' => [
                         'xs'   => 'text-xs',
                         'sm'   => 'text-xs',
@@ -802,6 +812,19 @@ return [
             ],
             'attributes' => [
                 'accent' => [true, ''],
+            ],
+        ],
+
+        'search' => [
+            'base' => 'relative',
+            'elements' => [
+                'icon-div' => ['base' => 'absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5'],
+                'icon' => ['base' => 'shrink-0 size-4'],
+                'input' => ['base' => 'py-2 ps-10 pe-16 block w-full'],
+            ],
+            'attributes' => [
+                'border' => [true, 'border-2'],
+                'rounded' => [true, 'rounded'],
             ],
         ],
 
