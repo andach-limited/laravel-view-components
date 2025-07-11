@@ -20,7 +20,7 @@ use Andach\LaravelViewComponents\Components\Forms\Submit;
 use Andach\LaravelViewComponents\Components\Forms\Textarea;
 use Andach\LaravelViewComponents\Components\H;
 use Andach\LaravelViewComponents\Components\Layouts\Content;
-use Andach\LaravelViewComponents\Components\Layouts\Footer;
+use Andach\LaravelViewComponents\Components\Layouts\Breadcrumbs;
 use Andach\LaravelViewComponents\Components\Layouts\Header;
 use Andach\LaravelViewComponents\Components\Layouts\Menu;
 use Andach\LaravelViewComponents\Components\Layouts\Layout;
@@ -67,6 +67,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasViewComponent('andach', Alert::class)
             ->hasViewComponent('andach', Avatar::class)
+            ->hasViewComponent('andach', Breadcrumbs::class)
             ->hasViewComponent('andach', Button::class)
             ->hasViewComponent('andach', Card::class)
             ->hasViewComponent('andach', Chat::class)
@@ -74,7 +75,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Code::class)
             ->hasViewComponent('andach', Content::class)
             ->hasViewComponent('andach', Faq::class)
-            ->hasViewComponent('andach', Footer::class)
             ->hasViewComponent('andach', Form::class)
             ->hasViewComponent('andach', FormError::class)
             ->hasViewComponent('andach', H::class)

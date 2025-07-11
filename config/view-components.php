@@ -13,6 +13,7 @@ return [
         'alert'                     => 'view-components::general.alert',
         'attachments-and-comments'  => 'view-components::general.attachments-and-comments',
         'avatar'                    => 'view-components::general.avatar',
+        'breadcrumbs'                    => 'view-components::layouts.breadcrumbs',
         'button'                    => 'view-components::general.button',
         'card'                      => 'view-components::general.card',
         'chat'                      => 'view-components::general.chat',
@@ -307,6 +308,26 @@ return [
                 'ring'    => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded-full'],
                 'shadow'  => [false, 'shadow-md/50'],
+            ],
+        ],
+
+        'breadcrumbs' => [
+            'base' => '-mt-px',
+            'elements' => [
+                'inner-div' => ['base' => 'sticky top-0 inset-x-0 z-20 px-4 sm:px-6 lg:px-8 lg:hidden'],
+                'sub-div' => ['base' => 'flex items-center py-2'],
+                'button' => [
+                    'base' => 'size-8 flex justify-center items-center gap-x-2 rounded-lg',
+                    'inherit' => ['border'],
+                ],
+                'list' => ['base' => 'ms-3 flex items-center whitespace-nowrap'],
+                'item' => ['base' => 'flex items-center text-sm'],
+                'item-last' => ['base' => 'flex items-center text-sm font-bold'],
+                'span' => ['base' => 'mx-2'],
+
+            ],
+            'attributes' => [
+                'border' => [true, 'border-y'],
             ],
         ],
 
