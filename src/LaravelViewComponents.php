@@ -254,9 +254,6 @@ class LaravelViewComponents
     public function calculatedAttributeIncludeFlags(): array
     {
         $hasHollow     = $this->vars['hollow'] ?? false;
-        $hasHover      = $this->component['options']['hover'] ?? null;
-        $hasFocus      = $this->component['options']['focus'] ?? null;
-        $hasGradient   = $this->component['options']['gradient'] ?? null;
         $hasBackground = $this->component['options']['background'] ?? null;
 
         if (false !== $hasBackground) {
@@ -267,13 +264,13 @@ class LaravelViewComponents
 
         return [
             'accent'     => in_array('accent', $this->enabledAttributesFromConfig),
-            'active'     => false,
-            'background' => !$hasHollow && !$hasGradient && $backgroundEnabled,
+            'active'     => $this->vars['active'] ?? false,
+            'background' => !$hasHollow && !in_array('gradient', $this->enabledAttributesFromConfig) && $backgroundEnabled,
             'border'     => in_array('border', $this->enabledAttributesFromConfig),
             'divide'     => in_array('divide', $this->enabledAttributesFromConfig),
-            'focus'      => $hasFocus,
-            'gradient'   => $hasGradient && !$hasHollow, // Also forget text?
-            'hover'      => $hasHover,
+            'focus'      => in_array('focus', $this->enabledAttributesFromConfig),
+            'gradient'   => in_array('gradient', $this->enabledAttributesFromConfig) && !$hasHollow, // Also forget text?
+            'hover'      => in_array('hover', $this->enabledAttributesFromConfig),
             'pageBackground' => $this->vars['pageBackground'] ?? false,
             'ring'       => in_array('ring', $this->enabledAttributesFromConfig),
             'rounded'    => in_array('rounded', $this->enabledAttributesFromConfig),

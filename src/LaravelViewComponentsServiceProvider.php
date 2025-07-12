@@ -2,34 +2,33 @@
 
 namespace Andach\LaravelViewComponents;
 
-use Andach\LaravelViewComponents\Components\Alert;
-use Andach\LaravelViewComponents\Components\Avatar;
-use Andach\LaravelViewComponents\Components\Button;
-use Andach\LaravelViewComponents\Components\Card;
 use Andach\LaravelViewComponents\Components\Chat;
-use Andach\LaravelViewComponents\Components\Code;
-use Andach\LaravelViewComponents\Components\Faq;
 use Andach\LaravelViewComponents\Components\Forms\Checkbox;
 use Andach\LaravelViewComponents\Components\Forms\Form;
 use Andach\LaravelViewComponents\Components\Forms\FormError;
 use Andach\LaravelViewComponents\Components\Forms\Input;
-use Andach\LaravelViewComponents\Components\Forms\Label;
 use Andach\LaravelViewComponents\Components\Forms\Radio;
 use Andach\LaravelViewComponents\Components\Forms\Select;
 use Andach\LaravelViewComponents\Components\Forms\Submit;
 use Andach\LaravelViewComponents\Components\Forms\Textarea;
-use Andach\LaravelViewComponents\Components\H;
-use Andach\LaravelViewComponents\Components\Layouts\DarkToggle;
+use Andach\LaravelViewComponents\Components\General\Alert;
+use Andach\LaravelViewComponents\Components\General\Avatar;
+use Andach\LaravelViewComponents\Components\General\Button;
+use Andach\LaravelViewComponents\Components\General\Card;
+use Andach\LaravelViewComponents\Components\General\Code;
+use Andach\LaravelViewComponents\Components\General\Faq;
+use Andach\LaravelViewComponents\Components\General\H;
+use Andach\LaravelViewComponents\Components\General\MenuGroup;
+use Andach\LaravelViewComponents\Components\General\NoResults;
+use Andach\LaravelViewComponents\Components\General\ProgressBar;
+use Andach\LaravelViewComponents\Components\General\ServiceButton;
+use Andach\LaravelViewComponents\Components\General\Table;
 use Andach\LaravelViewComponents\Components\Layouts\Breadcrumbs;
+use Andach\LaravelViewComponents\Components\Layouts\Content;
+use Andach\LaravelViewComponents\Components\Layouts\DarkToggle;
 use Andach\LaravelViewComponents\Components\Layouts\Header;
 use Andach\LaravelViewComponents\Components\Layouts\Menu;
-use Andach\LaravelViewComponents\Components\Layouts\Layout;
 use Andach\LaravelViewComponents\Components\Layouts\Search;
-use Andach\LaravelViewComponents\Components\MenuGroup;
-use Andach\LaravelViewComponents\Components\NoResults;
-use Andach\LaravelViewComponents\Components\ProgressBar;
-use Andach\LaravelViewComponents\Components\ServiceButton;
-use Andach\LaravelViewComponents\Components\Table;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
@@ -74,12 +73,14 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Chat::class)
             ->hasViewComponent('andach', Checkbox::class)
             ->hasViewComponent('andach', Code::class)
+            ->hasViewComponent('andach', Content::class)
             ->hasViewComponent('andach', DarkToggle::class)
             ->hasViewComponent('andach', Faq::class)
             ->hasViewComponent('andach', Form::class)
             ->hasViewComponent('andach', FormError::class)
             ->hasViewComponent('andach', H::class)
             ->hasViewComponent('andach', Header::class)
+            ->hasViewComponent('andach', Input::class)
             ->hasViewComponent('andach', Menu::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)

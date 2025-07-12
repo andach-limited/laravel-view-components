@@ -1,9 +1,9 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Components;
+namespace Andach\LaravelViewComponents\Components\General;
 
+use Andach\LaravelViewComponents\BaseComponent;
 use Closure;
-use Illuminate\View\Component;
 
 class MenuGroup extends BaseComponent
 {
@@ -15,13 +15,21 @@ class MenuGroup extends BaseComponent
         public ?array $items = [],
         public ?string $icon = '',
         // Generic Arguments
-        public ?string $background = null,
-        public ?string $border = null,
-        public ?string $divide = null,
-        public ?string $hollow = 'true',
-        public ?string $ring = null,
-        public ?string $rounded = null,
-        public ?string $shadow = null,
+        public ?bool $accent = null,
+        public ?bool $active = null,
+        public ?bool $animate = null,
+        public ?bool $background = null,
+        public ?bool $border = null,
+        public ?bool $divide = null,
+        public ?bool $focus = null,
+        public ?bool $full = null,
+        public ?bool $gradient = null,
+        public ?bool $hollow = true,
+        public ?bool $hover = null,
+        public ?bool $pageBackground = null,
+        public ?bool $ring = null,
+        public ?bool $rounded = null,
+        public ?bool $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
     ) {

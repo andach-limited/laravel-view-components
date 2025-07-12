@@ -2,7 +2,7 @@
 
 namespace Andach\LaravelViewComponents\Components\Forms;
 
-use Andach\LaravelViewComponents\Components\BaseComponent;
+use Andach\LaravelViewComponents\BaseComponent;
 use Andach\LaravelViewComponents\Traits\HandlesDefaultAndOldValue;
 use Andach\LaravelViewComponents\Traits\HandlesValidationErrors;
 use TailwindMerge\Laravel\Facades\TailwindMerge;
@@ -26,13 +26,21 @@ class Textarea extends BaseComponent
                       $bind = null,
                       $default = null,
         // Generic Arguments
-        public ?string $background = null,
-        public ?string $border = null,
-        public ?string $divide = null,
-        public ?string $hollow = 'true',
-        public ?string $ring = null,
-        public ?string $rounded = null,
-        public ?string $shadow = null,
+        public ?bool $accent = null,
+        public ?bool $active = null,
+        public ?bool $animate = null,
+        public ?bool $background = null,
+        public ?bool $border = null,
+        public ?bool $divide = null,
+        public ?bool $focus = null,
+        public ?bool $full = null,
+        public ?bool $gradient = null,
+        public ?bool $hollow = true,
+        public ?bool $hover = null,
+        public ?bool $pageBackground = null,
+        public ?bool $ring = null,
+        public ?bool $rounded = null,
+        public ?bool $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
     ) {

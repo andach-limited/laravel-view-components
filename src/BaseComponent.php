@@ -1,8 +1,7 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Components;
+namespace Andach\LaravelViewComponents;
 
-use Andach\LaravelViewComponents\LaravelViewComponents;
 use ErrorException;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;

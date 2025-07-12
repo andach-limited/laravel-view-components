@@ -1,10 +1,10 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Components;
+namespace Andach\LaravelViewComponents\Components\General;
 
+use Andach\LaravelViewComponents\BaseComponent;
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
 
 class ProgressBar extends BaseComponent
 {
@@ -22,13 +22,21 @@ class ProgressBar extends BaseComponent
         public ?string $inactiveVariant = null,
         public array $items,
         // Generic Arguments
-        public ?string $background = null,
-        public ?string $border = null,
-        public ?string $divide = null,
-        public ?string $hollow = null,
-        public ?string $ring = null,
-        public ?string $rounded = null,
-        public ?string $shadow = null,
+        public ?bool $accent = null,
+        public ?bool $active = null,
+        public ?bool $animate = null,
+        public ?bool $background = null,
+        public ?bool $border = null,
+        public ?bool $divide = null,
+        public ?bool $focus = null,
+        public ?bool $full = null,
+        public ?bool $gradient = null,
+        public ?bool $hollow = null,
+        public ?bool $hover = null,
+        public ?bool $pageBackground = null,
+        public ?bool $ring = null,
+        public ?bool $rounded = null,
+        public ?bool $shadow = null,
         public ?string $size = null,
         public ?string $variant = null,
     ) {

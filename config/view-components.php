@@ -380,13 +380,11 @@ return [
                 'border' => [true, 'border-2'],
                 'divide' => [false, 'divide-x-2'],
                 'full' => [false, 'w-full'],
+                'gradient' => [false, ''],
+                'hover' => [true, ''],
                 'ring' => [false, 'ring-2 ring-offset-2'],
                 'rounded' => [true, 'rounded'],
                 'shadow' => [false, 'shadow-md'],
-            ],
-            'options' => [
-                'gradient' => false,
-                'hover' => true,
             ],
         ],
 

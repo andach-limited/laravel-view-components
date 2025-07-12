@@ -1,16 +1,15 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Components\Layouts;
+namespace Andach\LaravelViewComponents\Components\General;
 
 use Andach\LaravelViewComponents\BaseComponent;
 
-class Header extends BaseComponent
+class ServiceButton extends BaseComponent
 {
     public function __construct(
         // Unique Arguments
         public ?string $icon = null,
-        public ?string $title = null,
-        public ?bool $dismissible = null,
+        public ?string $url = null,
         // Generic Arguments
         public ?bool $accent = null,
         public ?bool $active = null,
@@ -21,9 +20,9 @@ class Header extends BaseComponent
         public ?bool $focus = null,
         public ?bool $full = null,
         public ?bool $gradient = null,
-        public ?bool $hollow = true,
+        public ?bool $hollow = null,
         public ?bool $hover = null,
-        public ?bool $pageBackground = true,
+        public ?bool $pageBackground = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
@@ -35,6 +34,6 @@ class Header extends BaseComponent
 
     public function render()
     {
-        return view(config('view-components.views.header'));
+        return view(config('view-components.views.service-button'));
     }
 }
