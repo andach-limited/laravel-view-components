@@ -389,7 +389,7 @@ return [
         ],
 
         'card' => [
-            'base'     => 'relative flex flex-col mb-4 rounded-lg',
+            'base'     => 'relative flex flex-col mb-4',
             'elements' => [
                 'header' => [
                     'base'  => 'mx-3',
@@ -433,7 +433,7 @@ return [
                 'border'  => [true, 'border-2'],
                 'divide'  => [true, 'divide-y'],
                 'ring'    => [false, 'ring-2 ring-offset-2'],
-                'rounded' => [true, 'rounded'],
+                'rounded' => [true, 'rounded-lg'],
                 'shadow'  => [false, 'shadow-md'],
             ],
         ],
@@ -562,7 +562,7 @@ return [
         ],
 
         'h' => [
-            'base'       => 'text-6xl font-bold pb-4',
+            'base'       => 'text-4xl font-bold pb-4',
             'attributes' => [
                 'border'  => [false, 'border-2'],
                 'ring'    => [false, 'ring-2 ring-offset-2'],
@@ -572,8 +572,8 @@ return [
             'options' => [
                 'background' => false,
             ],
-            // Set this to the five sizes under 'text-6xl' (or whatever you pick as the H1 size) above so they load in Tailwind.
-            'include' => 'text-5xl text-4xl text-3xl text-2xl text-xl',
+            // Set this to the five sizes under 'text-4xl' (or whatever you pick as the H1 size) above so they load in Tailwind.
+            'include' => 'text-3xl text-2xl text-xl text-lg',
         ],
 
         'header' => [
@@ -988,5 +988,9 @@ return [
                 'shadow'  => [false, 'shadow'],
             ],
         ],
+    ],
+
+    'menu' => [
+
     ],
 ];

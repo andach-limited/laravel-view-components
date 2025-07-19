@@ -18,14 +18,7 @@
         </div>
 
         <div {{ $attributes->twMergeFor('search-div', $twMergeStrings['search-div']) }}>
-
-            <div class="hidden md:block">
-                <!-- Search Input -->
-                <x-andach-search />
-                <!-- End Search Input -->
-            </div>
-
-            <x-andach-dark-toggle />
+            {{ $slot }}
         </div>
     </nav>
 </header>

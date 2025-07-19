@@ -1,6 +1,6 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Tests\Components;
+namespace Andach\LaravelViewComponents\Tests\Components\General;
 
 use Andach\LaravelViewComponents\Tests\AndachTestCase;
 

@@ -294,6 +294,7 @@ class LaravelViewComponents
      */
     public function calculatedVariantKeys(): array
     {
+        $return = [];
         $keysNames = $this->calculatedAttributeIncludeFlags();
 
         foreach ($keysNames as $keyName => $evaluation) {

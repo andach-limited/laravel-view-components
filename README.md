@@ -36,8 +36,8 @@ The config file can then be edited to point the views towards your local copy to
 You will need Tailwind and FontAwesome installed in your laravel project:
 
 ```bash
-npm install tailwindcss @tailwindcss/vite
-npm install @fortawesome/fontawesome-free
+npm install tailwindcss @tailwindcss/vite @fortawesome/fontawesome-free
+npm install 
 ```
 
 Also update your ```resources/css/app.css to include:```

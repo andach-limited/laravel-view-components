@@ -31,6 +31,7 @@ use Andach\LaravelViewComponents\Components\Layouts\Menu;
 use Andach\LaravelViewComponents\Components\Layouts\Search;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -48,6 +49,33 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
         Blade::directive('endbind', function () {
             return '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->pop(); ?>';
         });
+
+        view()->composer('*', function ($view) {
+            $view->with('menu', $this->buildMenu());
+        });
+    }
+
+    private function buildMenu(): array
+    {
+        $menu = config('view-components.menu', []);
+        $routeName = request()->route()?->getName() ?? '';
+
+        foreach ($menu as $key => &$section) {
+            if (isset($section['selected-if-route-begins'])) {
+                $prefix = $section['selected-if-route-begins'];
+                $section['selected'] = str_starts_with($routeName, $prefix);
+            }
+
+            if (isset($section['route']) && Route::has($section['route'])) {
+                $section['url'] = route($section['route']);
+            }
+
+            if (!isset($section['url'])) {
+                $section['url'] = '#';
+            }
+        }
+
+        return $menu;
     }
 
     public function configurePackage(Package $package): void
