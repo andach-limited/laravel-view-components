@@ -50,6 +50,27 @@ Also update your ```resources/css/app.css to include:```
 @source '../../vendor/andach/laravel-view-components/resources/views/**/*.blade.php';
 @source '../../vendor/andach/laravel-view-components/config/view-components.php';
 @source '../../config/view-components.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+And your ```resources/js/app.js``` to include:
+
+```js
+import './bootstrap';
+import '../css/app.css';
+import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+import Alpine from 'alpinejs'
+import $ from 'jquery';
+
+window.Alpine = Alpine
+document.addEventListener('DOMContentLoaded', () => {
+    Alpine.start()
+})
+
+window.$ = $;
+window.jQuery = $;
+
 ```
 
 ## Testing

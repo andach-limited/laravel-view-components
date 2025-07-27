@@ -18,10 +18,10 @@
 >
     <button @click="toggle()" class="transition-all duration-300 text-xl focus:outline-none">
         <template x-if="!darkMode">
-            <i class="fa-solid fa-sun"></i>
+            <i class="fas fa-sun"></i>
         </template>
         <template x-if="darkMode">
-            <i class="fa-solid fa-moon"></i>
+            <i class="fas fa-moon"></i>
         </template>
     </button>
 </div>
