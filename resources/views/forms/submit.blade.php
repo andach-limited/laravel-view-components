@@ -7,7 +7,7 @@
         border="{{ $border }}"
         divide="{{ $divide }}"
         full="{{ $full }}"
-        hollow="{{ $hollow }}"
+        hollow="{{ $interiorHollow }}"
         hover="{{ $hover }}"
         ring="{{ $ring }}"
         rounded="{{ $rounded }}"

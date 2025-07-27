@@ -8,6 +8,7 @@ class Submit extends BaseComponent
 {
     public function __construct(
         public ?string $type = 'submit',
+        public ?bool $interiorHollow = false,
         // Generic Arguments
         public ?bool $accent = null,
         public ?bool $active = null,
@@ -18,7 +19,7 @@ class Submit extends BaseComponent
         public ?bool $focus = null,
         public ?bool $full = true,
         public ?bool $gradient = null,
-        public ?bool $hollow = null,
+        public ?bool $hollow = true,
         public ?bool $hover = null,
         public ?bool $pageBackground = null,
         public ?bool $ring = null,
