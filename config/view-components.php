@@ -131,24 +131,24 @@ return [
         ],
 
         'primary' => [
-            'background'          => 'bg-cyan-200 dark:bg-cyan-700',
+            'background'          => 'bg-blue-200 dark:bg-blue-700',
             'pageBackground'      => 'bg-zinc-100 dark:bg-zinc-800',
-            'text'                => 'text-cyan-800 dark:text-cyan-200',
-            'border'              => 'border-cyan-300 dark:border-cyan-900',
-            'shadow'              => 'shadow-cyan-300/50 dark:shadow-cyan-900/50',
-            'ring'                => 'ring-cyan-200 dark:ring-cyan-700 ring-offset-cyan-100 dark:ring-offset-cyan-800',
-            'hover'               => 'hover:bg-cyan-300 hover:dark:bg-cyan-900 hover:from-cyan-400 hover:to-cyan-700 hover:text-cyan-800/70 hover:dark:text-cyan-400/70',
-            'focus'               => 'focus-within:outline focus-within:outline-cyan-600 dark:focus-within:outline-cyan-400 focus-within:outline-2',
-            'active'              => 'bg-cyan-300 dark:bg-cyan-900 from-cyan-400 to-cyan-700',
-            'gradient'            => 'bg-gradient-to-br from-cyan-700 to-cyan-400 text-cyan-100',
-            'divide'              => 'divide-cyan-300 dark:divide-cyan-900',
-            'accent'              => 'accent-cyan-600 hover:accent-cyan-700',
-            'errorBorder'         => 'border-cyan-500 dark:border-cyan-950',
-            'errorText'           => 'text-cyan-950 dark:text-cyan-400',
-            'highlightBorder'     => 'border-cyan-700',
-            'highlightDarkBorder' => 'dark:border-cyan-100',
-            'inactiveBorder'      => 'border-cyan-100',
-            'inactiveDarkBorder'  => 'dark:border-cyan-700',
+            'text'                => 'text-blue-800 dark:text-blue-200',
+            'border'              => 'border-blue-300 dark:border-blue-900',
+            'shadow'              => 'shadow-blue-300/50 dark:shadow-blue-900/50',
+            'ring'                => 'ring-blue-200 dark:ring-blue-700 ring-offset-blue-100 dark:ring-offset-blue-800',
+            'hover'               => 'hover:bg-blue-300 hover:dark:bg-blue-800 hover:from-blue-400 hover:to-blue-700 hover:text-blue-800/70 hover:dark:text-blue-400/70',
+            'focus'               => 'focus-within:outline focus-within:outline-blue-600 dark:focus-within:outline-blue-400 focus-within:outline-2',
+            'active'              => 'bg-blue-300 dark:bg-blue-900 from-blue-400 to-blue-700',
+            'gradient'            => 'bg-gradient-to-br from-blue-700 to-blue-400 text-blue-100',
+            'divide'              => 'divide-blue-300 dark:divide-blue-900',
+            'accent'              => 'accent-blue-600 hover:accent-blue-700',
+            'errorBorder'         => 'border-blue-500 dark:border-blue-950',
+            'errorText'           => 'text-blue-950 dark:text-blue-400',
+            'highlightBorder'     => 'border-blue-700',
+            'highlightDarkBorder' => 'dark:border-blue-100',
+            'inactiveBorder'      => 'border-blue-100',
+            'inactiveDarkBorder'  => 'dark:border-blue-700',
         ],
 
         'secondary' => [
@@ -334,7 +334,7 @@ return [
         ],
 
         'button' => [
-            'base' => 'inline-flex justify-center items-center text-center overflow-hidden mb-4',
+            'base' => 'justify-center items-center text-center overflow-hidden mb-4',
             'elements' => [
                 'content' => [
                     'base' => 'grow',
@@ -368,11 +368,11 @@ return [
                 ],
             ],
             'sizes' => [
-                'xs' => 'text-xs gap-1',
-                'sm' => 'text-sm gap-2',
-                'base' => 'text-base gap-3',
-                'lg' => 'text-lg gap-4',
-                'xl' => 'text-xl gap-5',
+                'xs' => 'text-xs px-2 py-1',
+                'sm' => 'text-sm px-3 py-2',
+                'base' => 'text-base px-4 py-3',
+                'lg' => 'text-lg px-5 py-4',
+                'xl' => 'text-xl px-6 py-5',
             ],
             'attributes' => [
                 'accent' => [false, 'border-l-8'],
@@ -917,7 +917,7 @@ return [
         'submit' => [
             'base' => 'mb-4 flex items-center justify-between',
             'elements' => [
-                'button' => ['base' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline'],
+                'button' => ['base' => 'font-bold py-2 px-4 focus:outline-none focus:shadow-outline'],
             ],
             'attributes' => [
                 'accent' => [false, 'border-l-8'],
