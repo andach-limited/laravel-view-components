@@ -9,7 +9,7 @@
                 @endif
                 <div class="w-full text-lg font-semibold">{{ $displayName }}</div>
                 <div class="w-full text-sm">{{ $slot }}</div>
-                <x-form-input type="file" name="attachment[{{ $name }}]"/>
+                <x-andach-input type="file" name="attachment[{{ $name }}]"/>
             </div>
         </label>
     </div>
