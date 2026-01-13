@@ -7,7 +7,6 @@
                     @click="sidebarOpen = !sidebarOpen"
                     {{ $attributes->twMergeFor('button', $twMergeStrings['button']) }}
                     aria-controls="sidebar"
-                    :aria-expanded="open"
                     aria-label="Toggle navigation"
             >
                 <span class="sr-only">Toggle Navigation</span>
