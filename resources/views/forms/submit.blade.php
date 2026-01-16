@@ -14,6 +14,7 @@
         shadow="{{ $shadow }}"
         size="{{ $size }}"
         variant="{{ $variant }}"
+        {{ $attributes->twMerge(['class' => $twMergeStrings['button']]) }}
     >
         {!! trim($slot) ?: __('Submit') !!}
     </x-andach-button>
