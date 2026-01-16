@@ -1,4 +1,4 @@
-<div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
+<div {{ $attributes->twMergeFor('base', $twMergeStrings['base']) }}>
     <x-andach-button
         type="{{ $type }}"
         accent="{{ $accent }}"

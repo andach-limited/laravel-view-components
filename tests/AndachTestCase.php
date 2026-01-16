@@ -3,6 +3,7 @@
 namespace Andach\LaravelViewComponents\Tests;
 
 use Andach\LaravelViewComponents\LaravelViewComponentsServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
@@ -23,6 +24,18 @@ class AndachTestCase extends TestCase
         Config::set(require __DIR__ . '/../config/view-components.php');
         $this->registerAllBladeComponents();
         View::addNamespace('laravel-view-components', __DIR__ . '/../resources/views');
+
+        // Use in-memory session for tests
+        $this->app['config']->set('session.driver', 'array');
+
+        // Create a fresh request and attach the Laravel session to it
+        $session = $this->app['session.store'];
+
+        $request = Request::create('/');      // or whatever path you like
+        $request->setLaravelSession($session);
+
+        // Bind this request instance into the container
+        $this->app->instance('request', $request);
     }
 
     protected function getPackageProviders($app)

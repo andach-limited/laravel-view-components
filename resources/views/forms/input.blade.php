@@ -1,10 +1,10 @@
-<div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
+<div {{ $attributes->twMergeFor('base', $twMergeStrings['base']) }}>
     <label {{ $attributes->twMergeFor('label', $twMergeStrings['label']) }}>
         @if ($type !== 'hidden' && $floating === false)
             <span {{ $attributes->twMergeFor('span', $twMergeStrings['span']) }}>{{ $label }}</span>
         @endif
 
-        <input class="{{ $class }}"
+        <input {{ $attributes->twMerge(['class' => $twMergeStrings['input']]) }}
                value="{{ $value }}"
                name="{{ $name }}"
                placeholder="{{ $placeholder }}"

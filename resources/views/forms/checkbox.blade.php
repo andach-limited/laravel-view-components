@@ -1,6 +1,6 @@
-<div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
+<div {{ $attributes->twMergeFor('base', $twMergeStrings['base']) }}>
     <label {{ $attributes->twMergeFor('label', $twMergeStrings['label']) }}>
-        <input {{ $attributes->twMergeFor('input', $twMergeStrings['input']) }}
+        <input {{ $attributes->twMerge(['class' => $twMergeStrings['input']]) }}
                type="checkbox"
                value="{{ $value }}"
                name="{{ $name }}"

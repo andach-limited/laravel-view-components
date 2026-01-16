@@ -59,8 +59,9 @@ class Input extends BaseComponent
         $this->value = $this->returnValue($name, $bind, $default, $language);
 
         $this->class = TailwindMerge::merge($this->twMergeStrings['input']);
+
         if ($this->hasErrorAndShow($name)) {
-            $this->class = TailwindMerge::merge($this->twMergeStrings['input'], $this->variantArray['errorBorder']);
+            $this->twMergeStrings['input'] .= ' '.$this->variantArray['errorBorder'];
         }
     }
 

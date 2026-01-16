@@ -1,10 +1,10 @@
-<div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
+<div {{ $attributes->twMergeFor('base', $twMergeStrings['base']) }}>
     <label {{ $attributes->twMergeFor('label', $twMergeStrings['label']) }}>
         @if ($floating === false)
             <span {{ $attributes->twMergeFor('span', $twMergeStrings['span']) }}>{{ $label }}</span>
         @endif
 
-        <select {{ $attributes->twMergeFor('select', $twMergeStrings['select']) }}
+        <select {{ $attributes->twMerge(['class' => $twMergeStrings['select']]) }}
             name="{{ $name }}"
 
             @if($multiple)
