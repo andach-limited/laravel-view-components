@@ -30,12 +30,21 @@ class LaravelViewComponents
 
     private array $vars;
 
+    private static ?array $configCache = null;
+
     public function __construct(string $component, array $vars)
     {
+        if (self::$configCache === null) {
+            self::$configCache = [
+                'components' => config('view-components.components'),
+                'variants' => config('view-components.variants'),
+            ];
+        }
+
         $this->componentName     = $component;
         $this->variantName       = $vars['variant'] ?? 'default';
-        $this->components        = config('view-components.components');
-        $this->variants          = config('view-components.variants');
+        $this->components        = self::$configCache['components'];
+        $this->variants          = self::$configCache['variants'];
         $this->component         = $this->components[$component];
         $this->variant           = $this->variants[$this->variantName] ?? $this->variants['default'];
         $this->buildClassNames   = $this->getBuildClasses();
