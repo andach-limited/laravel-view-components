@@ -16,6 +16,8 @@ abstract class BaseComponent extends Component
     protected string $calculatedSize;
     protected string $calculatedVariant;
 
+    protected static array $lvcCache = [];
+
     protected array $sizes = ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
 
     public array $twMergeStrings = [];
@@ -24,6 +26,19 @@ abstract class BaseComponent extends Component
 
     public function __construct()
     {
+        $cacheKey = $this->getClassName() . md5(serialize(get_object_vars($this)));
+
+        if (isset(self::$lvcCache[$cacheKey])) {
+            $cached = self::$lvcCache[$cacheKey];
+            $this->twMergeStrings = $cached['twMergeStrings'];
+            $this->variantArray = $cached['variantArray'];
+            $this->calculatedAttributes = $cached['calculatedAttributes'];
+            $this->calculatedSize = $cached['calculatedSize'];
+            $this->calculatedVariant = $cached['calculatedVariant'];
+
+            return;
+        }
+
         try {
             $lvc                  = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
             $this->twMergeStrings = $lvc->getTwMergeStrings();
@@ -31,6 +46,14 @@ abstract class BaseComponent extends Component
             $this->calculatedAttributes = $lvc->calculatedAttributes();
             $this->calculatedSize = $lvc->calculatedSize();
             $this->calculatedVariant = $lvc->calculatedVariant();
+
+            self::$lvcCache[$cacheKey] = [
+                'twMergeStrings' => $this->twMergeStrings,
+                'variantArray' => $this->variantArray,
+                'calculatedAttributes' => $this->calculatedAttributes,
+                'calculatedSize' => $this->calculatedSize,
+                'calculatedVariant' => $this->calculatedVariant,
+            ];
         } catch (ErrorException $e) {
             if (str_contains($e->getMessage(), 'Undefined array key')) {
                 throw new RuntimeException('Configuration error: Missing expected key in the config array. Please check your configuration.', 0, $e);
