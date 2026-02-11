@@ -31,6 +31,7 @@ return [
         'header'                     => 'view-components::layouts.header',
         'input'                     => 'view-components::forms.input',
         'label'                     => 'view-components::forms.label',
+        'layout'                     => 'view-components::layouts.layout',
         'menu'                      => 'view-components::layouts.menu',
         'menu-group'                => 'view-components::general.menu-group',
         'no-results'                => 'view-components::general.no-results',
@@ -39,6 +40,10 @@ return [
         'search'                    => 'view-components::layouts.search',
         'select'              => 'view-components::forms.select',
         'service-button'            => 'view-components::general.service-button',
+        'sidebar'                    => 'view-components::layouts.sidebar',
+        'sidebar-footer'                    => 'view-components::layouts.sidebar-footer',
+        'sidebar-menu'                    => 'view-components::layouts.sidebar-menu',
+        'sidebar-top'                    => 'view-components::layouts.sidebar-top',
         'submit'            => 'view-components::forms.submit',
         'table'                     => 'view-components::general.table',
         'textarea'                     => 'view-components::forms.textarea',
@@ -628,6 +633,10 @@ return [
             ],
         ],
 
+        'layout' => [
+            'base' => 'min-h-screen',
+        ],
+
         'menu' => [
             'base' => '[--auto-close:lg] -translate-x-full transform w-68 h-full fixed inset-y-0 start-0 z-60 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0',
             'elements' => [
@@ -911,6 +920,34 @@ return [
             ],
             'options' => [
                 'background' => false,
+            ],
+        ],
+
+        'sidebar' => [
+            'base' => 'fixed inset-y-0 left-0 z-50 flex w-72 transform flex-col lg:translate-x-0',
+            'attributes' => [
+                'border'  => [true, 'border-r'],
+            ],
+        ],
+
+        'sidebar-footer' => [
+            'base' => 'flex items-center px-4',
+            'attributes' => [
+                'border'  => [true, 'box-border border-t'],
+            ],
+        ],
+
+        'sidebar-menu' => [
+            'base' => 'flex-1 overflow-y-auto px-3 py-4',
+            'attributes' => [
+                'border'  => [true, 'border-r'],
+            ],
+        ],
+
+        'sidebar-top' => [
+            'base' => 'flex h-16 items-center gap-3 px-4',
+            'attributes' => [
+                'border'  => [true, 'border-b box-border'],
             ],
         ],
 

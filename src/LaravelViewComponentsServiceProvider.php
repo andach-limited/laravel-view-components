@@ -27,8 +27,13 @@ use Andach\LaravelViewComponents\Components\Layouts\Breadcrumbs;
 use Andach\LaravelViewComponents\Components\Layouts\Content;
 use Andach\LaravelViewComponents\Components\Layouts\DarkToggle;
 use Andach\LaravelViewComponents\Components\Layouts\Header;
+use Andach\LaravelViewComponents\Components\Layouts\Layout;
 use Andach\LaravelViewComponents\Components\Layouts\Menu;
 use Andach\LaravelViewComponents\Components\Layouts\Search;
+use Andach\LaravelViewComponents\Components\Layouts\Sidebar;
+use Andach\LaravelViewComponents\Components\Layouts\SidebarFooter;
+use Andach\LaravelViewComponents\Components\Layouts\SidebarMenu;
+use Andach\LaravelViewComponents\Components\Layouts\SidebarTop;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -109,6 +114,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', H::class)
             ->hasViewComponent('andach', Header::class)
             ->hasViewComponent('andach', Input::class)
+            ->hasViewComponent('andach', Layout::class)
             ->hasViewComponent('andach', Menu::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)
@@ -117,6 +123,10 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Search::class)
             ->hasViewComponent('andach', Select::class)
             ->hasViewComponent('andach', ServiceButton::class)
+            ->hasViewComponent('andach', Sidebar::class)
+            ->hasViewComponent('andach', SidebarFooter::class)
+            ->hasViewComponent('andach', SidebarMenu::class)
+            ->hasViewComponent('andach', SidebarTop::class)
             ->hasViewComponent('andach', Submit::class)
             ->hasViewComponent('andach', Table::class)
             ->hasViewComponent('andach', Textarea::class)
