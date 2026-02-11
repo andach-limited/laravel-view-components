@@ -19,7 +19,7 @@ class SidebarTop extends BaseComponent
         public ?bool $gradient = null,
         public ?bool $hollow = true,
         public ?bool $hover = null,
-        public ?bool $pageBackground = true,
+        public ?bool $pageBackground = null,
         public ?bool $ring = null,
         public ?bool $rounded = null,
         public ?bool $shadow = null,
