@@ -29,9 +29,13 @@ return [
         'form-section'              => 'view-components::general.form-section',
         'h'                         => 'view-components::general.h',
         'header'                     => 'view-components::layouts.header',
+        'header-left'                     => 'view-components::layouts.header-left',
+        'header-mobile'                     => 'view-components::layouts.header-mobile',
+        'header-right'                     => 'view-components::layouts.header-right',
         'input'                     => 'view-components::forms.input',
         'label'                     => 'view-components::forms.label',
         'layout'                     => 'view-components::layouts.layout',
+        'main'                      => 'view-components::layouts.main',
         'menu'                      => 'view-components::layouts.menu',
         'menu-group'                => 'view-components::general.menu-group',
         'no-results'                => 'view-components::general.no-results',
@@ -491,14 +495,14 @@ return [
         ],
 
         'content' => [
-            'base' => 'w-full lg:ps-64 min-h-screen',
+            'base' => 'flex-1',
             'elements' => [
-                'inner-div' => ['base' => 'max-w-[1000px] mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6'],
+                'div' => ['base' => 'mx-auto max-w-7xl px-4 py-6'],
             ],
         ],
 
         'dark-toggle' => [
-            'base' => 'flex items-center gap-2 px-4 py-2 rounded',
+            'base' => 'inline-flex h-9 items-center justify-center px-3 text-sm',
             'attributes' => [
                 'border' => [true, 'border-2'],
                 'rounded' => [true, 'rounded'],
@@ -556,7 +560,13 @@ return [
         ],
 
         'footer' => [
-            'base' => 'w-full text-center p-4 text-sm',
+            'base' => '',
+            'elements' => [
+                'div' => ['base' => 'mx-auto flex max-w-7xl items-center px-4 h-16'],
+            ],
+            'attributes' => [
+                'border' => [true, 'box-border border-t']
+            ]
         ],
 
         'form' => [],
@@ -582,16 +592,28 @@ return [
         ],
 
         'header' => [
-            'base' => 'sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-48 w-full py-2.5 lg:ps-65',
+            'base' => 'top-0 z-30 backdrop-blur h-16 px-4',
             'elements' => [
-                'nav' => ['base' => 'px-4 sm:px-6 flex basis-full items-center w-full mx-auto'],
-                'logo-div' => ['base' => 'me-5 lg:me-0 lg:hidden'],
-                'logo-a' => ['base' => 'lex-none rounded-md text-xl inline-block font-semibold focus:outline-hidden focus:opacity-80'],
-                'search-div' => ['base' => 'w-full flex items-center justify-end ms-auto md:justify-between gap-x-1 md:gap-x-3'],
+                'div' => ['base' => 'mx-auto h-16 flex max-w-7xl items-center gap-3'],
             ],
             'attributes' => [
-                'border'  => [true, 'border-b'],
+                'border'  => [true, 'border-b box-border'],
             ],
+        ],
+
+        'header-left' => [
+            'base' => 'hidden min-w-0 flex-1 lg:block',
+        ],
+
+        'header-mobile' => [
+            'base' => 'flex items-center gap-2 lg:hidden',
+            'elements' => [
+                'button' => ['base' => 'inline-flex h-9 w-9 items-center justify-center lg:hidden'],
+            ],
+        ],
+
+        'header-right' => [
+            'base' => 'ml-auto flex items-center gap-2',
         ],
 
         'input' => [
@@ -635,6 +657,10 @@ return [
 
         'layout' => [
             'base' => 'min-h-screen',
+        ],
+
+        'main' => [
+            'base' => 'flex min-h-screen flex-col lg:pl-72',
         ],
 
         'menu' => [

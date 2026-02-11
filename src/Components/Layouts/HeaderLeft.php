@@ -4,7 +4,7 @@ namespace Andach\LaravelViewComponents\Components\Layouts;
 
 use Andach\LaravelViewComponents\BaseComponent;
 
-class Header extends BaseComponent
+class HeaderLeft extends BaseComponent
 {
     public function __construct(
         // Generic Arguments
@@ -31,6 +31,6 @@ class Header extends BaseComponent
 
     public function render()
     {
-        return view(config('view-components.views.header'));
+        return view(config('view-components.views.header-left'));
     }
 }

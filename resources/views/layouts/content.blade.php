@@ -1,5 +1,5 @@
-<div {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
-    <div {{ $attributes->twMergeFor('inner-div', $twMergeStrings['inner-div']) }}>
+<main {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
+    <div {{ $attributes->twMergeFor('div', $twMergeStrings['div']) }}>
         {{ $slot }}
     </div>
-</div>
+</main>

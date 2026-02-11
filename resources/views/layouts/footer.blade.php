@@ -1,3 +1,5 @@
 <footer {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}>
-    {{ $slot }}
+    <div {{ $attributes->twMergeFor('div', $twMergeStrings['div']) }}>
+        {{ $slot }}
+    </div>
 </footer>

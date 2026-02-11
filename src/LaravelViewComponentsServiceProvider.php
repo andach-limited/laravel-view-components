@@ -26,8 +26,13 @@ use Andach\LaravelViewComponents\Components\General\Table;
 use Andach\LaravelViewComponents\Components\Layouts\Breadcrumbs;
 use Andach\LaravelViewComponents\Components\Layouts\Content;
 use Andach\LaravelViewComponents\Components\Layouts\DarkToggle;
+use Andach\LaravelViewComponents\Components\Layouts\Footer;
 use Andach\LaravelViewComponents\Components\Layouts\Header;
+use Andach\LaravelViewComponents\Components\Layouts\HeaderLeft;
+use Andach\LaravelViewComponents\Components\Layouts\HeaderMobile;
+use Andach\LaravelViewComponents\Components\Layouts\HeaderRight;
 use Andach\LaravelViewComponents\Components\Layouts\Layout;
+use Andach\LaravelViewComponents\Components\Layouts\Main;
 use Andach\LaravelViewComponents\Components\Layouts\Menu;
 use Andach\LaravelViewComponents\Components\Layouts\Search;
 use Andach\LaravelViewComponents\Components\Layouts\Sidebar;
@@ -109,12 +114,17 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->hasViewComponent('andach', Content::class)
             ->hasViewComponent('andach', DarkToggle::class)
             ->hasViewComponent('andach', Faq::class)
+            ->hasViewComponent('andach', Footer::class)
             ->hasViewComponent('andach', Form::class)
             ->hasViewComponent('andach', FormError::class)
             ->hasViewComponent('andach', H::class)
             ->hasViewComponent('andach', Header::class)
+            ->hasViewComponent('andach', HeaderLeft::class)
+            ->hasViewComponent('andach', HeaderMobile::class)
+            ->hasViewComponent('andach', HeaderRight::class)
             ->hasViewComponent('andach', Input::class)
             ->hasViewComponent('andach', Layout::class)
+            ->hasViewComponent('andach', Main::class)
             ->hasViewComponent('andach', Menu::class)
             ->hasViewComponent('andach', MenuGroup::class)
             ->hasViewComponent('andach', NoResults::class)
