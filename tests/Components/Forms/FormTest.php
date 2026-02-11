@@ -4,12 +4,12 @@ namespace Andach\LaravelViewComponents\Tests\Components\Forms;
 
 use Andach\LaravelViewComponents\Tests\AndachTestCase;
 
-class InputTest extends AndachTestCase
+class FormTest extends AndachTestCase
 {
     public function testRender(): void
     {
-        $view = $this->blade('<x-andach-input name="name" />');
+        $view = $this->blade('<x-andach-form action="/test" />');
 
-        $view->assertSee('name="name"', false);
+        $view->assertSee('<form', false);
     }
 }

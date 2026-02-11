@@ -19,8 +19,8 @@ class ProgressBar extends BaseComponent
      */
     public function __construct(
         // Unique Arguments
-        public ?string $inactiveVariant = null,
         public array $items,
+        public ?string $inactiveVariant = null,
         // Generic Arguments
         public ?bool $accent = null,
         public ?bool $active = null,

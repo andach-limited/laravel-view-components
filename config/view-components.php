@@ -711,9 +711,6 @@ return [
                         'lg'   => 'text-lg',
                         'xl'   => 'text-xl',
                     ],
-//                    'forceInherit' => [
-//                        'pageBackground',
-//                    ],
                 ],
                 'parent' => [
                     'base'  => 'flex items-center gap-2 py-2 px-4 text-sm rounded-lg',
