@@ -36,10 +36,10 @@ class LaravelViewComponents
 
     public function __construct(string $component, array $vars)
     {
-        if (self::$configCache === null) {
+        if (null === self::$configCache) {
             self::$configCache = [
                 'components' => config('view-components.components'),
-                'variants' => config('view-components.variants'),
+                'variants'   => config('view-components.variants'),
             ];
         }
 
@@ -60,11 +60,11 @@ class LaravelViewComponents
      */
     public function buildClasses(): string
     {
-        $baseClasses      = collect(['base' => $this->component['base'] ?? null]);
-        $attributeClasses = $this->classesAttributes();
+        $baseClasses        = collect(['base' => $this->component['base'] ?? null]);
+        $attributeClasses   = $this->classesAttributes();
         $conditionalClasses = $this->classesConditional();
-        $sizeClasses      = $this->classesSize();
-        $variantClasses   = $this->classesVariant();
+        $sizeClasses        = $this->classesSize();
+        $variantClasses     = $this->classesVariant();
         //        $gridClasses = $this->gridClasses($component, $attributes['grid'] ?? null);
         //        $colClasses = $this->colClasses($component, $attributes['cols'] ?? null);
         //        $gapClasses = $this->gapClasses($component, $attributes['gap'] ?? null);
@@ -82,14 +82,14 @@ class LaravelViewComponents
         //            $classes = $this->$methodName($component, $attributes, $classes);
         //        }
 
-//                dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $conditionalClasses, $sizeClasses, $variantClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
+        //                dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $conditionalClasses, $sizeClasses, $variantClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
 
         return $this->merge($classes->flatten()->implode(' '));
     }
 
     public function buildElementClasses(): array
     {
-        $size = $this->vars['size'] ?? ($this->component['size'] ?? null);
+        $size           = $this->vars['size'] ?? ($this->component['size'] ?? null);
         $elementClasses = [];
         $elements       = $this->elementClassNames ?? [];
 
@@ -97,15 +97,15 @@ class LaravelViewComponents
             $elementName = Str::kebab($elementString);
             $element     = $this->component['elements'][$elementName] ?? [];
 
-            $baseClasses = collect(['base' => $element['base'] ?? null]);
+            $baseClasses        = collect(['base' => $element['base'] ?? null]);
             $conditionalClasses = $this->classesElementConditional($elementName);
-            $inheritClasses = $this->classesElementInherit($element);
-            $sizeClasses = $this->classesElementSize($element, $size);
-            $variantClasses = $this->classesElementVariant($element);
+            $inheritClasses     = $this->classesElementInherit($element);
+            $sizeClasses        = $this->classesElementSize($element, $size);
+            $variantClasses     = $this->classesElementVariant($element);
 
             $elementClasses[$elementString] = $this->mergeCollectionsUsingTailwind([$baseClasses, $conditionalClasses, $inheritClasses, $sizeClasses, $variantClasses]);
 
-//            dd($baseClasses, $conditionalClasses, $sizeClasses, $elementClasses, $elementString, $element);
+            //            dd($baseClasses, $conditionalClasses, $sizeClasses, $elementClasses, $elementString, $element);
         }
 
         return $elementClasses;
@@ -154,7 +154,7 @@ class LaravelViewComponents
 
     public function classesElementConditional(string $elementName): Collection
     {
-        $classes = collect();
+        $classes     = collect();
         $element     = $this->component['conditional-elements'][$elementName] ?? [];
 
         foreach ($element as $key => $options) {
@@ -170,7 +170,7 @@ class LaravelViewComponents
 
     private function classesElementInherit(array $element): Collection
     {
-        $classes = collect();
+        $classes               = collect();
         $calculatedVariantKeys = $this->calculatedVariantKeys();
 
         foreach ($element['inherit'] ?? [] as $inherit) {
@@ -202,14 +202,13 @@ class LaravelViewComponents
         foreach ($element['attributes'] ?? [] as $name => $options) {
             $enabled = $options[0];
 
-            if (isset($this->vars['elementAttributes'][$name]))
-            {
+            if (isset($this->vars['elementAttributes'][$name])) {
                 $enabled = $this->vars['elementAttributes'][$name];
             }
 
             if ($enabled) {
-                $variantClasses->put($name.'Override', $options);
-                $variantClasses->put($name.'Variant', $this->variant[$name] ?? '');
+                $variantClasses->put($name . 'Override', $options);
+                $variantClasses->put($name . 'Variant', $this->variant[$name] ?? '');
             }
         }
 
@@ -232,7 +231,7 @@ class LaravelViewComponents
      */
     private function classesVariant(): Collection
     {
-        $variantClasses = collect();
+        $variantClasses       = collect();
         $calculatedAttributes = $this->calculatedVariantKeys();
 
         foreach ($calculatedAttributes as $name) {
@@ -242,12 +241,10 @@ class LaravelViewComponents
         return $variantClasses;
     }
 
-    /*
-     * Returns an array of names of enabled attributes that also exist in the config file.
-     */
+    // Returns an array of names of enabled attributes that also exist in the config file.
     public function calculatedAttributes(): array
     {
-        $return = [];
+        $return    = [];
         $keysNames = $this->calculatedAttributeIncludeFlags();
 
         foreach ($keysNames as $keyName => $evaluation) {
@@ -259,9 +256,7 @@ class LaravelViewComponents
         return $return;
     }
 
-    /*
-     * Returns an array of all possible attributes mapped to true or false for whether they should be included.
-     */
+    // Returns an array of all possible attributes mapped to true or false for whether they should be included.
     public function calculatedAttributeIncludeFlags(): array
     {
         $hasHollow     = $this->vars['hollow'] ?? false;
@@ -274,19 +269,19 @@ class LaravelViewComponents
         }
 
         return [
-            'accent'     => in_array('accent', $this->enabledAttributesFromConfig),
-            'active'     => $this->vars['active'] ?? false,
-            'background' => !$hasHollow && !in_array('gradient', $this->enabledAttributesFromConfig) && $backgroundEnabled,
-            'border'     => in_array('border', $this->enabledAttributesFromConfig),
-            'divide'     => in_array('divide', $this->enabledAttributesFromConfig),
-            'focus'      => in_array('focus', $this->enabledAttributesFromConfig),
-            'gradient'   => in_array('gradient', $this->enabledAttributesFromConfig) && !$hasHollow, // Also forget text?
-            'hover'      => in_array('hover', $this->enabledAttributesFromConfig),
+            'accent'         => in_array('accent', $this->enabledAttributesFromConfig),
+            'active'         => $this->vars['active'] ?? false,
+            'background'     => !$hasHollow && !in_array('gradient', $this->enabledAttributesFromConfig) && $backgroundEnabled,
+            'border'         => in_array('border', $this->enabledAttributesFromConfig),
+            'divide'         => in_array('divide', $this->enabledAttributesFromConfig),
+            'focus'          => in_array('focus', $this->enabledAttributesFromConfig),
+            'gradient'       => in_array('gradient', $this->enabledAttributesFromConfig) && !$hasHollow, // Also forget text?
+            'hover'          => in_array('hover', $this->enabledAttributesFromConfig),
             'pageBackground' => $this->vars['pageBackground'] ?? false,
-            'ring'       => in_array('ring', $this->enabledAttributesFromConfig),
-            'rounded'    => in_array('rounded', $this->enabledAttributesFromConfig),
-            'shadow'     => in_array('shadow', $this->enabledAttributesFromConfig),
-            'text'       => $this->component['text'] ?? true,
+            'ring'           => in_array('ring', $this->enabledAttributesFromConfig),
+            'rounded'        => in_array('rounded', $this->enabledAttributesFromConfig),
+            'shadow'         => in_array('shadow', $this->enabledAttributesFromConfig),
+            'text'           => $this->component['text'] ?? true,
         ];
     }
 
@@ -300,12 +295,10 @@ class LaravelViewComponents
         return $this->variantName;
     }
 
-    /*
-     * Returns an array of names of enabled attributes that also exist in the variant array.
-     */
+    // Returns an array of names of enabled attributes that also exist in the variant array.
     public function calculatedVariantKeys(): array
     {
-        $return = [];
+        $return    = [];
         $keysNames = $this->calculatedAttributeIncludeFlags();
 
         foreach ($keysNames as $keyName => $evaluation) {
@@ -361,7 +354,7 @@ class LaravelViewComponents
             return self::$mergeCache[$input];
         }
 
-        $merged = TailwindMerge::merge($input);
+        $merged                   = TailwindMerge::merge($input);
         self::$mergeCache[$input] = $merged;
 
         return $merged;

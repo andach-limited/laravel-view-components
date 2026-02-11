@@ -50,31 +50,27 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelViewComponentsServiceProvider extends PackageServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
-        Blade::directive('bind', function ($bind) {
-            return '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
-        });
+        Blade::directive('bind', fn ($bind) => '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->bind(' . $bind . '); ?>');
 
-        Blade::directive('endbind', function () {
-            return '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->pop(); ?>';
-        });
+        Blade::directive('endbind', fn () => '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->pop(); ?>');
 
-        view()->composer('*', function ($view) {
+        view()->composer('*', function ($view): void {
             $view->with('menu', $this->buildMenu());
         });
     }
 
     private function buildMenu(): array
     {
-        $menu = config('view-components.menu', []);
+        $menu      = config('view-components.menu', []);
         $routeName = request()->route()?->getName() ?? '';
 
         foreach ($menu as $key => &$section) {
             if (isset($section['selected-if-route-begins'])) {
-                $prefix = $section['selected-if-route-begins'];
+                $prefix              = $section['selected-if-route-begins'];
                 $section['selected'] = str_starts_with($routeName, $prefix);
             }
 
@@ -160,6 +156,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
     {
         parent::register();
 
-        $this->app->singleton(FormDataBinder::class, fn () => new FormDataBinder);
+        $this->app->singleton(FormDataBinder::class, fn () => new FormDataBinder());
     }
 }

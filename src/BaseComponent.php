@@ -12,8 +12,11 @@ abstract class BaseComponent extends Component
     protected array $arrayBuildClasses;
 
     protected array $arrayElementClasses;
+
     protected array $calculatedAttributes;
+
     protected string $calculatedSize;
+
     protected string $calculatedVariant;
 
     protected array $sizes = ['9xl', '8xl', '7xl', '6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
@@ -25,12 +28,12 @@ abstract class BaseComponent extends Component
     public function __construct()
     {
         try {
-            $lvc                  = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
-            $this->twMergeStrings = $lvc->getTwMergeStrings();
-            $this->variantArray   = $lvc->getVariant();
+            $lvc                        = new LaravelViewComponents($this->getClassName(), get_object_vars($this));
+            $this->twMergeStrings       = $lvc->getTwMergeStrings();
+            $this->variantArray         = $lvc->getVariant();
             $this->calculatedAttributes = $lvc->calculatedAttributes();
-            $this->calculatedSize = $lvc->calculatedSize();
-            $this->calculatedVariant = $lvc->calculatedVariant();
+            $this->calculatedSize       = $lvc->calculatedSize();
+            $this->calculatedVariant    = $lvc->calculatedVariant();
         } catch (ErrorException $e) {
             if (str_contains($e->getMessage(), 'Undefined array key')) {
                 throw new RuntimeException('Configuration error: Missing expected key in the config array. Please check your configuration.', 0, $e);
@@ -90,7 +93,7 @@ abstract class BaseComponent extends Component
         return str_replace(['[', ']'], ['.', ''], $name);
     }
 
-    protected function setAttributeBooleans()
+    protected function setAttributeBooleans(): void
     {
         $varNames = [
             'accent',
@@ -112,7 +115,7 @@ abstract class BaseComponent extends Component
             }
         }
 
-        $this->size = $this->calculatedSize;
+        $this->size    = $this->calculatedSize;
         $this->variant = $this->calculatedVariant;
     }
 }

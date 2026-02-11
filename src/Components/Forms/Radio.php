@@ -17,7 +17,7 @@ class Radio extends BaseComponent
         public string $label = '',
         public string $value = '1',
         public bool $checked = false,
-                      $bind = null,
+        $bind = null,
         public bool $default = false,
         // Generic Arguments
         public ?bool $accent = null,
@@ -42,15 +42,15 @@ class Radio extends BaseComponent
 
         $inputName = static::convertBracketsToDots($name);
 
-        if (old($inputName) !== null) {
-            $this->checked = old($inputName) == $value;
+        if (null !== old($inputName)) {
+            $this->checked = old($inputName) === $value;
         }
 
         if (!session()->hasOldInput()) {
             $boundValue = $this->getBoundValue($bind, $inputName);
 
             if (!is_null($boundValue)) {
-                $this->checked = $boundValue == $this->value;
+                $this->checked = $boundValue === $this->value;
             }
         }
     }

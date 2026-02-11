@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Andach\LaravelViewComponents\Tests\Components\Forms;
 
 use Andach\LaravelViewComponents\Tests\AndachTestCase;

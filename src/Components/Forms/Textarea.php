@@ -23,8 +23,8 @@ class Textarea extends BaseComponent
         public string $label = '',
         public string $language = '',
         public string $placeholder = '',
-                      $bind = null,
-                      $default = null,
+        $bind = null,
+        $default = null,
         // Generic Arguments
         public ?bool $accent = null,
         public ?bool $active = null,
@@ -46,8 +46,7 @@ class Textarea extends BaseComponent
     ) {
         parent::__construct();
 
-        if ($this->floating)
-        {
+        if ($this->floating) {
             $this->placeholder = ' ';
         }
 
@@ -60,7 +59,7 @@ class Textarea extends BaseComponent
         $this->class = LaravelViewComponents::merge($this->twMergeStrings['input']);
 
         if ($this->hasErrorAndShow($name)) {
-            $this->twMergeStrings['input'] .= ' '.$this->variantArray['errorBorder'];
+            $this->twMergeStrings['input'] .= ' ' . $this->variantArray['errorBorder'];
         }
     }
 

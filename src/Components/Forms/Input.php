@@ -47,8 +47,7 @@ class Input extends BaseComponent
     ) {
         parent::__construct();
 
-        if ($this->floating)
-        {
+        if ($this->floating) {
             $this->placeholder = ' ';
         }
 
@@ -61,7 +60,7 @@ class Input extends BaseComponent
         $this->class = LaravelViewComponents::merge($this->twMergeStrings['input']);
 
         if ($this->hasErrorAndShow($name)) {
-            $this->twMergeStrings['input'] .= ' '.$this->variantArray['errorBorder'];
+            $this->twMergeStrings['input'] .= ' ' . $this->variantArray['errorBorder'];
         }
     }
 

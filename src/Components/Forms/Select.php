@@ -22,8 +22,8 @@ class Select extends BaseComponent
         public bool $floating = false,
         public string $label = '',
         public array $options = [],
-               $bind = null,
-               $default = null,
+        $bind = null,
+        $default = null,
         public bool $multiple = false,
         public string $placeholder = '',
         // Generic Arguments
@@ -59,8 +59,7 @@ class Select extends BaseComponent
             $this->selectedKey = $this->selectedKey->toArray();
         }
 
-        if ($this->blank)
-        {
+        if ($this->blank) {
             $this->options = ['' => ''] + $this->options;
         }
     }
@@ -71,7 +70,8 @@ class Select extends BaseComponent
     }
 
     public function nothingSelected(): bool
-    {        return is_array($this->selectedKey) ? empty($this->selectedKey) : is_null($this->selectedKey);
+    {
+        return is_array($this->selectedKey) ? empty($this->selectedKey) : is_null($this->selectedKey);
     }
 
     public function render()
