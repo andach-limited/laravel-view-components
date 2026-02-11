@@ -3,8 +3,8 @@
 namespace Andach\LaravelViewComponents\Components\Forms;
 
 use Andach\LaravelViewComponents\BaseComponent;
+use Andach\LaravelViewComponents\LaravelViewComponents;
 use Illuminate\Support\Str;
-use TailwindMerge\Laravel\Facades\TailwindMerge;
 
 class FormError extends BaseComponent
 {
@@ -36,7 +36,7 @@ class FormError extends BaseComponent
         parent::__construct();
 
         $this->name  = static::convertBracketsToDots(Str::before($name, '[]'));
-        $this->class = TailwindMerge::merge($this->twMergeStrings['base'], $this->variantArray['errorText']);
+        $this->class = LaravelViewComponents::merge($this->twMergeStrings['base'] . ' ' . $this->variantArray['errorText']);
     }
 
     public function render()

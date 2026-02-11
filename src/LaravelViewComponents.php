@@ -32,6 +32,8 @@ class LaravelViewComponents
 
     private static ?array $configCache = null;
 
+    private static array $mergeCache = [];
+
     public function __construct(string $component, array $vars)
     {
         if (self::$configCache === null) {
@@ -82,7 +84,7 @@ class LaravelViewComponents
 
 //                dd($classes, $classes->flatten(), $baseClasses, $attributeClasses, $conditionalClasses, $sizeClasses, $variantClasses, TailwindMerge::merge($classes->flatten()->implode(' ')));
 
-        return TailwindMerge::merge($classes->flatten()->implode(' '));
+        return $this->merge($classes->flatten()->implode(' '));
     }
 
     public function buildElementClasses(): array
@@ -350,6 +352,18 @@ class LaravelViewComponents
             $parseCollections = $parseCollections->mergeRecursive($collection);
         }
 
-        return TailwindMerge::merge($parseCollections->flatten()->implode(' '));
+        return $this->merge($parseCollections->flatten()->implode(' '));
+    }
+
+    public static function merge(string $input): string
+    {
+        if (isset(self::$mergeCache[$input])) {
+            return self::$mergeCache[$input];
+        }
+
+        $merged = TailwindMerge::merge($input);
+        self::$mergeCache[$input] = $merged;
+
+        return $merged;
     }
 }

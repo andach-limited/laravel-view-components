@@ -3,9 +3,9 @@
 namespace Andach\LaravelViewComponents\Components\Forms;
 
 use Andach\LaravelViewComponents\BaseComponent;
+use Andach\LaravelViewComponents\LaravelViewComponents;
 use Andach\LaravelViewComponents\Traits\HandlesDefaultAndOldValue;
 use Andach\LaravelViewComponents\Traits\HandlesValidationErrors;
-use TailwindMerge\Laravel\Facades\TailwindMerge;
 
 class Input extends BaseComponent
 {
@@ -58,7 +58,7 @@ class Input extends BaseComponent
 
         $this->value = $this->returnValue($name, $bind, $default, $language);
 
-        $this->class = TailwindMerge::merge($this->twMergeStrings['input']);
+        $this->class = LaravelViewComponents::merge($this->twMergeStrings['input']);
 
         if ($this->hasErrorAndShow($name)) {
             $this->twMergeStrings['input'] .= ' '.$this->variantArray['errorBorder'];
