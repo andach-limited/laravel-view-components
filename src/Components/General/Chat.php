@@ -1,6 +1,6 @@
 <?php
 
-namespace Andach\LaravelViewComponents\Components;
+namespace Andach\LaravelViewComponents\Components\General;
 
 use Closure;
 use Illuminate\Contracts\View\View;

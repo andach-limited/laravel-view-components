@@ -21,6 +21,7 @@ return [
         'code'                      => 'view-components::general.code',
         'content'                      => 'view-components::layouts.content',
         'dark-toggle'                    => 'view-components::layouts.dark-toggle',
+        'error'                       => 'view-components::layouts.error',
         'faq'                       => 'view-components::general.faq',
         'footer'                      => 'view-components::layouts.footer',
         'form'                      => 'view-components::forms.form',
@@ -44,6 +45,7 @@ return [
         'search'                    => 'view-components::layouts.search',
         'select'              => 'view-components::forms.select',
         'service-button'            => 'view-components::general.service-button',
+        'sessions'            => 'view-components::layouts.sessions',
         'sidebar'                    => 'view-components::layouts.sidebar',
         'sidebar-footer'                    => 'view-components::layouts.sidebar-footer',
         'sidebar-menu'                    => 'view-components::layouts.sidebar-menu',
@@ -509,6 +511,19 @@ return [
             ],
         ],
 
+        'error' => [
+            'base' => 'font-inter antialiased min-h-screen flex items-center justify-center',
+            'elements' => [
+                'div' => ['base' => 'flex flex-col items-center'],
+                'number' => ['base' => 'text-8xl font-bold'],
+                'subtitle' => ['base' => 'font-bold text-3xl xl:text-5xl lg:text-4xl mt-10'],
+                'content' => ['base' => 'font-medium text-sm md:text-xl mt-8'],
+                'back' => ['base' => 'mt-8'],
+                'logo' => ['base' => 'mt-8'],
+                'img' => ['base' => 'w-24 h-24'],
+            ],
+        ],
+
         'faq' => [
             'base'     => '[&_svg]:open:rotate-0 mb-4',
             'elements' => [
@@ -947,6 +962,10 @@ return [
             'options' => [
                 'background' => false,
             ],
+        ],
+
+        'sessions' => [
+            'base' => '',
         ],
 
         'sidebar' => [
