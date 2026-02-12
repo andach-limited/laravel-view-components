@@ -21,7 +21,13 @@ class AndachTestCase extends TestCase
     {
         parent::setUp();
 
-        Config::set(require __DIR__ . '/../config/view-components.php');
+        $config = require __DIR__ . '/../config/view-components.php';
+        $config['variants'] = (require __DIR__ . '/../config/view-components-variants.php')['variants'];
+        $config['components'] = (require __DIR__ . '/../config/view-components-components.php')['components'];
+        $config['menu'] = (require __DIR__ . '/../config/view-components-menu.php')['menu'];
+
+        Config::set('view-components', $config);
+
         $this->registerAllBladeComponents();
         View::addNamespace('laravel-view-components', __DIR__ . '/../resources/views');
 

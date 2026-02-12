@@ -99,7 +99,10 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-view-components')
             ->hasAssets()
-            ->hasConfigFile()
+            ->hasConfigFile('view-components')
+            ->hasConfigFile('view-components-variants')
+            ->hasConfigFile('view-components-components')
+            ->hasConfigFile('view-components-menu')
             ->hasViews()
             ->hasViewComponent('andach', Alert::class)
             ->hasViewComponent('andach', Avatar::class)
@@ -155,6 +158,31 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
     public function register(): void
     {
         parent::register();
+
+        $this->mergeConfigFrom(__DIR__ . '/../config/view-components-variants.php', 'view-components');
+        $this->mergeConfigFrom(__DIR__ . '/../config/view-components-components.php', 'view-components');
+        $this->mergeConfigFrom(__DIR__ . '/../config/view-components-menu.php', 'view-components');
+
+        if ($this->app['config']->has('view-components-variants')) {
+            $this->app['config']->set('view-components.variants', array_replace_recursive(
+                $this->app['config']->get('view-components.variants', []),
+                $this->app['config']->get('view-components-variants.variants', [])
+            ));
+        }
+
+        if ($this->app['config']->has('view-components-components')) {
+            $this->app['config']->set('view-components.components', array_replace_recursive(
+                $this->app['config']->get('view-components.components', []),
+                $this->app['config']->get('view-components-components.components', [])
+            ));
+        }
+
+        if ($this->app['config']->has('view-components-menu')) {
+            $this->app['config']->set('view-components.menu', array_replace_recursive(
+                $this->app['config']->get('view-components.menu', []),
+                $this->app['config']->get('view-components-menu.menu', [])
+            ));
+        }
 
         $this->app->singleton(FormDataBinder::class, fn () => new FormDataBinder());
     }
