@@ -159,6 +159,7 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
     {
         parent::register();
 
+        $this->mergeConfigFrom(__DIR__ . '/../config/view-components.php', 'view-components');
         $this->mergeConfigFrom(__DIR__ . '/../config/view-components-variants.php', 'view-components');
         $this->mergeConfigFrom(__DIR__ . '/../config/view-components-components.php', 'view-components');
         $this->mergeConfigFrom(__DIR__ . '/../config/view-components-menu.php', 'view-components');
