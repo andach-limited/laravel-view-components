@@ -506,7 +506,7 @@ return [
                     ],
                 ],
                 'submenu-div' => [
-                    'base' => 'lg:hidden lg:sidebar-expanded:block 2xl:block pl-12',
+                    'base' => 'pl-12',
                 ],
                 'second-li' => [
                     'base'       => 'block p-1 rounded',
