@@ -63,6 +63,21 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
         });
     }
 
+    public function packageBooted(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../config/view-components-variants.php' => config_path('view-components-variants.php'),
+        ], 'view-components-variants-config');
+
+        $this->publishes([
+            __DIR__ . '/../config/view-components-components.php' => config_path('view-components-components.php'),
+        ], 'view-components-components-config');
+
+        $this->publishes([
+            __DIR__ . '/../config/view-components-menu.php' => config_path('view-components-menu.php'),
+        ], 'view-components-menu-config');
+    }
+
     private function buildMenu(): array
     {
         $menu      = config('view-components.menu', []);
@@ -100,9 +115,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
             ->name('laravel-view-components')
             ->hasAssets()
             ->hasConfigFile('view-components')
-            ->hasConfigFile('view-components-variants')
-            ->hasConfigFile('view-components-components')
-            ->hasConfigFile('view-components-menu')
             ->hasViews()
             ->hasViewComponent('andach', Alert::class)
             ->hasViewComponent('andach', Avatar::class)
