@@ -54,17 +54,6 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
     {
         parent::boot();
 
-        Blade::directive('bind', fn ($bind) => '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->bind(' . $bind . '); ?>');
-
-        Blade::directive('endbind', fn () => '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->pop(); ?>');
-
-        view()->composer('*', function ($view): void {
-            $view->with('menu', $this->buildMenu());
-        });
-    }
-
-    public function packageBooted(): void
-    {
         $this->publishes([
             __DIR__ . '/../config/view-components-variants.php' => config_path('view-components-variants.php'),
         ], 'view-components-variants-config');
@@ -76,6 +65,14 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__ . '/../config/view-components-menu.php' => config_path('view-components-menu.php'),
         ], 'view-components-menu-config');
+
+        Blade::directive('bind', fn ($bind) => '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->bind(' . $bind . '); ?>');
+
+        Blade::directive('endbind', fn () => '<?php app(\Andach\LaravelViewComponents\FormDataBinder::class)->pop(); ?>');
+
+        view()->composer('*', function ($view): void {
+            $view->with('menu', $this->buildMenu());
+        });
     }
 
     private function buildMenu(): array
