@@ -768,9 +768,9 @@ return [
             'base' => 'table-auto w-full
                 [&>thead]:font-semibold [&>thead]:uppercase
                 [&>tbody]:divide-y
-                [&_th]:px-2 [&_th:first-child]:pl-5 [&_th:last-child]:pr-5 [&_th]:py-3 [&_th]:whitespace-nowrap
+                [&_th]:px-2 [&_th:first-child]:pl-5 [&_th:last-child]:pr-5 [&_th]:py-3
                 [&_th>div]:font-semibold [&_th>div]:text-left
-                [&_td]:px-2 [&_td:first-child]:pl-5 [&_td:last-child]:pr-5 [&_td]:py-1 [&_td]:whitespace-nowrap',
+                [&_td]:px-2 [&_td:first-child]:pl-5 [&_td:last-child]:pr-5 [&_td]:py-1',
             'sizes' => [
                 'xs'   => 'text-xs',
                 'sm'   => 'text-sm',
