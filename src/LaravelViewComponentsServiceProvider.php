@@ -100,8 +100,8 @@ class LaravelViewComponentsServiceProvider extends PackageServiceProvider
 
     public function configurePackage(Package $package): void
     {
-        Paginator::defaultView(config('view-components.pagination.standard'));
-        Paginator::defaultSimpleView(config('view-components.pagination.simple'));
+        // Paginator::defaultView(config('view-components.pagination.standard'));
+        // Paginator::defaultSimpleView(config('view-components.pagination.simple'));
 
         /*
          * This class is a Package Service Provider
