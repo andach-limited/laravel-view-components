@@ -12,6 +12,7 @@ class Form extends BaseComponent
         // Unique Arguments
         public string $action,
         public string $method = 'POST',
+        public ?string $enctype = null,
         // Generic Arguments
         public ?bool $accent = null,
         public ?bool $active = null,
