@@ -496,7 +496,7 @@ return [
                     'base' => 'flex shrink-0 ml-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200',
                 ],
                 'chevron-svg' => [
-                    'base'  => 'w-3 h-3 transition-transform duration-200',
+                    'base'  => 'w-3 h-3 transition-transform duration-200 fill-current',
                     'sizes' => [
                         'xs'   => 'text-2xs',
                         'sm'   => 'text-xs',
