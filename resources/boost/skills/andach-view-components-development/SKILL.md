@@ -1,10 +1,15 @@
+---
+name: andach-view-components-development
+description: Build Blade UI with the andach/laravel-view-components package (x-andach-* components) — forms with @bind model binding, inputs, selects, buttons, cards, tables, alerts, headings, and the layout/sidebar/menu scaffolding — and set up its Tailwind 4, FontAwesome, Alpine.js and jQuery frontend. Use whenever writing or editing Blade views, forms or layouts in this app, or installing/configuring the package.
+---
+
 # Andach View Components
 
 This project uses the **`andach/laravel-view-components`** package for its Blade UI. Prefer these components over hand-written HTML wherever one exists.
 
 Repo: https://github.com/andach-limited/laravel-view-components · Docs: https://laravel-view-components.andach.co.uk/getting-started
 
-> This file was written from the package source at **v2.0.5**. It is a summary, not the API. The installed package is authoritative: component props are the constructor signatures in `vendor/andach/laravel-view-components/src/Components/`, and what actually reaches the HTML is in `vendor/andach/laravel-view-components/resources/views/`. **Check both before assuming a prop works** — several components accept props their view ignores (see "Known gaps"). Never invent a prop.
+> This skill ships with the package and is a summary, not the API. The installed package is authoritative: component props are the constructor signatures in `vendor/andach/laravel-view-components/src/Components/`, and what actually reaches the HTML is in `vendor/andach/laravel-view-components/resources/views/`. **Check both before assuming a prop works** — several components accept props their view ignores (see "Known gaps"). Never invent a prop.
 
 ## Tag prefix
 
@@ -24,7 +29,7 @@ If a component isn't on that list, `x-andach-<name>` will not resolve — do not
 
 ## Installation
 
-The Composer package is already installed by the time you are reading this file. What remains is the frontend wiring. **Check each step before doing it** — if the project is already set up, skip it rather than duplicating imports or `@source` lines.
+The Composer package is already installed by the time you are reading this. What remains is the frontend wiring. **Check each step before doing it** — if the project is already set up, skip it rather than duplicating imports or `@source` lines.
 
 Requires **Tailwind 4** (via `@tailwindcss/vite`), **FontAwesome**, **Alpine.js** and **jQuery**.
 
@@ -251,7 +256,7 @@ Publish tags: `view-components-config`, `view-components-views`, `view-component
 
 If you add Tailwind classes to the config, remember the `@source` lines in `app.css` — classes built at runtime (like `h`'s computed `text-*`) need to appear in a scanned file; the `h` config's `include` key exists for exactly that.
 
-## Known gaps (v2.0.5) — don't be surprised by these
+## Known gaps — don't be surprised by these
 
 - **`button`'s `href`, `prefix` and `suffix` props do nothing.** `general/button.blade.php` renders `<button type>` + slot only. For a link, use an `<a>` or wrap the button in one — `<x-andach-button href="…">` renders a non-navigating button.
 - **`form-section`, `form-attachment` and `form-checkbox-icon` are not registered.** The classes exist in `src/Components/` but aren't in the service provider, so `x-andach-form-section` etc. will not resolve. `form-attachment` also has no entry in the `views` config.

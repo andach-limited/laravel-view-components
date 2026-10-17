@@ -73,6 +73,10 @@ window.jQuery = $;
 
 ```
 
+### AI assistants (Laravel Boost)
+
+The package ships [Laravel Boost](https://laravel.com/docs/boost) guidelines and an `andach-view-components-development` skill, so AI agents know how to use the components and wire up the frontend. If your app uses Boost, run `php artisan boost:install` (or `php artisan boost:update` if Boost is already set up) after installing this package to pull them in.
+
 ## Testing
 
 ```bash
