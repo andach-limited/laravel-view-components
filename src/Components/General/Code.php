@@ -44,7 +44,9 @@ class Code extends BaseComponent
         }
 
         if ($this->commandLine) {
-            $this->commandLineHtml = ' command-line';
+            // Prism activates the plugin off the "command-line" class on the <pre>, not off a bare
+            // attribute of that name.
+            $this->twMergeStrings['content'] .= ' command-line';
 
             $vars = [
                 'data-user',
@@ -59,8 +61,10 @@ class Code extends BaseComponent
 
             if (is_array($this->commandLine)) {
                 foreach ($this->commandLine as $key => $value) {
-                    if (in_array($key, $vars)) {
-                        $this->commandLineHtml .= $key . '=' . $value . ' ';
+                    if (in_array($key, $vars, true)) {
+                        // Quoted and escaped: unquoted values broke apart on whitespace and let
+                        // arbitrary extra attributes be injected into the <pre> tag.
+                        $this->commandLineHtml .= ' ' . $key . '="' . e((string) $value) . '"';
                     }
                 }
             }

@@ -1,5 +1,5 @@
 <button
-    type="{{ $type }}"
+    type="{{ $type ?: 'button' }}"
     {{ $attributes->twMerge(['class' => $twMergeStrings['base']]) }}
 >
     {{ $slot }}

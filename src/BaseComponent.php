@@ -58,7 +58,11 @@ abstract class BaseComponent extends Component
 
     protected function getSizeIndex(string $size): ?int
     {
-        return array_search($size, $this->sizes, true);
+        $index = array_search($size, $this->sizes, true);
+
+        // array_search returns false when not found, which would coerce to 0 against the ?int
+        // return type and silently resolve to the largest size.
+        return false === $index ? null : $index;
     }
 
     private function setFormValue(

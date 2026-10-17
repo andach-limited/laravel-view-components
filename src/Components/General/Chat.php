@@ -19,7 +19,7 @@ class Chat extends Component
     {
         if ($me) {
             $this->classInner = 'text-sm bg-indigo-500 text-gray-100 p-3 rounded-lg rounded-tl-none border border-transparent shadow-md mb-1';
-            $this->classOuter = 'flex items-start justify-end text-right mb-4 last:mb-0"';
+            $this->classOuter = 'flex items-start justify-end text-right mb-4 last:mb-0';
         }
     }
 

@@ -30,11 +30,18 @@ class H extends BaseComponent
     ) {
         parent::__construct();
 
-        $sizeClass = $this->extractTextSize(config('view-components.components.h.base'));
-        $sizeIndex = $this->getSizeIndex($sizeClass);
-        $newSize   = $this->sizes[$sizeIndex + $number - 1];
+        // Only h1-h6 exist. Anything outside that range produced tags like <h0>/<h7>, and a large
+        // enough number ran off the end of $this->sizes and threw.
+        $this->number = max(1, min(6, $number));
 
-        $this->twMergeStrings['base'] .= ' text-' . $newSize;
+        $sizeClass = $this->extractTextSize(config('view-components.components.h.base'));
+        $sizeIndex = null === $sizeClass ? null : $this->getSizeIndex($sizeClass);
+
+        if (null !== $sizeIndex) {
+            $newSizeIndex = min($sizeIndex + $this->number - 1, count($this->sizes) - 1);
+
+            $this->twMergeStrings['base'] .= ' text-' . $this->sizes[$newSizeIndex];
+        }
     }
 
     public function render()

@@ -11,7 +11,7 @@ class Button extends BaseComponent
         public ?string $href = null,
         public ?string $prefix = null,
         public ?string $suffix = null,
-        public ?string $type = null,
+        public ?string $type = 'button',
         // Generic Arguments
         public ?bool $accent = null,
         public ?bool $active = null,

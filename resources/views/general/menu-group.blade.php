@@ -41,7 +41,7 @@
                             }
                         @endphp
                         <li>
-                            <a href="{{ $submenuUrl }}" {{ $secondLiAppend }}">{{ $submenuName }}</a>
+                            <a href="{{ $submenuUrl }}" {{ $secondLiAppend }}>{{ $submenuName }}</a>
                         </li>
                     @endforeach
                 </ul>

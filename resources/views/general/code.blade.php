@@ -30,6 +30,6 @@
         @endif
     </div>
     <div class="font-mono">
-        <pre {{ $attributes->twMergeFor('content', $twMergeStrings['content']) }} {{ $commandLineHtml }}><code>{!! e(trim($slot)) !!}</code></pre>
+        <pre {{ $attributes->twMergeFor('content', $twMergeStrings['content']) }}{!! $commandLineHtml !!}><code>{!! e(trim($slot)) !!}</code></pre>
     </div>
 </div>

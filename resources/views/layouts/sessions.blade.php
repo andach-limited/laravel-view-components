@@ -12,6 +12,6 @@
 
 @if(Session::has('errors'))
     <x-andach-alert variant="danger" title="Form Submission Errors" icon="<i class='fa-solid fa-circle-exclamation'></i>">
-        {!! implode('<br />', $errors->all()) !!}
+        {!! implode('<br />', array_map('e', $errors->all())) !!}
     </x-andach-alert>
 @endif

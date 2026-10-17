@@ -207,7 +207,9 @@ class LaravelViewComponents
             }
 
             if ($enabled) {
-                $variantClasses->put($name . 'Override', $options);
+                // $options is [bool $enabledByDefault, string $classes] - only the classes belong
+                // in the output. Putting the whole array here leaks the boolean in as a "1" class.
+                $variantClasses->put($name . 'Override', $options[1] ?? '');
                 $variantClasses->put($name . 'Variant', $this->variant[$name] ?? '');
             }
         }
